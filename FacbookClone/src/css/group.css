@@ -1,0 +1,138 @@
+:root {
+    --upperlayer: #242526;
+    --baselayer: #18191a;
+  }
+
+ 
+/* general  */
+html, body{
+    height: 100%;
+    margin: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.info,.buttonsection,.tab,.feed{
+    padding-left: 80px;
+}
+
+.container{
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+}
+
+/* sidebar */
+.sidebar {
+    background-color: var(--upperlayer);
+    width: 360px;
+    max-width: 360px;
+    min-width: 360px;
+    flex-shrink: 0; /* Prevents the sidebar from shrinking */
+    border-right: 1px #515355 solid;
+}
+
+
+/* feedside */
+.feedside {
+    background-color: var(--baselayer);
+    flex-grow: 1; /* Allows the feedside to take up the remaining space */
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* banner */
+.banner{
+    background-color: var(--upperlayer);
+    padding: 0 50px 0 50px;
+}
+
+#groupBanner{
+    max-width: 100%;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+
+}
+
+/* info  */
+.info{
+    background-color: var(--upperlayer);
+    color: whitesmoke;
+}
+
+.info h1{
+    font-size: 1.75rem;
+}
+
+.info h2{
+    font-size: 1rem;
+}
+
+.info span{
+    font-weight: 200;
+}
+
+
+/* button under info  */
+
+
+/* tab under button  */
+
+
+.tab{
+    background-color: var(--upperlayer);
+}
+
+.nav-links{
+    padding: 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 0px;
+}
+
+.link a{
+    position: relative;
+    padding-bottom: 0.3rem;
+    color: #fff;
+    font-weight: 800;
+}
+
+.tab_container{
+    margin: 0 2px 0 2px ;
+    display: flex;
+    align-items: center;    
+    justify-content: center;
+    height: 50px;
+    width: 100px;
+    border-radius: 10px;
+}
+
+.tab_container:hover{
+    background-color: #3b3c3e;
+}
+
+a{
+    text-decoration: none;
+}
+
+.feed{
+    margin: 15px 15px 0 100px;
+    height: 100vw;
+}
+
+
+/* responsive  */
+@media (max-width: 899px) {
+    .sidebar {
+        display: none; /* Hide sidebar on screens smaller than 900px */
+    }
+
+    .feedside {
+        width: 100%; /* Full width for the feedside */
+    }
+    .banner{
+        padding: 0px;
+    }
+}
