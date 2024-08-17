@@ -1,10 +1,27 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import Profile from './pages/Profile.jsx'
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import './index.css';
 
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+
+import Profile from './pages/Profile.jsx';
+import NotFound from './pages/NotFound.jsx';
+
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Profile />,
+    errorElement: <NotFound />
+  },
+  
+  
+]);
+
+const root = createRoot(document.getElementById('root'));
+root.render(  
   <React.StrictMode>
-    <Profile />
-  </React.StrictMode>,
-)
+    <RouterProvider router={router} />
+  </React.StrictMode>
+);
