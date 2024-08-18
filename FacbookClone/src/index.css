@@ -1,3 +1,7 @@
+html {
+  overflow-y: scroll;
+}
+
 .cover_user_detail {
     display: grid;
     font-family: Arial, Helvetica, sans-serif;
@@ -67,7 +71,7 @@
     margin-top: 10px;
 }
 
-.add_story_button, .edit_profile_button {
+.add_post_button, .edit_profile_button {
     padding: 10px 15px;
     border-radius: 5px;
     border: none;
@@ -76,7 +80,7 @@
     font-weight: bold;
 }
 
-.add_story_button {
+.add_post_button {
     background-color: #1877f2;
     color: white;
 }
@@ -103,12 +107,16 @@
     font-size: 14px;
   }
   
-  .tab.active {
-    color: black;
+  .tab .active {
+    color: #1877f2;
     border-bottom: 3px solid #1877f2;
   }
 
-  .profile_content_container {
+
+
+
+  /* Post */
+  .profile_post_container {
     display: flex;
     background-color: #e4e6eb;
     justify-content: center; /* Center the entire content container */
@@ -116,6 +124,7 @@
     align-items: flex-start;
   }
   
+  /* Left side */
   .profile_user_info {
     margin: 0px;
     width: 400px;
@@ -132,6 +141,7 @@
     margin-bottom: 10px;
     line-height: 1.5;
   }
+  
   .profile_user_info .edit_profile_button {
     padding: 10px 15px;
     border-radius: 5px;
@@ -141,10 +151,9 @@
     font-size: 14px;
     margin-top: 25px;
     width: 400px;
-    
   }
-  /* Profile Content */
-  .profile_user_content {
+  /* Right side */
+  .profile_user_post {
     width: 600px; /* Adjust to make both sides equal width */
     background-color: white;
     padding: 20px;
@@ -158,3 +167,207 @@
     margin-bottom: 10px;
   }
 
+
+
+
+
+  /* About */
+  .profile_about_container {
+    display: flex;
+    background-color: #e4e6eb;
+    justify-content: center;
+    padding: 20px 0;
+    
+  }
+
+  .profile_user_about {
+    width: 1060px;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    list-style-type: none;
+    font-size: 16px;
+    margin: 0;
+  }
+
+  .profile_user_about li {
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+
+  .profile_user_about h2 {
+    font-size: 28px;
+  }
+
+  .profile_user_about h3 {
+    font-size: 22px;
+  }
+
+  .profile_user_about .edit_profile_button {
+    padding: 10px 15px;
+    border-radius: 5px;
+    background-color: #e4e6eb;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 25px;
+    width: 400px;
+  }
+
+
+
+
+
+/* Friends */
+.profile_friends_container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+  background-color: #e4e6eb;
+}
+
+.profile_friend_list {
+  background-color: white;
+  padding: 20px;
+  width: 1060px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two friends per row */
+  gap: 20px; /* Space between friends */
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.friends_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  grid-column: span 2; /* Makes header span both columns */
+  margin-bottom: 20px;
+}
+
+.search_bar {
+  padding: 5px 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  margin-left: auto; /* Pushes the button to the right */
+}
+
+.friend_item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f0f2f5; /* Slight background color for the friend item */
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 490px; /* Limit the maximum width for responsiveness */
+}
+
+.friend_item img {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.friend_item p {
+  margin-left: 20px;
+  font-size: 16px;
+  color: #000;
+}
+
+.unfriend_button {
+  margin-left: auto; /* Pushes the button to the right */
+  padding: 5px 10px;
+  font-size: 14px;
+  background-color: #e4e6eb;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  white-space: nowrap; /* Prevents the text from breaking into two lines */
+}
+
+.profile_friend_list h2 {
+  font-size: 28px;
+}
+
+
+
+
+
+/* Groups */
+.profile_groups_container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+  background-color: #e4e6eb;
+}
+
+.profile_group_list {
+  background-color: white;
+  padding: 20px;
+  width: 1060px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two groups per row */
+  gap: 20px; /* Space between groups */
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.groups_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  grid-column: span 2; /* Makes header span both columns */
+  margin-bottom: 20px;
+}
+
+.search_bar {
+  padding: 5px 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  margin-left: auto; /* Pushes the button to the right */
+}
+
+.group_item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f0f2f5; /* Slight background color for the group item */
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 490px; /* Limit the maximum width for responsiveness */
+}
+
+.group_item img {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.group_item p {
+  margin-left: 20px;
+  font-size: 16px;
+  color: #000;
+  
+}
+
+.leave_group_button {
+  margin-left: auto; /* Pushes the button to the right */
+  padding: 5px 10px;
+  font-size: 14px;
+  background-color: #e4e6eb;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  white-space: nowrap; /* Prevents the text from breaking into two lines */
+}
+
+.profile_group_list h2 {
+  font-size: 28px;
+}
