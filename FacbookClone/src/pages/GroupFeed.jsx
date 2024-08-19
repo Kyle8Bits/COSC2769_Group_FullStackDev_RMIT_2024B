@@ -1,57 +1,36 @@
 import React from 'react'
-import Tab from '../components/Tab'
-
-const tabs =[
-  {name: 'Post'}, 
-  {name: 'Member'},
-  {name: 'Photos'}
-]
+import Post from '../components/Post'
+import '../css/group.css'
+import banner from '../assets/banner.png'
 
 function GroupFeed() {
   return (
-    <div style={{backgroundColor: 'wheat'}}  className="container">
-
-      <div className="sidebar"> 
-        <ul>
-          <li>SIDEBAR</li>
-          <li>SIDEBAR</li>
-          <li>SIDEBAR</li>
-          <li>SIDEBAR</li>
-          <li>SIDEBAR</li>
-          <li>SIDEBAR</li>
-          <li>SIDEBAR</li>
-          <li>SIDEBAR</li>
-          <li>SIDEBAR</li>
-
-        </ul>
-
+    <div className='group_container'>
+      <div className="group_banner">
+        <img src={banner} alt="" />
       </div>
 
-      <div  className="feedside">
-        <div className="banner">
-          <img id='groupBanner' src="https://scontent.fhan19-1.fna.fbcdn.net/v/t39.30808-6/454416811_122172689240195479_6553318924204077227_n.png?stp=dst-jpg_p720x720&_nc_cat=1&ccb=1-7&_nc_sid=2285d6&_nc_ohc=plfBNyklxsgQ7kNvgGCmMrW&_nc_ht=scontent.fhan19-1.fna&oh=00_AYAxkz3bJ1EnJPwCQBIGPzFmlTuZcKDHMjny5r2T6pdaEw&oe=66BB7A1F" alt="" />
+      <div className="group_info">
+
+        <div>
+          <h1 className="name">Software Engineering Community</h1>
+
+          <div className="property">
+              <h5>50k members - Private <i class="ri-lock-line"></i></h5>
+          </div>
         </div>
 
-        <div className="info">
-          <h1>Cộng đồng VALORANT Vietnam</h1>
-          <h2> <i class="ri-lock-fill"></i> <span>Private group</span> · 294.7K members</h2>
+        <div className='button'>
+          <button className="join">  <i class="ri-login-box-line"></i> Join </button>
+          <button className="invite"> <i class="ri-add-box-line"></i> Invite</button>
+          <button className="setting"> <i class="ri-tools-fill"></i> Admin</button>
         </div>
-
-        <div style={{backgroundColor: 'gray'}} className="buttonsection">
-          Button + few member avater preview
-          <div className="member_preview"></div>
-          <div className="button"></div>
-        </div>
-
-        <div  className="tab">
-          <Tab tabs={tabs}/>
-        </div>
-
-        <div style={{backgroundColor: 'orange'}} className="feed"> FEED </div>
 
       </div>
-
-
+      <div className="group_feed">
+        <Post/>
+        <Post/>
+      </div>
     </div>
   )
 }

@@ -1,7 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import GroupFeed from './pages/GroupFeed'
-import './css/group.css'
 
 
 
