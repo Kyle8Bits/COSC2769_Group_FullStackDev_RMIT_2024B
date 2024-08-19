@@ -73,11 +73,12 @@ const Login = () => {
 
             {/* login form, left side */}
             <div className="login_detail">
-                <h2>Login</h2>
+                <h2>Login Page</h2>
                 <input type="email" placeholder="Email address or Phone Number" />
                 <input type="Password" placeholder="Password" />
                 <button className="log_in_button">
-                  {/* <Link to="/HeaderArea">LogIn</Link> */}
+                    Sign In
+                    {/* <Link to="/HeaderArea">LogIn</Link> */}
                 </button>
             </div>
 
@@ -86,15 +87,13 @@ const Login = () => {
 
             </div>
             <div className="create">
-
-                <button className="create_new_account_button">Create New Account</button>
+                    <button className="create_new_account_button">Create New Account</button>
             </div>
         </div>
 
 
         {/* right side */}
         <div className="welcome_container">
-            {/* The application title */}
             <p className="welcome_text">Welcome to</p>
             <h2 className="title">CrabNest</h2>
             <p className="intro_text">This is a social app can help to connect friends and widen/create your comminity</p>

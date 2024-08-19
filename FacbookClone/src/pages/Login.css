@@ -76,6 +76,8 @@ input::placeholder {
   border-radius: 0.5rem;
   color: white;
   text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .forget a {
