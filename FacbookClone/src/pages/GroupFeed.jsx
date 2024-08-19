@@ -6,9 +6,9 @@ import banner from '../assets/banner.png'
 function GroupFeed() {
   return (
     <div className='group_container'>
-      <div className="group_banner">
+      {/* <div className="group_banner">
         <img src={banner} alt="" />
-      </div>
+      </div> */}
 
       <div className="group_info">
 
