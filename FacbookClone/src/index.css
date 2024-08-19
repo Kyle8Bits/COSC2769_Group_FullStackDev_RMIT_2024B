@@ -89,6 +89,9 @@ html {
     background-color: #e4e6eb;
 }
 
+
+
+
 /* Navigation Tabs */
 .profile_tabs {
     display: flex;
@@ -97,10 +100,11 @@ html {
     padding: 10px 20px;
     margin-top: 10px;
     border-top: 1px solid rgb(205, 198, 198);
+    justify-content: center;
   }
 
   .tab {
-    padding: 15px 20px;
+    padding: 15px 50px;
     cursor: pointer;
     color: gray;
     font-weight: bold;
@@ -111,6 +115,7 @@ html {
     color: #1877f2;
     border-bottom: 3px solid #1877f2;
   }
+
 
 
 
@@ -295,79 +300,3 @@ html {
 
 
 
-
-
-/* Groups */
-.profile_groups_container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  padding: 20px 0;
-  background-color: #e4e6eb;
-}
-
-.profile_group_list {
-  background-color: white;
-  padding: 20px;
-  width: 1060px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Two groups per row */
-  gap: 20px; /* Space between groups */
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.groups_header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  grid-column: span 2; /* Makes header span both columns */
-  margin-bottom: 20px;
-}
-
-.search_bar {
-  padding: 5px 10px;
-  font-size: 16px;
-  border-radius: 5px;
-  margin-left: auto; /* Pushes the button to the right */
-}
-
-.group_item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #f0f2f5; /* Slight background color for the group item */
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  width: 490px; /* Limit the maximum width for responsiveness */
-}
-
-.group_item img {
-  width: 80px;
-  height: 80px;
-  border-radius: 10px;
-  object-fit: cover;
-}
-
-.group_item p {
-  margin-left: 20px;
-  font-size: 16px;
-  color: #000;
-  
-}
-
-.leave_group_button {
-  margin-left: auto; /* Pushes the button to the right */
-  padding: 5px 10px;
-  font-size: 14px;
-  background-color: #e4e6eb;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  white-space: nowrap; /* Prevents the text from breaking into two lines */
-}
-
-.profile_group_list h2 {
-  font-size: 28px;
-}

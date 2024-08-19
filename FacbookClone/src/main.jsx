@@ -7,7 +7,6 @@ import './index.css';
 
 import About from './pages/profilePages/About.jsx';
 import Friends from './pages/profilePages/Friends.jsx';
-import Groups from './pages/profilePages/Groups.jsx';
 import Post from './pages/profilePages/Post.jsx';
 import NotFound from './pages/NotFound.jsx';
 
@@ -28,11 +27,7 @@ const router = createBrowserRouter([
     element: <Friends />,
     errorElement: <NotFound />,
   },  
-  {
-    path: "profile/groups",
-    element: <Groups />,
-    errorElement: <NotFound />,
-  },  
+ 
   
 ]);
 

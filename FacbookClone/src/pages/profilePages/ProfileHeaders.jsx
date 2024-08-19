@@ -33,7 +33,7 @@ export default function Profile() {
                     <div className="tab"><NavLink to="/profile/post" className={({ isActive}) => isActive ? 'tab active' : 'tab'}>Posts</NavLink></div>
                     <div className="tab"><NavLink to="/profile/about" className={({ isActive}) => isActive ? 'tab active' : 'tab'}>About</NavLink></div>
                     <div className="tab"><NavLink to="/profile/friends" className={({ isActive}) => isActive ? 'tab active' : 'tab'}>Friends</NavLink></div>
-                    <div className="tab"><NavLink to="/profile/groups" className={({ isActive}) => isActive ? 'tab active' : 'tab'}>Groups</NavLink></div>
+                    
                 </div>
             </div>        
         </div>    
