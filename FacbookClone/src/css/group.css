@@ -3,12 +3,6 @@
     color: aliceblue;
 }
 
-body, html {
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    background-color:#222221
-}
 
 .group_container{
     width: 100vw;

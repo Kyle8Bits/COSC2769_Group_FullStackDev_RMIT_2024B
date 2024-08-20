@@ -2,12 +2,6 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-body, html {
-    margin: 0;
-    display: flex;
-    justify-content: center;
-}
-
 .post_container{
     border-radius: 10px;
     width: 40vw;

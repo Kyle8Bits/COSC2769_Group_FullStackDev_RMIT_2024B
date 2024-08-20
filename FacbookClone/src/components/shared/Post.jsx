@@ -1,7 +1,7 @@
 import React from 'react';
-import '../css/post.css';
-import avatar from '../image/avatar.jpg';
-import content from '../image/post.jpg';
+import '../../css/post.css'
+import avatar from '../../image/avatar.jpg';
+import content from '../../image/post.jpg';
 
 function Post() {
   return (

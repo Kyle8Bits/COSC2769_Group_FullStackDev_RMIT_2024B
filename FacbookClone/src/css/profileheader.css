@@ -1,0 +1,158 @@
+*{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.header_profile_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile_cover {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  position: relative; /* Make cover the positioning context */
+}
+
+.profile_cover img {
+  width: 100%;
+  height: 315px;
+  object-fit: cover;
+}
+
+.profile_info {
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+  justify-content: space-around;
+  width: 80%;
+  gap: 20px;
+  position: absolute; /* Positioning the avatar relative to profile_cover */
+  left: 50%; /* Center horizontally */
+  bottom: -85px; /* Move it up to overlap with the cover */
+  transform: translateX(-50%); /* Center the avatar exactly */
+}
+
+.profile_info .name{
+  flex-grow: 1;
+}
+
+.profile_info .avatar {
+  width: 168px;
+  height: 168px;
+  border-radius: 50%;
+  overflow: hidden; /* This ensures the image is cropped to fit the circle */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 5px solid rgb(255, 255, 255);
+}
+
+.profile_info .avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile_info .name{
+  margin-bottom: 25px;
+}
+
+.profile_info .name .fullname{
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.profile_info .name .username{
+  font-size: 15px;
+  font-weight: 100;
+  opacity: 0.8;
+}
+
+.profile_info .name .bio{
+  font-size: 19px;
+  margin-top: 15px;
+}
+
+.profile_info .button{
+  display: flex;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+
+.profile_info .button button{
+  color: #000000;
+  background-color: #fff;
+  box-shadow: 2px 3px 6px rgb(128, 128, 128, 0.5);
+  width: 150px;
+  height: 40px;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: 700;
+  border: none;
+}
+
+.profile_info .button button:hover{
+  background-color: chocolate;
+  color: #4a1f00;
+}
+
+.bio {
+  position: absolute;
+}
+
+.fame_count{
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  padding-left: 40px;
+  margin-top: 8%;
+  margin-bottom: 2%;
+  gap: 20%;
+}
+
+.fame_count h4{
+  font-size: 20px;
+}
+
+.fame_count span{
+  font-weight: 300;
+  opacity: 0.8;
+}
+
+.profile_nav{
+  width: 80%;
+}
+
+.profile_nav .tab_nav{
+  display: flex;
+  justify-content: space-around;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.profile_nav .tab_nav .tab{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  width: 24%;
+  border-radius: 5px;
+}
+
+.profile_nav .tab_nav .tab:hover{
+  background-color: grey;
+}
+
+.line{
+  position: relative;
+  background-color: gray;
+  height: 2px;
+  width: 100%;
+}
+
