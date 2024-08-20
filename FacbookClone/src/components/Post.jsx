@@ -1,14 +1,16 @@
 import React from 'react';
 import '../css/post.css';
-import avatar from '../assets/avatar.jpg';
-import content from '../assets/post.jpg';
+import avatar from '../image/avatar.jpg';
+import content from '../image/post.jpg';
 
 function Post() {
   return (
     <div className='post_container'>
         <div className="post_author">
 
-            <img src={avatar} alt="" className='avatar'/>
+            <div class="avatar-wrapper">
+                <img src={avatar} alt="" className="avatar" />
+            </div>
             <div className='text_container'>
                 <h2 className="name">Mai Dang Khoa</h2>
                 <h3 className="date">19 August 2024</h3>
@@ -16,10 +18,11 @@ function Post() {
 
         </div>
         <div className="post_caption">
-            <h3> Fact about Crab <br />
+            <p>
+            Fact about Crab <br />
                 1. This is a Crab <br />
                 2. This crab can swim
-            </h3>
+            </p> 
         </div>
 
         <div className="post_content">

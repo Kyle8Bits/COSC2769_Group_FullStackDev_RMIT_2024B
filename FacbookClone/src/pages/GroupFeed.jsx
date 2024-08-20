@@ -1,7 +1,7 @@
 import React from 'react'
 import Post from '../components/Post'
 import '../css/group.css'
-import banner from '../assets/banner.png'
+import banner from '../image/banner.png'
 
 function GroupFeed() {
   return (

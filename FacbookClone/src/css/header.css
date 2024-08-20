@@ -2,13 +2,13 @@ body,html{
     margin: 0px;
 }
 
-i{
+.header_container i{
     font-size: 38px;
     color: #4a1f00;
     transition: font-size 0.5s cubic-bezier(0.25, 0.8, 0.25, 1)
 }
 
-i:hover{    
+.header_container i:hover{    
     font-size: 50px;
     cursor: pointer;
 }

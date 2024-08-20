@@ -51,12 +51,17 @@ body, html {
     align-items: center;
     justify-content: space-between;
     width: 20%;
+    gap:10px;
 }
 
 .group_info .button button{
-    width: 120px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
     height: 40px;
-    font-size: 25px;
+    font-size: 20px;
     border: 1px solid gainsboro;
     border-radius: 10px;
     background-color:#1E201E;
