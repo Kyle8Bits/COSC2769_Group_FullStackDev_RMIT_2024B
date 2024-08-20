@@ -1,6 +1,6 @@
 import React from 'react'
-import logo from '../assets/logo.png'
-import avatar from '../assets/avatar.jpg'
+import logo from '../image/logo.png'
+import avatar from '../image/avatar.jpg'
 import '../css/header.css'
 
 function Header() {
