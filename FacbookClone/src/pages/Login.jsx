@@ -1,6 +1,6 @@
 import React ,{useState} from 'react'
 import '../css/login.css'
-import logo from '../assets/logo.png'
+import logo from '../image/logo.png'
 
 function Login() {
 
