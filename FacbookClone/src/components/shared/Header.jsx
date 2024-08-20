@@ -28,8 +28,8 @@ const [dropbar,setDropBar] = useState(true);
     
         <div className="noti_action">
         <i class="ri-notification-4-fill"></i>
-        <img src={avatar} alt="" />
-        {dropbar?<div><DropDownBar/></div>:<div></div>}
+        <img src={avatar} alt="" onClick={()=>setDropBar((prev) => !prev)}/>
+        {dropbar === true?<div><DropDownBar className/></div>:<div></div>}
         </div>
     </div>
   )

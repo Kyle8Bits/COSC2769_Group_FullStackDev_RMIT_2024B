@@ -37,8 +37,8 @@ function ProfileHeader() {
         
 
         <div className="fame_count">
-            <h4 className="friend"> 240 <span>friends</span></h4>
-            <h4 className='follower'> 1.6k <span>followers</span></h4>
+            <h4 className="friend"> 240  <span>friends</span></h4>
+            <h4 className='follower'> 1.6k  <span>followers</span></h4>
         </div>
 
         <div className="profile_nav">

@@ -7,10 +7,11 @@
     list-style: none;
     position:absolute;
     background-color: #fff;
-    right: 30px;
-    top: 50px;
+    right: 42px;
+    top: 56px;
     gap: 8px;
     border-radius: 10px;
+    z-index: 1000;
 }
 
 .dropdownbar .dropdown_line{
