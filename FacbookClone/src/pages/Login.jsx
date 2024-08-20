@@ -27,7 +27,7 @@ function Login() {
 
         <div className="login_input">
           {action === "Sign Up"?<div>
-            <div className="username">
+            <div className="nickname">
               <i class="ri-user-fill"></i>
               <input type="text" className="input" placeholder='Username' />
             </div>

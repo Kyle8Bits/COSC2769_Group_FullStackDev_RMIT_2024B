@@ -2,9 +2,12 @@ import React from 'react'
 import Post from '../components/shared/Post'
 import '../css/group.css'
 import banner from '../image/banner.png'
+import Header from '../components/shared/Header'
 
 function GroupFeed() {
   return (
+    <>
+    <Header/>
     <div className='group_container'>
       <div className="group_banner">
         <img src={banner} alt="" />
@@ -49,6 +52,7 @@ function GroupFeed() {
       </div>
       
     </div>
+    </>
   )
 }
 

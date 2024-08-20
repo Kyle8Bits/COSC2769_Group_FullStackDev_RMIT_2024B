@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import logo from '../../image/logo.png'
 import avatar from '../../image/avatar.jpg'
 import '../../css/header.css'
+import DropDownBar from './DropDownBar'
 
 function Header() {
+  
+const [dropbar,setDropBar] = useState(true);
+
   return (
     <div className='header_container'>
 
@@ -25,6 +29,7 @@ function Header() {
         <div className="noti_action">
         <i class="ri-notification-4-fill"></i>
         <img src={avatar} alt="" />
+        {dropbar?<div><DropDownBar/></div>:<div></div>}
         </div>
     </div>
   )

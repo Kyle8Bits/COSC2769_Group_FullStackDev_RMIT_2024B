@@ -1,12 +1,10 @@
-*{
-  font-family: Arial, Helvetica, sans-serif;
-}
 
 .header_profile_container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .profile_cover {
@@ -57,6 +55,7 @@
 }
 
 .profile_info .name{
+  color: #fff;
   margin-bottom: 25px;
 }
 
@@ -86,7 +85,7 @@
 .profile_info .button button{
   color: #000000;
   background-color: #fff;
-  box-shadow: 2px 3px 6px rgb(128, 128, 128, 0.5);
+  box-shadow: 2px 5px 8px rgb(0, 0, 0);
   width: 150px;
   height: 40px;
   border-radius: 50px;
@@ -98,6 +97,7 @@
 .profile_info .button button:hover{
   background-color: chocolate;
   color: #4a1f00;
+  cursor: pointer;
 }
 
 .bio {
@@ -105,6 +105,7 @@
 }
 
 .fame_count{
+  color: #fff;
   width: 80%;
   display: flex;
   flex-direction: row;
@@ -125,10 +126,12 @@
 }
 
 .profile_nav{
+  margin-top: 10px;
   width: 80%;
 }
 
 .profile_nav .tab_nav{
+  color: #fff;
   display: flex;
   justify-content: space-around;
   font-size: 20px;
@@ -143,10 +146,13 @@
   height: 30px;
   width: 24%;
   border-radius: 5px;
+  transition: height 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .profile_nav .tab_nav .tab:hover{
   background-color: grey;
+  cursor: pointer;
+  height: 40px;
 }
 
 .line{

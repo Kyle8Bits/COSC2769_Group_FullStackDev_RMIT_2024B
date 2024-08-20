@@ -1,15 +1,40 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import Header from './components/shared/Header'
-import GroupFeed from './pages/GroupFeed'
-import Profile from './pages/Profile'
+import { createRoot } from 'react-dom/client';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './css/index.css'
 
+import NotFound from './NotFound'
+import Login from './pages/Login'
+import GroupFeed from './pages/GroupFeed'
+import Profile from './pages/Profile'
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+
+
+const router = createBrowserRouter([
+  {
+    path: "/login",
+    element: <Login/>,
+    errorElement: <NotFound />,
+  },
+  {
+    path: "/profile",
+    element: <Profile/>,
+    errorElement: <NotFound />,
+  },
+  {
+    path: "/group",
+    element: <GroupFeed/>,
+    errorElement: <NotFound />,
+  },  
+ 
+  
+]);
+
+
+const root = createRoot(document.getElementById('root'));
+root.render(  
   <React.StrictMode>
-    <Header/>
-    <GroupFeed/>
-    {/* <Profile/> */}
-  </React.StrictMode>,
-)
+    <RouterProvider router={router} />
+  </React.StrictMode>
+);
