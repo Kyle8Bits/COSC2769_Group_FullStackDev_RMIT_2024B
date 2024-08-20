@@ -1,5 +1,5 @@
 import React from 'react';
-import './post.css';
+import '../css/post.css';
 import avatar from '../assets/avatar.jpg';
 import content from '../assets/post.jpg';
 

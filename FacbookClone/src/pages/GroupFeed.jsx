@@ -16,7 +16,7 @@ function GroupFeed() {
           <h1 className="name">Software Engineering Community</h1>
 
           <div className="property">
-              <h5>50k members - Private <i class="ri-lock-line"></i></h5>
+              <h5>Private <i class="ri-lock-line"></i></h5>
           </div>
         </div>
 
@@ -28,9 +28,26 @@ function GroupFeed() {
 
       </div>
       <div className="group_feed">
-        <Post/>
-        <Post/>
+        <ul className="post">
+          <Post/>
+          <Post/>
+        </ul>
+
+        <div className="group_statistic">
+          <div className="description">
+            <h4>About</h4>
+            <p>Connecting all the Software Enginerring all over the world, building and construction software</p>
+
+            <h4><i class="ri-lock-line"></i> Private</h4>
+            <p>Only member of this group can view post. Please join group to access further</p>
+          </div>
+          
+          <div className="admin_list">
+            
+          </div>
       </div>
+      </div>
+      
     </div>
   )
 }
