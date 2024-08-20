@@ -1,0 +1,151 @@
+body{
+    background-color: #d2d2d2;
+}
+
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.login_page{
+    width: 100vw;
+    height: 100vh;
+    justify-content: space-around;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+}
+
+.login_welcome{
+    display: flex;
+    flex-direction: column;
+}
+.login_welcome img{
+    width: 500px;
+    height: auto;
+}
+
+.login_welcome h1{
+    color: #1E201E;
+    font-size: 50px;
+}
+
+.login_welcome .crab{
+    color: #fe7e62;
+    -webkit-text-stroke: 2px black; 
+    font-size: 100px;
+}
+
+.login_welcome .nest{
+    color: #000b3c;
+    -webkit-text-stroke: 1px black; 
+    font-size: 100px;
+}
+
+
+.login_container{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 20px;
+    width: 600px;
+    height: 530px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3)
+}
+
+.login_header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.text{
+    color: chocolate;
+    font-weight: 700;
+    font-size: 48px;
+
+}
+
+.underline{
+    margin-top: 10px;
+    width: 61px;
+    height: 6px;
+    background-color: chocolate;
+    border-radius: 9px;
+}
+
+.login_input{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+    gap: 25px;
+    width: 100%;
+    height: 300px;
+}
+
+.login_input i{
+    color: gray;
+    font-size: 20px;
+    margin: 0px 20px;
+}
+
+.email, .password, .username {
+    background-color: #eaeaea;
+    display: flex;
+    align-items: center;
+    width: 500px;
+    height: 60px;
+    border-radius: 6px;
+}
+
+.login_input .input{
+    height: 60%;
+    width: 93%;
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.forgot-password{
+    margin-top: 2%;
+    margin-left:10% ;
+}
+
+.forgot-password span{
+    text-decoration: underline;
+    font-weight: 700;
+}
+
+.forgot-password span:hover{
+    color: chocolate;
+    cursor: pointer;
+}
+
+.login_buttons{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10%;
+}
+
+.signup, .login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 40px;
+    color: #fff;
+    background-color: chocolate;
+    border-radius: 50px;
+    font-size: 17px;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+}
+
+.gray{
+    background-color: #eaeaea;
+    color:#676767
+}
