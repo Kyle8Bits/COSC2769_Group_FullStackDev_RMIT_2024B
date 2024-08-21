@@ -3,6 +3,7 @@ import logo from '../../image/logo.png'
 import avatar from '../../image/avatar.jpg'
 import '../../css/header.css'
 import DropDownBar from './DropDownBar'
+import { NavLink } from 'react-router-dom'
 
 function Header() {
   
@@ -22,7 +23,7 @@ function toggle(){
         </div>
 
         <div className="header_nav">
-        <i class="ri-home-5-fill"></i>
+        <NavLink to={"/home"}><i class="ri-home-5-fill"></i></NavLink>
         <i class="ri-team-fill"></i>
         <i class="ri-group-2-fill"></i>
         <i class="ri-tools-fill"></i>

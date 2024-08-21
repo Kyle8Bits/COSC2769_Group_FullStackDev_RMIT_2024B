@@ -14,6 +14,7 @@ import ProfileAbout from './components/ProfileComponents/ProfileAbout';
 import ProfilePosts from './components/ProfileComponents/ProfilePosts';
 import ProfileFriends from './components/ProfileComponents/ProfileFriends';
 import ProfilePhotos from './components/ProfileComponents/ProfilePhotos';
+import NewFeed from './pages/NewFeed';
 
 const router = createBrowserRouter([
   {
@@ -35,7 +36,9 @@ const router = createBrowserRouter([
   }, 
 
   {
-    path: "/"
+    path: "/home",
+    element: <NewFeed/>,
+    errorElement: <NotFound/>
   },
 
   {
