@@ -43,10 +43,19 @@ function ProfileHeader() {
 
         <div className="profile_nav">
             <div className="tab_nav">
-                <div className="tab">Posts</div>
-                <div className="tab">About</div>
-                <div className="tab">Friends</div>
-                <div className="tab">Photos</div>
+
+            <NavLink  className={({ isActive }) => isActive ? 'tab active_nav' : 'tab'} to={`/@${"kyle_mai"}/posts`}>
+              <div >Posts</div>
+            </NavLink>
+            <NavLink className={({ isActive }) => isActive ? 'tab active_nav' : 'tab'} to={`/@${"kyle_mai"}/about`}>
+              <div>About</div>
+            </NavLink>
+            <NavLink className={({ isActive }) => isActive ? 'tab active_nav' : 'tab'} to={`/@${"kyle_mai"}/friends`}>
+              <div>Friends</div>
+            </NavLink>
+            <NavLink className={({ isActive }) => isActive ? 'tab active_nav' : 'tab'} to={`/@${"kyle_mai"}/photos`}>
+              <div>Photos</div>
+            </NavLink>
             </div>
 
             <div className="line"></div>

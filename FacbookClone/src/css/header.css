@@ -20,6 +20,7 @@
     padding: 0 20px 0 2ch;
     height: 60px;
     background-color: chocolate;
+    z-index: 1000;
 }
 
 .search_bar{

@@ -11,7 +11,12 @@
     top: 56px;
     gap: 8px;
     border-radius: 10px;
-    z-index: 1000;
+    z-index: 9999;
+}
+
+.dropdownbar a{
+    text-decoration: none; 
+    color: inherit;
 }
 
 .dropdownbar .dropdown_line{
@@ -33,7 +38,7 @@
     border-top: 1px solid #fff;
 }
 
-.dropdownbar li{
+.dropdownbar a{
     padding: 8px;
     width: 90%;
     border-radius: 10px;
@@ -42,7 +47,7 @@
     font-weight: 700;
 }
 
-.dropdownbar li:hover{
+.dropdownbar a:hover{
     background-color: rgb(223, 223, 223);
     cursor: pointer;
 }

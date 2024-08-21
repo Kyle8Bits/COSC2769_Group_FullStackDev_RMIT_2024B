@@ -1,4 +1,5 @@
 import React ,{useState} from 'react'
+import { Link } from 'react-router-dom';
 import '../css/login.css'
 import logo from '../image/logo.png'
 
@@ -45,7 +46,7 @@ function Login() {
           
         </div>
           
-        <div className="forgot-password">Forgot password <span>Click here</span></div>
+        <div className="forgot-password">Forgot password <Link className='span' to={'/password_recovery'} >Click here</Link></div>
 
         <div className="login_buttons">
           <button type='button' className={action === "Login"?"signup gray":"signup"} onClick={()=>setAction("Sign Up")}>Sign Up</button>

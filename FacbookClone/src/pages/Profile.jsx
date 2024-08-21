@@ -1,4 +1,5 @@
 import React from 'react'
+import { Outlet } from 'react-router-dom'
 import ProfileHeader from '../components/ProfileComponents/ProfileHeader'
 import Header from '../components/shared/Header.jsx'
 function Profile() {
@@ -6,6 +7,7 @@ function Profile() {
     <div>
       <Header/>
       <ProfileHeader/>
+      <Outlet/>
     </div>
   )
 }

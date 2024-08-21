@@ -7,7 +7,9 @@ import DropDownBar from './DropDownBar'
 function Header() {
   
 const [dropbar,setDropBar] = useState(false);
-
+function toggle(){
+  setDropBar(false);
+}
   return (
     <div className='header_container'>
 
@@ -29,7 +31,10 @@ const [dropbar,setDropBar] = useState(false);
         <div className="noti_action">
         <i class="ri-notification-4-fill"></i>
         <img src={avatar} alt="" onClick={()=>setDropBar((prev) => !prev)}/>
-        {dropbar === true?<div><DropDownBar className/></div>:<div></div>}
+
+        {dropbar === true?<div><DropDownBar toggleDropBar={toggle}/>
+          </div>:<div></div>}
+        
         </div>
     </div>
   )

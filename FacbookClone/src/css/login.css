@@ -93,6 +93,7 @@
     width: 500px;
     height: 60px;
     border-radius: 6px;
+    box-shadow: 2px 3px 5px gray;
 }
 
 .login_input .input{
@@ -103,7 +104,6 @@
     font-size: 20px;
     font-weight: bold;
     outline: none;
-
 }
 
 .forgot-password{
@@ -111,12 +111,12 @@
     margin-left:10% ;
 }
 
-.forgot-password span{
+.forgot-password .span{
     text-decoration: underline;
     font-weight: 700;
 }
 
-.forgot-password span:hover{
+.forgot-password .span:hover{
     color: chocolate;
     cursor: pointer;
 }
@@ -140,6 +140,7 @@
     font-weight: 700;
     cursor: pointer;
     border: none;
+    box-shadow: 2px 3px 5px gray;
 }
 
 .gray{

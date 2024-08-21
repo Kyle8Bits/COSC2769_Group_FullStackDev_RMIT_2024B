@@ -1,0 +1,10 @@
+
+.profile_posts_container{
+    display: flex;
+    justify-content: center;
+}
+.profile_posts_container .profile_post_list{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from 'react-router-dom';
 import '../css/forgotpassword.css'
 
 function ForgotPassword() {
@@ -87,15 +88,19 @@ function ForgotPassword() {
                 <h3>Back</h3>
               </div>
 
-              <div className="change_password">
-              <button>
-                Change Password
-              </button>
-            </div>
-            
+              <Link to='/change_password'>
+                <div className="change_password">
+                  <button>
+                    Change Password
+                  </button>
+                </div>
+            </Link>
             </>:<></>}
 
-            
+            <Link className='back_to_login' to={'/'} >
+            <i class="ri-arrow-left-line"></i>
+            Back To Login</Link>
+
             {emailVerify===!true?<>
               <div className="get_code" onClick={()=>setEmailVerify(true)}>
                 <h3>Get Code</h3>

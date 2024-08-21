@@ -10,20 +10,67 @@ import GroupFeed from './pages/GroupFeed'
 import Profile from './pages/Profile'
 import ForgotPassword from './pages/ForgotPassword';
 import ChangePassword from './pages/ChangePassword';
-
+import ProfileAbout from './components/ProfileComponents/ProfileAbout';
+import ProfilePosts from './components/ProfileComponents/ProfilePosts';
+import ProfileFriends from './components/ProfileComponents/ProfileFriends';
+import ProfilePhotos from './components/ProfileComponents/ProfilePhotos';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    // element: <Login/>,
+    element: <Login/>,
+    errorElement: <NotFound />,
+  },
+  
+  {
+    path: "/password_recovery",
+    element: <ForgotPassword/>,
+    errorElement: <NotFound />,
+  }, 
+
+  {
+    path: "/change_password",
     element: <ChangePassword/>,
     errorElement: <NotFound />,
-  },
+  }, 
+
   {
-    path: "/profile",
+    path: "/:username",
     element: <Profile/>,
     errorElement: <NotFound />,
-  },
+    children: [
+      {
+        path: "posts",
+        element: <ProfilePosts/>
+      },
+      {
+        path: "about",
+        element: <ProfileAbout/>
+      },     
+      {
+        path: "friends",
+        element: <ProfileFriends/>
+      },
+      {
+        path: "photos",
+        element: <ProfilePhotos/>
+      }
+    ]
+  }, 
+
+
+  // {
+  //   path: "/",
+  //   element: <Login/>,
+  //   errorElement: <NotFound />,
+  // },
+
+  // {
+  //   path: "/profile",
+  //   element: <Profile/>,
+  //   errorElement: <NotFound />,
+  // },
+
   {
     path: "/group",
     element: <GroupFeed/>,
