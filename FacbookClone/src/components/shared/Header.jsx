@@ -15,7 +15,7 @@ function toggle(){
     <div className='header_container'>
 
         <div className="search_bar">
-            <img src={logo} alt="" />
+            <NavLink to={"/home"}><img src={logo} alt="" /></NavLink>
             <div className="input_box">
                 <i class="ri-search-line"></i>
                 <input type="text" placeholder='Search CrabNest' />

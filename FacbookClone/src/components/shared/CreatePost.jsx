@@ -13,7 +13,7 @@ function CreatePost() {
         </div>
 
         {postAction?<>
-            <div className="create_post_frame" onClick={()=> setPostAction(false)}>
+            <div className="create_post_frame" >
                 <div className="frame">
                     <textarea className="caption_input" placeholder='Whats on your mind...' />
 
@@ -26,6 +26,7 @@ function CreatePost() {
                     </div>
 
                     <div className='post_button'>
+                        <button onClick={()=> setPostAction(false)}>Cancel</button>
                         <button>Post</button>
                     </div>
                 </div>

@@ -1,0 +1,50 @@
+.card_container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+
+.card{
+    width: 400px;
+    height: 100px;
+    background-color: #242426;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    gap: 50px;
+    transition: border-radius 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.card:hover{
+    cursor: pointer;
+    background-color: chocolate;
+    border-radius: 70px;
+}
+
+.card:hover img{
+    border-radius: 50%;
+}
+
+.card:hover .object_name{
+    margin-bottom: 10px;
+}
+
+.card img{
+    margin-left: 10px;
+    border-radius: 10px;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    transition: border-radius 0.5s cubic-bezier(0.5, 0.8, 0.25, 1);
+}
+
+.card .object_name{
+    color: #fff;
+    margin: 0px;
+    transition: margin-bottom 0.5s cubic-bezier(0.5, 0.8, 0.25, 1);
+}
+
+

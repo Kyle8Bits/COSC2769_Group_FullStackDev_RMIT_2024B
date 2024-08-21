@@ -8,7 +8,7 @@ function DropDownBar({toggleDropBar}) {
   return (
     <div>
         <ul className="dropdown_list dropdownbar">
-            <Link to={`/@${'kyle_mai'}`}><li onClick={toggleDropBar} >Profile</li></Link>
+            <Link to={`/@${'kyle_mai'}/posts`}><li onClick={toggleDropBar} >Profile</li></Link>
             <Link><li>Setting</li></Link>
             <div className='dropdown_line'></div>
             <Link to={'/'}><li>Sign Out</li></Link>

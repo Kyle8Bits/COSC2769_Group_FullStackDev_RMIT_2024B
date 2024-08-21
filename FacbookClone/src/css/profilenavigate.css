@@ -54,3 +54,18 @@
     height: 40px;
     background-color: #fff;
 }
+
+.friend_list_container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.friendlist{
+    justify-self: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Creates two columns with equal width */
+    gap: 30px; /* Optional: Adds some space between the cards */
+    width: 60%; 
+    padding: 20px;
+}

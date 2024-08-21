@@ -48,19 +48,23 @@ const router = createBrowserRouter([
     children: [
       {
         path: "posts",
-        element: <ProfilePosts/>
+        element: <ProfilePosts/>,
+        errorElement: <NotFound />,
       },
       {
         path: "about",
-        element: <ProfileAbout/>
+        element: <ProfileAbout/>,
+        errorElement: <NotFound />,
       },     
       {
         path: "friends",
-        element: <ProfileFriends/>
+        element: <ProfileFriends/>,
+        errorElement: <NotFound />,
       },
       {
         path: "photos",
-        element: <ProfilePhotos/>
+        element: <ProfilePhotos/>,
+        errorElement: <NotFound />,
       }
     ]
   }, 

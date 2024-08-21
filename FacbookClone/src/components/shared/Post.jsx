@@ -1,32 +1,28 @@
 import React from 'react';
 import '../../css/post.css'
-import avatar from '../../image/avatar.jpg';
-import content from '../../image/post.jpg';
 
-function Post() {
+function Post({author_avatar, author_name, photo, caption}) {
   return (
     <div className='post_container'>
         <div className="post_author">
 
             <div class="avatar-wrapper">
-                <img src={avatar} alt="" className="avatar" />
+                <img src={author_avatar} alt="" className="avatar" />
             </div>
             <div className='text_container'>
-                <h2 className="name">Mai Dang Khoa</h2>
+                <h2 className="name">{author_name}</h2>
                 <h3 className="date">19 August 2024</h3>
             </div>
 
         </div>
         <div className="post_caption">
             <p>
-            Fact about Crab <br />
-                1. This is a Crab <br />
-                2. This crab can swim
+                {caption}
             </p> 
         </div>
 
         <div className="post_content">
-            <img src={content} alt="" />
+            <img src={photo} alt="" />
         </div>
         
         <div className="post_count">
