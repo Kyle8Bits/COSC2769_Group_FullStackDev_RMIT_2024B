@@ -6,7 +6,7 @@ import DropDownBar from './DropDownBar'
 
 function Header() {
   
-const [dropbar,setDropBar] = useState(true);
+const [dropbar,setDropBar] = useState(false);
 
   return (
     <div className='header_container'>

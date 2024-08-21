@@ -8,13 +8,15 @@ import NotFound from './NotFound'
 import Login from './pages/Login'
 import GroupFeed from './pages/GroupFeed'
 import Profile from './pages/Profile'
-
+import ForgotPassword from './pages/ForgotPassword';
+import ChangePassword from './pages/ChangePassword';
 
 
 const router = createBrowserRouter([
   {
-    path: "/login",
-    element: <Login/>,
+    path: "/",
+    // element: <Login/>,
+    element: <ChangePassword/>,
     errorElement: <NotFound />,
   },
   {

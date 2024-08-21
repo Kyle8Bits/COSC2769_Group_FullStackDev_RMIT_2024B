@@ -5,3 +5,8 @@ body{
     overflow-x: hidden;
     background-color:#222221
 }
+
+.header_index{
+    position: sticky;
+    top:0px
+}
