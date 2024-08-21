@@ -8,3 +8,49 @@
     flex-direction: column;
     justify-content: center;
 }
+
+/*about*/
+.profile_about_container{
+    width: 100vw;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    padding-bottom: 20px;
+}
+
+.profile_about_container .about_content{
+    background: #242426;
+    color: #fff;
+    width: 80%;
+    font-size: 15px;
+    border-radius: 15px;
+    padding: 20px;
+    width: 50%;
+    box-shadow: 1px 1px 2px black;
+}
+
+.profile_about_container .about_content h3{
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    gap: 20px
+}
+
+.profile_about_container .about_content h3 i{
+    color: #727B87;
+    font-size: 18px;
+}
+
+.profile_about_container .about_content .personal{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.space{
+    height: 40px;
+    background-color: #fff;
+}
