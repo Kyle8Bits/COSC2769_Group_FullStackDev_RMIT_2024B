@@ -29,7 +29,6 @@ function NewFeed() {
           <Post author_avatar={friend4} author_name={"Lionel Messi"} photo={post3} caption={"Momment \n #worldcup2022"}/>
           <Post author_avatar={avatar} author_name={"Mai Dang Khoa"} photo={post4} caption={"So they really make you build a Facebook"}/>
           <Post author_avatar={avatar} author_name={"Mai Dang Khoa"} photo={post5} caption={"Damn, my friends are exhausted from deadlines."}/>
-
         </div>
 
     </div>

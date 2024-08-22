@@ -1,5 +1,7 @@
 import React from 'react'
 import '../css/changepassword.css'
+import {NavLink} from 'react-router-dom'
+
 function ChangePassword() {
   return (
     <div className="change_password_page">
@@ -20,7 +22,8 @@ function ChangePassword() {
           
             </div>
 
-          <button type='button' >Confirm Change</button>
+
+          <NavLink to={'/'}><button type='button' >Confirm Change</button></NavLink>
 
         </div>
     </div>

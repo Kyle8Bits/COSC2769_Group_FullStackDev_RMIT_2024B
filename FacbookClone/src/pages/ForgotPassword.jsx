@@ -83,11 +83,6 @@ function ForgotPassword() {
           </div></>:<></>}
 
             {emailVerify===true?<>
-              <div className="back" onClick={()=>setEmailVerify(false)}>
-                <i class="ri-arrow-left-line"></i>
-                <h3>Back</h3>
-              </div>
-
               <Link to='/change_password'>
                 <div className="change_password">
                   <button>
@@ -97,16 +92,29 @@ function ForgotPassword() {
             </Link>
             </>:<></>}
 
-            <Link className='back_to_login' to={'/'} >
-            <i class="ri-arrow-left-line"></i>
-            Back To Login</Link>
+
+            <div className="next_action">
+
+            {emailVerify===true?<>
+              <div className="back" onClick={()=>setEmailVerify(false)}>
+                <i class="ri-arrow-left-line"></i>
+                <h3>Back</h3>
+              </div>
+            </>:<></>}
+
 
             {emailVerify===!true?<>
-              <div className="get_code" onClick={()=>setEmailVerify(true)}>
+              <div className="get_code get_code_appear" onClick={()=>setEmailVerify(true)}>
                 <h3>Get Code</h3>
                 <i class="ri-arrow-right-line"></i>
               </div>
             </>:<></>}
+            
+            </div>
+
+            <Link className='back_to_login' to={'/'} >
+            <i class="ri-arrow-left-line"></i>
+            Back To Login</Link>
 
         </div>
     </div>
