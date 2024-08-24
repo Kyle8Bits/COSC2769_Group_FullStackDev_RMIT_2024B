@@ -3,7 +3,8 @@ import Post from '../components/shared/Post'
 import '../css/group.css'
 import banner from '../image/banner.png'
 import Header from '../components/shared/Header'
-
+import post1 from '../image/post1.png'
+import friend4 from '../image/friend4.png'
 function GroupFeed() {
   return (
     <>
@@ -32,8 +33,14 @@ function GroupFeed() {
       </div>
       <div className="group_feed">
         <ul className="post">
-          <Post/>
-          <Post/>
+          <Post author_avatar={friend4} caption={"Checking out"} author_name={"Ai Do"} photo={post1}/>
+          <Post author_avatar={friend4} caption={"Checking out"} author_name={"Ai Do"} photo={post1}/>
+          <Post author_avatar={friend4} caption={"Checking out"} author_name={"Ai Do"} photo={post1}/>
+          <Post author_avatar={friend4} caption={"Checking out"} author_name={"Ai Do"} photo={post1}/>
+          <Post author_avatar={friend4} caption={"Checking out"} author_name={"Ai Do"} photo={post1}/>
+          <Post author_avatar={friend4} caption={"Checking out"} author_name={"Ai Do"} photo={post1}/>
+          <Post author_avatar={friend4} caption={"Checking out"} author_name={"Ai Do"} photo={post1}/>
+         
         </ul>
 
         <div className="group_statistic">
