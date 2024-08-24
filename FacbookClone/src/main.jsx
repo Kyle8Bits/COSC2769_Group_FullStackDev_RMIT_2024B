@@ -2,7 +2,10 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { Provider } from 'react-redux';
+
 import './css/index.css'
+import {store} from './redux/store'
 
 import NotFound from './NotFound'
 import Login from './pages/Login'
@@ -92,9 +95,11 @@ const router = createBrowserRouter([
 ]);
 
 
-const root = createRoot(document.getElementById('root'));
-root.render(  
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  // <React.StrictMode>
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
+  // </React.StrictMode>
 );

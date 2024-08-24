@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../../css/post.css'
+import CommentBox from './CommentBox';
 
 function Post({author_avatar, author_name, photo, caption}) {
+
+    const [cmtAction, setcmtAction] = useState(false)
+
   return (
     <div className='post_container'>
-        <div className="post_author">
+        <div className="post_author" onClick={()=> setcmtAction(false)}>
 
             <div class="avatar-wrapper">
                 <img src={author_avatar} alt="" className="avatar" />
@@ -33,8 +37,11 @@ function Post({author_avatar, author_name, photo, caption}) {
         <div className="post_react">
             <i class="ri-thumb-up-line"></i>
             <i class="ri-share-forward-line"></i>
-            <i class="ri-chat-3-line"></i>
+            <i class="ri-chat-3-line" onClick={() => setcmtAction(true)}></i>
         </div>
+        
+        {cmtAction===true?<><CommentBox/>
+        </>:<></>}
 
     </div>
   );
