@@ -3,8 +3,10 @@ import { NavLink } from 'react-router-dom';
 import '../../css/profileheader.css'
 import avatar from '../../image/avatar.jpg'
 import cover from '../../image/banner.png'
+import { useSelector } from 'react-redux';
 
 function ProfileHeader() {
+  const {  username, fullName, bio, avatar} = useSelector(state => state.profile);
     return (
       <div className="header_profile_container">
 
@@ -14,17 +16,17 @@ function ProfileHeader() {
 
           <div className="profile_info">
             <div className="avatar">
-              <img src={avatar} alt="" />
+              <img  src={`data:image/jpg;base64,${avatar}`}/>
             </div>
 
             <div className="name">
                 <div className="fullname">
-                    Mai Dang Khoa
+                    {fullName}
                 </div>
                 <div className="username">
-                    @kyle_mai
+                    @{username}
                 </div>
-                <div className="bio">Code life | Hard life | Again</div>
+                <div className="bio">{bio}</div>
             </div>
 
             <div className="button">
