@@ -90,22 +90,24 @@ function commentBox(){
     };
 
     return(
-        <div className="comment-box">
-            <div className="return_box"><i class="ri-arrow-left-line"></i></div>
-            <h1 className="comment-title">COMMENTS</h1>
-            <div className="comments-container">
-                {comments && comments.map((comment) => (
-                    <Comment key={comment.id} user={comment.user} text={comment.text}/>
-                ))}
-            </div>
-            <div className="input-container">
-                <input
-                    type="text"
-                    value={inputValue}
-                    onChange={handleInputChange}
-                    placeholder="Write a comment..."
-                />
-                <button onClick={handleAddComment}>POST</button>
+        <div className="popup-overlay">
+            <div className="comment-box">
+                <div className="return_box"><i class="ri-arrow-left-line"></i></div>
+                    <h1 className="comment-title">COMMENTS</h1>
+                    <div className="comments-container">
+                        {comments && comments.map((comment) => (
+                        <Comment key={comment.id} user={comment.user} text={comment.text}/>
+                        ))}
+                    </div>
+                    <div className="input-container">
+                        <input
+                        type="text"
+                        value={inputValue}
+                        onChange={handleInputChange}
+                        placeholder="Write a comment..."
+                        />
+                    <button onClick={handleAddComment}>POST</button>
+                </div>
             </div>
         </div>
     );
