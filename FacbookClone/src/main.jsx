@@ -22,6 +22,7 @@ import Admin from './pages/Admin';
 import AdminSuspend from './components/AdminComponents/AdminSuspend';
 import AdminApprove from './components/AdminComponents/AdminApprove';
 import AdminResume from './components/AdminComponents/AdminResume';
+import EditProfile from './pages/EditProfile';
 
 const router = createBrowserRouter([
   {
@@ -98,42 +99,6 @@ const router = createBrowserRouter([
       }
     ]
   },
-
-  {
-    path: "/admin",
-    element: <Admin/>,
-    errorElement: <NotFound />,
-    children: [
-      {
-        path: "suspend",
-        element: <AdminSuspend/>,
-        errorElement: <NotFound />,
-      },
-      {
-        path: "approve",
-        element: <AdminApprove/>,
-        errorElement: <NotFound />,
-      },
-      {
-        path: "resume",
-        element: <AdminResume/>,
-        errorElement: <NotFound />,
-      }
-    ]
-  },
-
-
-  // {
-  //   path: "/",
-  //   element: <Login/>,
-  //   errorElement: <NotFound />,
-  // },
-
-  // {
-  //   path: "/profile",
-  //   element: <Profile/>,
-  //   errorElement: <NotFound />,
-  // },
 
   {
     path: "/group",
