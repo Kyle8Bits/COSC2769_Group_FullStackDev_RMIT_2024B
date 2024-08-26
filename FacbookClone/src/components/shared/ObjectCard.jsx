@@ -7,6 +7,7 @@ function ObjectCard({name, img}) {
       <div className="card">
           <img src={img} alt="" />
           <h2 className="object_name">{name}</h2>
+          <div className="addfriend"><i class="ri-add-circle-line"></i></div>
       </div>
     </div>
   )
