@@ -1,25 +1,32 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import ObjectCard from '../shared/ObjectCard'
+import { fetchFriend } from '../../redux/slice/friendSlice';
 
-import friend1 from '../../image/friend1.png'
-import friend2 from '../../image/friend2.png'
-import friend3 from '../../image/friend3.png'
-import friend4 from '../../image/friend4.png'
+import { useDispatch, useSelector } from 'react-redux';
 import Unknown from '../../image/logo.png'
 
-
 function ProfileFriends() {
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchFriend());
+  }, [dispatch]);
+
+  const friends = useSelector(state => state.friends.friend);
+
+  const friendList = friends.map((friend, index) => (
+    <ObjectCard 
+      key={friend._id} 
+      name={friend.fullName} 
+      img={friend.avatar || Unknown} // Use friend's avatar or default to Unknown
+    />
+
+  ))
   return (
     <div className='friend_list_container'>
       <div className="friendlist">
-        <ObjectCard name="Jeff Bezos" img={friend1}/>
-        <ObjectCard name="Mark Zuckerberg" img={friend2}/>
-        <ObjectCard name="Cristiano Ronaldo" img={friend3}/>
-        <ObjectCard name="Loniel Messi" img={friend4}/>
-        <ObjectCard name="CrabNest User" img={Unknown}/>
-        <ObjectCard name="CrabNest User" img={Unknown}/>
-        <ObjectCard name="CrabNest User" img={Unknown}/>
-        <ObjectCard name="CrabNest User" img={Unknown}/>
+
+        {friendList}
 
       </div>
     </div>
