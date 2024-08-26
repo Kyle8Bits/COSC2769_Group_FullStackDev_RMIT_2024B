@@ -18,7 +18,7 @@ function ProfileFriends() {
     <ObjectCard 
       key={friend._id} 
       name={friend.fullName} 
-      img={friend.avatar || Unknown} // Use friend's avatar or default to Unknown
+      img={friend.avatar || Unknown}
     />
 
   ))
