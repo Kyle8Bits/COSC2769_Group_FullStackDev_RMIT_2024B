@@ -1,10 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import commentReducer from './slice/commentsSlice';
-import editProfileReducer from "./slice/editProfileSlice";
+import loginReducer from './slice/loginSlice'
+import profileReducer from './slice/profileSlice';
 
 export const store = configureStore({
-    reducer: {
-        comments: commentReducer,
-        editProfile: editProfileReducer,
+    reducer:{
+        comment: commentReducer,
+        auth: loginReducer,
+        profile: profileReducer
     }
+    
 })
