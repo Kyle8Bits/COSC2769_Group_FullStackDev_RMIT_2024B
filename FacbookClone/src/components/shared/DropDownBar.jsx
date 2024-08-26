@@ -21,7 +21,7 @@ function DropDownBar({toggleDropBar}) {
     <div>
         <ul className="dropdown_list dropdownbar">
             <Link to={`/@${'kyle_mai'}/posts`}><li onClick={toggleDropBar} >Profile</li></Link>
-            <Link><li>Setting</li></Link>
+            
             <div className='dropdown_line'></div>
             <li onClick={handleLogout}>Sign Out</li>
         </ul>
