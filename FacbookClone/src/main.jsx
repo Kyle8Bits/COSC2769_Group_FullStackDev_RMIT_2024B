@@ -18,7 +18,7 @@ import ProfilePosts from './components/ProfileComponents/ProfilePosts';
 import ProfileFriends from './components/ProfileComponents/ProfileFriends';
 import ProfilePhotos from './components/ProfileComponents/ProfilePhotos';
 import NewFeed from './pages/NewFeed';
-
+import EditProfile from './pages/EditProfile';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -90,8 +90,18 @@ const router = createBrowserRouter([
     element: <GroupFeed/>,
     errorElement: <NotFound />,
   },  
- 
-  
+  {
+    path: "/edit",
+    element: <EditProfile/>,
+    errorElement: <NotFound/>,
+    children: [
+      {
+        path: "change_password",
+        element: <ChangePassword/>,
+        errorElement: <NotFound />,
+      }, 
+    ],
+  }
 ]);
 
 

@@ -68,7 +68,7 @@ import Comment from "./Comment";
 import "../../css/commentBox.css";
 
 function commentBox(){
-    const comments = useSelector((state) => state.commentList);
+    const comments = useSelector((state) => state.comments.commentList);
     const dispatch = useDispatch();
 
     const [inputValue, setInputValue] = useState('');
