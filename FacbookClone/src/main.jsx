@@ -77,12 +77,19 @@ const router = createBrowserRouter([
       },
     ]
   }, 
+
   {
     path: "/:username/edit",
     element: <EditProfile/>,
     errorElement: <NotFound/>,
   },
 
+  {
+    path: "/:username/edit/change_pass",
+    element: <ChangePassword/>,
+    errorElement: <NotFound />,
+  },
+   
   {
     path: "/admin",
     element: <Admin/>,
@@ -111,18 +118,7 @@ const router = createBrowserRouter([
     element: <GroupFeed/>,
     errorElement: <NotFound />,
   },  
-  {
-    path: "/edit",
-    element: <EditProfile/>,
-    errorElement: <NotFound/>,
-    children: [
-      {
-        path: "change_password",
-        element: <ChangePassword/>,
-        errorElement: <NotFound />,
-      }, 
-    ],
-  }
+  
 ]);
 
 
