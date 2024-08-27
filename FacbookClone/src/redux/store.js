@@ -4,6 +4,7 @@ import loginReducer from './slice/loginSlice'
 import profileReducer from './slice/profileSlice';
 import friendReducer from './slice/friendSlice'
 import basicInfoReducer from './slice/basicInfoSlice'
+import postReducer from "./slice/postSlice";
 export const store = configureStore({
     reducer:{
         comment: commentReducer,
@@ -11,6 +12,7 @@ export const store = configureStore({
         profile: profileReducer,
         friends: friendReducer,
         basicInfo: basicInfoReducer,
+        posts: postReducer,
     }
     
 })
