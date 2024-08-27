@@ -19,8 +19,9 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
+  
   .basic-info-form-container h2 {
-    font-size: 40px;
+    font-size: 50px;
     text-align: center;
     margin-bottom: 20px;
     color: chocolate;
@@ -41,13 +42,14 @@
     border-radius: 4px;
     box-sizing: border-box;
   }
+
   
   button {
     width: 100%;
     padding: 10px;
     font-size: 16px;
     color: #fff;
-    background-color: #1877f2;
+    background-color: #bdbec0;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -55,6 +57,6 @@
   }
   
   button:hover {
-    background-color: #145dbf;
+    background-color: chocolate;
   }
   

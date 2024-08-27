@@ -22,8 +22,26 @@ function BasicInfo(){
             <div className="basic-info-form-container">
             <h2>REGISTER</h2>
             <form onSubmit={handleSubmit}>
-                <div className="form_group_username">
-                    in
+                <div className="form-group_binfo">
+                    <input
+                        type="text"
+                        name="username"
+                        placeholder="Username"
+                        value={formData.username}
+                        onChange={handleChange}
+                        required
+                    />
+                </div>
+
+                <div className="form-group_binfo">
+                <input
+                        type="password"
+                        name="password"
+                        placeholder="Password"
+                        value={formData.password}
+                        onChange={handleChange}
+                        required
+                    />
                 </div>
                 <div className="form-group_binfo">
                     <input
