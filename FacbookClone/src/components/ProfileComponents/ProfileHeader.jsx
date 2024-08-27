@@ -31,7 +31,7 @@ function ProfileHeader() {
 
             <div className="button">
                 <button className='add'>Add Friend</button>
-                <button className='edit'>Edit Profile</button>
+                <NavLink to={`/@${"kyle_mai"}/edit`}><button className='edit'>Edit Profile</button></NavLink>
             </div>
           </div>
 
