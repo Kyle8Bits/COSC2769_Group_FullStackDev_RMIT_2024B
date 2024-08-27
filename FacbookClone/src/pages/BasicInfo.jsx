@@ -1,20 +1,30 @@
-import React from "react";
+import React,{useState} from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { updateField, resetForm } from "../redux/slice/basicInfoSlice";
+import { registerUser } from "../redux/slice/registerSlice";
 import '../css/basicInfoForm.css'
 
 function BasicInfo(){
     const dispatch = useDispatch();
-    const formData = useSelector((state) => state.basicInfo);
+    const { status, error } = useSelector((state) => state.register);
+
+    const [formData, setFormData] = useState({
+        username: '',
+        password: '',
+        fullName: '',
+        email: '',
+        phone: '',
+    });
 
     const handleChange = (e) => {
-        dispatch(updateField({field: e.target.name, value: e.target.value}))
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+        });
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('Form submitted',formData);
-        dispatch(resetForm());
+        dispatch(registerUser(formData));
     };
 
     return(
@@ -46,9 +56,9 @@ function BasicInfo(){
                 <div className="form-group_binfo">
                     <input
                         type="text"
-                        name="fullname"
+                        name="fullName"
                         placeholder="Full Name"
-                        value={formData.fullname}
+                        value={formData.fullName}
                         onChange={handleChange}
                         required
                     />
@@ -65,16 +75,21 @@ function BasicInfo(){
                 </div>
                 <div className="form-group_binfo">
                     <input
-                        type="tel"
-                        name="phoneNumber"
+                        type="text"
+                        name="phone"
                         placeholder="Phone Number"
-                        value={formData.phoneNumber}
+                        value={formData.phone}
                         onChange={handleChange}
                         required
                     />
                 </div>
                 <button type="submit">SUBMIT</button>
             </form>
+
+            {status === 'loading' && <p>Registering...</p>}
+            {status === 'succeeded' && <p>Registration successful!</p>}
+            {status === 'failed' && <p>Error: {error}</p>}
+
         </div>
         </div>
         
