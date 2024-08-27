@@ -1,9 +1,9 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { updateField, resetForm } from "./features/basicInfoSlice";
-import './basicInfoForm.css';
+import { updateField, resetForm } from "../redux/slice/basicInfoSlice";
+import '../css/basicInfoForm.css'
 
-function basicInfoForm(){
+function BasicInfo(){
     const dispatch = useDispatch();
     const formData = useSelector((state) => state.basicInfo);
 
@@ -18,9 +18,13 @@ function basicInfoForm(){
     };
 
     return(
-        <div className="basic-info-form-container">
-            <h2>BASIC INFORMATION</h2>
+        <div className="basic_info_page">
+            <div className="basic-info-form-container">
+            <h2>REGISTER</h2>
             <form onSubmit={handleSubmit}>
+                <div className="form_group_username">
+                    in
+                </div>
                 <div className="form-group_binfo">
                     <input
                         type="text"
@@ -54,7 +58,9 @@ function basicInfoForm(){
                 <button type="submit">SUBMIT</button>
             </form>
         </div>
+        </div>
+        
     );
 };
 
-export default basicInfoForm;
+export default BasicInfo;

@@ -2,7 +2,7 @@ import React ,{useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import '../css/login.css'
 import logo from '../image/logo.png'
-import {useNavigate} from 'react-router-dom'
+import {useNavigate, NavLink} from 'react-router-dom'
 import { loginUser } from '../redux/slice/loginSlice';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -65,7 +65,8 @@ function Login() {
         <div className="forgot-password">Forgot password <Link className='span' to={'/password_recovery'} >Click here</Link></div>
 
         <div className="login_buttons">
-          <button type='button' className='signup'>Sign Up</button>
+
+          <NavLink to={'/register'}><button type='button' className='signup'>Sign Up</button></NavLink>
           <button type='button' className='login' onClick={handleLogin} >Login</button>
         </div>
 

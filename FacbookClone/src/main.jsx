@@ -23,6 +23,7 @@ import AdminSuspend from './components/AdminComponents/AdminSuspend';
 import AdminApprove from './components/AdminComponents/AdminApprove';
 import AdminResume from './components/AdminComponents/AdminResume';
 import EditProfile from './pages/EditProfile';
+import BasicInfo from './pages/BasicInfo';
 
 
 const router = createBrowserRouter([
@@ -30,6 +31,12 @@ const router = createBrowserRouter([
     path: "/",
     element: <Login/>,
     errorElement: <NotFound />,
+  },
+
+  {
+    path:"/register",
+    element: <BasicInfo/>,
+    errorElement: <NotFound/>
   },
   
   {
