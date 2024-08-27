@@ -24,6 +24,7 @@ import AdminApprove from './components/AdminComponents/AdminApprove';
 import AdminResume from './components/AdminComponents/AdminResume';
 import EditProfile from './pages/EditProfile';
 
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -73,9 +74,14 @@ const router = createBrowserRouter([
         path: "photos",
         element: <ProfilePhotos/>,
         errorElement: <NotFound />,
-      }
+      },
     ]
   }, 
+  {
+    path: "/:username/edit",
+    element: <EditProfile/>,
+    errorElement: <NotFound/>,
+  },
 
   {
     path: "/admin",
