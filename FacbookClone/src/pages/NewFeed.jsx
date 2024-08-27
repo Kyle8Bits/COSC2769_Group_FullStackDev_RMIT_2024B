@@ -4,16 +4,6 @@ import Header from '../components/shared/Header'
 import '../css/newfeed.css'
 import Post from '../components/shared/Post.jsx'
 
-import avatar from '../image/avatar.jpg'
-import friend3 from '../image/friend3.png'
-import friend4 from '../image/friend4.png'
-import Unknown from '../image/logo.png' 
-
-import post1 from '../image/post1.png'
-import post2 from '../image/post2.png'
-import post3 from '../image/post3.png'
-import post4 from '../image/post4.png'
-import post5 from '../image/post5.png'
 
 import { fetchPosts } from '../redux/slice/postSlice.js'
 import { useSelector,useDispatch } from 'react-redux'

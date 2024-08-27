@@ -11,7 +11,7 @@ function Post({author_avatar, author_name, photo, caption}) {
         <div className="post_author" onClick={()=> setcmtAction(false)}>
 
             <div class="avatar-wrapper">
-                <img src={author_avatar} alt="" className="avatar" />
+                <img src={`data:image/jpg;base64,${author_avatar}`} alt="" className="avatar" />
             </div>
             <div className='text_container'>
                 <h2 className="name">{author_name}</h2>
@@ -26,7 +26,7 @@ function Post({author_avatar, author_name, photo, caption}) {
         </div>
 
         <div className="post_content">
-            <img src={photo} alt="" />
+            <img src={`data:image/jpg;base64,${photo}`} alt="" />
         </div>
         
         <div className="post_count">
