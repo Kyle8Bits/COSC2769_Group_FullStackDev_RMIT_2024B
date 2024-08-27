@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updateProfileField } from '../redux/slice/editProfileSlice';
 import { useNavigate } from 'react-router-dom';
 import '../css/EditProfile.css';
+import { NavLink } from 'react-router-dom';
 
 const EditProfile = () => {
   const dispatch = useDispatch();
@@ -21,9 +22,7 @@ const EditProfile = () => {
     // Navigate to another page or show a success message
   };
 
-  const handleChangePasswordClick = () => {
-    navigate('/edit/change_password');
-  };
+  
 
   return (
     <div className="edit-profile-container">
@@ -62,13 +61,13 @@ const EditProfile = () => {
         <button type="submit" className="submit-button">
           Save Changes
         </button>
-        <button
-          type="button"
-          className="change-password-button"
-          onClick={handleChangePasswordClick}
-        >
-          Change Password
-        </button>
+        <NavLink to={`/@${"kyle_mai"}/edit/change_pass`}>
+          <button
+            type="button"
+            className="change-password-button">
+            Change Password
+          </button>
+        </NavLink>
       </form>
     </div>
   );
