@@ -24,6 +24,7 @@ import AdminApprove from './components/AdminComponents/AdminApprove';
 import AdminResume from './components/AdminComponents/AdminResume';
 import EditProfile from './pages/EditProfile';
 
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -73,10 +74,22 @@ const router = createBrowserRouter([
         path: "photos",
         element: <ProfilePhotos/>,
         errorElement: <NotFound />,
-      }
+      },
     ]
   }, 
 
+  {
+    path: "/:username/edit",
+    element: <EditProfile/>,
+    errorElement: <NotFound/>,
+  },
+
+  {
+    path: "/:username/edit/change_pass",
+    element: <ChangePassword/>,
+    errorElement: <NotFound />,
+  },
+   
   {
     path: "/admin",
     element: <Admin/>,
@@ -105,18 +118,7 @@ const router = createBrowserRouter([
     element: <GroupFeed/>,
     errorElement: <NotFound />,
   },  
-  {
-    path: "/edit",
-    element: <EditProfile/>,
-    errorElement: <NotFound/>,
-    children: [
-      {
-        path: "change_password",
-        element: <ChangePassword/>,
-        errorElement: <NotFound />,
-      }, 
-    ],
-  }
+  
 ]);
 
 

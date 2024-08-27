@@ -19,6 +19,7 @@ function ProfileFriends() {
       key={friend._id} 
       name={friend.fullName} 
       img={friend.avatar || Unknown}
+      usernameFriend ={friend.username}
     />
 
   ))
