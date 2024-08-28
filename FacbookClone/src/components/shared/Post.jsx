@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
+import { useSelector,useDispatch } from 'react-redux';
 import '../../css/post.css'
+import { fetchPosts,addPost } from '../../redux/slice/postSlice';
 import CommentBox from './CommentBox';
 
 function Post({author_avatar, author_name, photo, caption}) {
 
     const [cmtAction, setcmtAction] = useState(false)
+
 
   return (
     <div className='post_container'>

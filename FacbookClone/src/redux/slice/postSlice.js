@@ -28,6 +28,17 @@ export const deletePost = createAsyncThunk('posts/deletePost', async (id) => {
     return id;
 });
 
+export const fetchPostsByUserName = createAsyncThunk(
+    'posts/fetchPostByUserName',
+    async (username) => {
+        const response = await axios.get(`${API_URL}/user/${username}`);
+        return response.data;
+    }
+)
+
+
+
+
 // Define the initial state
 const initialState = {
     posts: [],          // This will hold an array of post objects

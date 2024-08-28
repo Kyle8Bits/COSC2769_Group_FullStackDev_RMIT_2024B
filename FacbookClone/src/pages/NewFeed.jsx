@@ -5,30 +5,31 @@ import '../css/newfeed.css'
 import Post from '../components/shared/Post.jsx'
 
 
-import { fetchPosts } from '../redux/slice/postSlice.js'
+import { fetchPosts, fetchPostsByUserName } from '../redux/slice/postSlice.js'
 import { useSelector,useDispatch } from 'react-redux'
 
 function NewFeed() {
   const dispatch = useDispatch();
   const posts = useSelector((state) => state.posts.posts);
+  const username = useSelector((state) => state.user); // Assuming username is stored in state.user
 
   useEffect(() => {
-    dispatch(fetchPosts())
-  },[dispatch]);
+    if (username) {
+      dispatch(fetchPostsByUserName(username)); // Fetch posts for the logged-in user
+    }
+  }, [dispatch, username]);
 
   console.log(posts);
 
-  const postList = posts.map((post) => {
-    return(
-      <Post
-      author_avatar={null}
-      author_name={post.author}
-      photo={post.images}
+  const postList = posts.map((post) => (
+    <Post
+      key={post._id}
+      author_avatar={post.author.avatar} // Adjust based on your data structure
+      author_name={post.author.name} // Adjust based on your data structure
+      photo={post.images && post.images.length > 0 ? post.images[0] : null} // Display first image if available
       caption={post.content}
-      />
-    );
-  })
-
+    />
+  ));
 
   return (
     <div className='home_new_feed'>
