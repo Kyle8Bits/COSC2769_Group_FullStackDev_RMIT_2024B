@@ -16,7 +16,7 @@ function ObjectCard({name, img, usernameFriend}) {
   return (
     <div className='card_container'>
       <div className="card">
-          <img src={`data:image/jpg;base64,${img}`} />
+          <img src={img} />
           <h2 className="object_name">{name}</h2>
 
 

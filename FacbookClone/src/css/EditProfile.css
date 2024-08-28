@@ -1,6 +1,14 @@
 /* src/pages/EditProfile.css */
 
+.edit_profile_page{
+  background-color: #fff;
+}
+
 .edit-profile-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     max-width: 800px;
     margin: 0 auto;
@@ -9,10 +17,24 @@
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
-  
+
+  .profile-img-current{
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px chocolate solid;
+  }
+
+  .profile-img-current:hover{
+    opacity: 80%;
+    cursor: pointer;
+  }
+
+
   .edit-profile-title {
-    font-size: 24px;
-    color: #1877f2;
+    font-size: 34px;
+    color: chocolate;
     margin-bottom: 20px;
     text-align: center;
   }
@@ -20,10 +42,12 @@
   .edit-profile-form {
     display: flex;
     flex-direction: column;
+    width: 100%;
     gap: 20px;
   }
   
   .form-group {
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -34,34 +58,18 @@
     color: #1c1e21;
   }
   
-  input {
-    padding: 12px;
+  .text-input {
+    height: 40px;
     border: 1px solid #dddfe2;
     border-radius: 6px;
     font-size: 16px;
     width: 100%;
   }
   
-  input:focus {
+  .text-input:focus {
     border-color: #1877f2;
     outline: none;
   }
   
-  .change-password-button,
-  .submit-button {
-    margin-top: 25px;
-    padding: 14px;
-    background-color: #1877f2;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-size: 16px;
-    cursor: pointer;
-    text-align: center;
-  }
   
-  .change-password-button:hover,
-  .submit-button:hover {
-    background-color: #166fe5;
-  }
   

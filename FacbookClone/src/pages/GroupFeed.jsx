@@ -1,17 +1,14 @@
 import React from 'react'
 import Post from '../components/shared/Post'
 import '../css/group.css'
-import banner from '../image/banner.png'
 import Header from '../components/shared/Header'
-import post1 from '../image/post1.png'
-import friend4 from '../image/friend4.png'
 function GroupFeed() {
   return (
     <>
     <Header/>
     <div className='group_container'>
       <div className="group_banner">
-        <img src={banner} alt="" />
+        <img alt="" />
       </div>
 
       <div className="group_info">
@@ -33,13 +30,6 @@ function GroupFeed() {
       </div>
       <div className="group_feed">
         <ul className="post">
-          <Post author_avatar={friend4} caption={"Checking out"} author_name={"Ai Do"} photo={post1}/>
-          <Post author_avatar={friend4} caption={"Checking out"} author_name={"Ai Do"} photo={post1}/>
-          <Post author_avatar={friend4} caption={"Checking out"} author_name={"Ai Do"} photo={post1}/>
-          <Post author_avatar={friend4} caption={"Checking out"} author_name={"Ai Do"} photo={post1}/>
-          <Post author_avatar={friend4} caption={"Checking out"} author_name={"Ai Do"} photo={post1}/>
-          <Post author_avatar={friend4} caption={"Checking out"} author_name={"Ai Do"} photo={post1}/>
-          <Post author_avatar={friend4} caption={"Checking out"} author_name={"Ai Do"} photo={post1}/>
          
         </ul>
 

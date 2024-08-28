@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import logo from '../../image/logo.png'
-import avatar from '../../image/avatar.jpg'
 import '../../css/header.css'
 import DropDownBar from './DropDownBar'
 import { NavLink } from 'react-router-dom'
@@ -11,8 +10,8 @@ function Header() {
 
   const { avatar } = useSelector(state => state.profile);
 
-const [dropbar,setDropBar] = useState(false);
-const [notification,setNotiBar] = useState(false);
+  const [dropbar,setDropBar] = useState(false);
+  const [notification,setNotiBar] = useState(false);
 
 function toggle(){
   setDropBar(false);
@@ -43,7 +42,7 @@ function toogelNoti(){
         <div className="noti_action">
         <i class="ri-notification-4-fill" onClick={()=> setNotiBar((prev)=>!prev)}></i>
 
-        <img src={`data:image/jpg;base64,${avatar}`} alt="" onClick={()=>setDropBar((prev) => !prev)}/>
+        <img src={`/src/${avatar}`} alt="" onClick={()=>setDropBar((prev) => !prev)}/>
 
         {dropbar === true?<div><DropDownBar toggleDropBar={toggle}/>
           </div>:<div></div>}

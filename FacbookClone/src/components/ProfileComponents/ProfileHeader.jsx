@@ -1,22 +1,23 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
 import '../../css/profileheader.css'
-import avatar from '../../image/avatar.jpg'
-import cover from '../../image/banner.png'
 import { useSelector } from 'react-redux';
 
+import fallbackAvatar from '../../image/default-avatar.jpg'
+
 function ProfileHeader() {
-  const {  username, fullName, bio, avatar} = useSelector(state => state.profile);
+  const {  username, fullName, bio, avatar, banner} = useSelector(state => state.profile);
+  console.log(avatar)
     return (
       <div className="header_profile_container">
 
         <div className="profile_cover">
 
-          <img src={cover} alt="" />
+          <img src={`/src/${banner}`} alt="" />
 
           <div className="profile_info">
             <div className="avatar">
-              <img  src={`data:image/jpg;base64,${avatar}`}/>
+              <img  src={avatar ? `http://localhost:1414${avatar}` : fallbackAvatar} alt="User Avatar"/>
             </div>
 
             <div className="name">
@@ -31,7 +32,7 @@ function ProfileHeader() {
 
             <div className="button">
                 <button className='add'>Add Friend</button>
-                <NavLink to={`/@${"kyle_mai"}/edit`}><button className='edit'>Edit Profile</button></NavLink>
+                <NavLink to={`/@${username}/edit`}><button className='edit'>Edit Profile</button></NavLink>
             </div>
           </div>
 
@@ -46,16 +47,16 @@ function ProfileHeader() {
         <div className="profile_nav">
             <div className="tab_nav">
 
-            <NavLink  className={({ isActive }) => isActive ? 'tab active_nav' : 'tab'} to={`/@${"kyle_mai"}/posts`}>
+            <NavLink  className={({ isActive }) => isActive ? 'tab active_nav' : 'tab'} to={`/@${username}/posts`}>
               <div >Posts</div>
             </NavLink>
-            <NavLink className={({ isActive }) => isActive ? 'tab active_nav' : 'tab'} to={`/@${"kyle_mai"}/about`}>
+            <NavLink className={({ isActive }) => isActive ? 'tab active_nav' : 'tab'} to={`/@${username}/about`}>
               <div>About</div>
             </NavLink>
-            <NavLink className={({ isActive }) => isActive ? 'tab active_nav' : 'tab'} to={`/@${"kyle_mai"}/friends`}>
+            <NavLink className={({ isActive }) => isActive ? 'tab active_nav' : 'tab'} to={`/@${username}/friends`}>
               <div>Friends</div>
             </NavLink>
-            <NavLink className={({ isActive }) => isActive ? 'tab active_nav' : 'tab'} to={`/@${"kyle_mai"}/photos`}>
+            <NavLink className={({ isActive }) => isActive ? 'tab active_nav' : 'tab'} to={`/@${username}/photos`}>
               <div>Photos</div>
             </NavLink>
             </div>

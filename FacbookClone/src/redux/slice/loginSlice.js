@@ -9,13 +9,21 @@ const initialState = {
 
 
 // Thunk to handle login
-export const loginUser = createAsyncThunk('auth/loginUser', async (credentials) => {
-    const response = await axios.post('http://localhost:1414/login', credentials, {
-        headers: {
-            'Authorization': 'pass'  // Ensure this matches what your authMiddleware expects
+export const loginUser = createAsyncThunk('auth/loginUser', async (credentials, { rejectWithValue }) => {
+    try {
+        const response = await axios.post('http://localhost:1414/login', credentials, {
+            headers: {
+                'Authorization': 'pass'  // Ensure this matches what your authMiddleware expects
+            }
+        });
+        return response.data;
+    } catch (error) {
+        if (error.response && error.response.data) {
+            return rejectWithValue(error.response.data.message); // Pass the error message from backend
+        } else {
+            return rejectWithValue(error.message);
         }
-    });
-    return response.data;
+    }
 });
 
 const loginSlice = createSlice({
@@ -39,7 +47,7 @@ const loginSlice = createSlice({
             })
             .addCase(loginUser.rejected, (state, action) => {
                 state.status = 'failed';
-                state.error = action.error.message;
+                state.error = action.payload;
             });
     }
 });

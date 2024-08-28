@@ -8,6 +8,7 @@ const initialState = {
     phone: '',
     bio: '',
     avatar: '',
+    banner:'',
     info: [],
     isAdmin: false,
     status: 'idle', // idle, loading, succeeded, failed
@@ -29,7 +30,7 @@ const profileSlice = createSlice({
         builder
             .addCase(loginUser.fulfilled, (state, action) => {
                 console.log("Setting profile data");
-                return { ...state, ...action.payload, status: 'succeeded' };  // Update the profile state
+                return { ...state, ...action.payload, status: 'succeeded' }; 
             })
     }
 });
