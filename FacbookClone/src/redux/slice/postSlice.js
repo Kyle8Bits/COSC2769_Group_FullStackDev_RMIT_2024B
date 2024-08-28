@@ -5,8 +5,11 @@ import axios from 'axios';
 const API_URL = 'http://localhost:1414/posts';
 
 // Async thunk to fetch all posts
-export const fetchPosts = createAsyncThunk('posts/fetchPosts', async () => {
-    const response = await axios.get(`http://localhost:1414/posts/getPost`);
+export const fetchPosts = createAsyncThunk('posts/fetchPosts', async ({currentUser}) => {
+    const response = await axios.get(`http://localhost:1414/posts/getPost`, {
+        headers: currentUser
+    });
+
     return response.data;
 });
 

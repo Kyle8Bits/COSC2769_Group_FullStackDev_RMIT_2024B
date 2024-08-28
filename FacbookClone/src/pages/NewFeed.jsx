@@ -12,21 +12,22 @@ import { useSelector,useDispatch } from 'react-redux'
 function NewFeed() {
   const dispatch = useDispatch();
   const posts = useSelector((state) => state.posts.posts);
-  const currentUser = useSelector((state) => state.profile._id); // Assuming you're using Redux to store the logged-in user's ID
+  const currentUser = useSelector((state) => state.profile); // Assuming you're using Redux to store the logged-in user's ID
 
   useEffect(() => {
     if (currentUser) {
-      dispatch(fetchPosts(currentUser)); // Fetch posts for the logged-in user
+      dispatch(fetchPosts({currentUser})); // Fetch posts for the logged-in user
     }
   }, [dispatch, currentUser]);
+
 
   const postList = posts.map((post) => (
     <Post
       key={post._id}
-      author_avatar={`http://localhost:1414${post.author.avatar}`}
-      author_name={post.author}
-      photo={`http://localhost:1414${post.images && post.images.length > 0 ? post.images[0] : null}`}
-      caption={post.content}
+      author_avatar={`http://localhost:1414${post.avatar}`}
+      author_name={post.fullname}
+      photos={post.post.images} // Pass the array of full image URLs
+      caption={post.post.content}
     />
   ));
 

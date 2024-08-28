@@ -4,17 +4,22 @@ import '../../css/post.css'
 import { fetchPosts,addPost } from '../../redux/slice/postSlice';
 import CommentBox from './CommentBox';
 
-function Post({author_avatar, author_name, photo, caption}) {
+function Post({author_avatar, author_name, photos, caption}) {
 
     const [cmtAction, setcmtAction] = useState(false)
 
-
+    const getImageContainerClass = () => {
+        if (photos.length === 1) return 'full-width';
+        if (photos.length === 2) return 'half-width';
+        if (photos.length >= 3) return 'grid-layout';
+        return '';
+    };
   return (
     <div className='post_container'>
         <div className="post_author" onClick={()=> setcmtAction(false)}>
 
             <div class="avatar-wrapper">
-                <img src={`data:image/jpg;base64,${author_avatar}`} alt="" className="avatar" />
+                <img src={author_avatar} alt="" className="avatar" />
             </div>
             <div className='text_container'>
                 <h2 className="name">{author_name}</h2>
@@ -28,9 +33,13 @@ function Post({author_avatar, author_name, photo, caption}) {
             </p> 
         </div>
 
-        <div className="post_content">
-            <img src={`data:image/jpg;base64,${photo}`} alt="" />
-        </div>
+        <div className={`post_content ${getImageContainerClass()}`}>
+                {photos && photos.length > 0 && (
+                    photos.map((photo, index) => (
+                        <img key={index} src={`http://localhost:1414${photo}`} alt={`Post image ${index + 1}`} className="post-image"/>
+                    ))
+                )}
+            </div>
         
         <div className="post_count">
             <h5 className='like'>500 likes</h5>

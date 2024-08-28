@@ -33,6 +33,7 @@ const loginSlice = createSlice({
         logout(state) {
             state.user = null;
             state.status = 'idle';
+            state.error = null;
         }
     },
     extraReducers: (builder) => {

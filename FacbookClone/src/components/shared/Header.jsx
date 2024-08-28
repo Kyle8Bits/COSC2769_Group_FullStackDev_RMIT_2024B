@@ -42,7 +42,7 @@ function toogelNoti(){
         <div className="noti_action">
         <i class="ri-notification-4-fill" onClick={()=> setNotiBar((prev)=>!prev)}></i>
 
-        <img src={`/src/${avatar}`} alt="" onClick={()=>setDropBar((prev) => !prev)}/>
+        <img src={`http://localhost:1414${avatar}`} alt="" onClick={()=>setDropBar((prev) => !prev)}/>
 
         {dropbar === true?<div><DropDownBar toggleDropBar={toggle}/>
           </div>:<div></div>}

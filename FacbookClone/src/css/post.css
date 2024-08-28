@@ -76,13 +76,39 @@
 .post_content {
     padding: 10px;
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .post_content img{
     width: 100%;
     height: 100%;
     border-radius: 10px;
+    object-fit: cover;
+}
+
+.full-width .post-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.half-width .post-image {
+    width: 48%; /* Two images, each taking half the width with some space between */
+    height: 100%;
+    object-fit: cover;
+}
+
+.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 10px;
+}
+
+.grid-layout .post-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .post_count{
