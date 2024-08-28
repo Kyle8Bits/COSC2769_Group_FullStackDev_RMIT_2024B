@@ -13,6 +13,9 @@ const EditProfile = () => {
   const { status, error } = useSelector((state) => state.editProfile);
   const profile = useSelector((state) => state.profile);
 
+  const [upload,setUpload] = useState("");
+  const [banner,setBanner] = useState("");
+
   
   const [formData, setFormData] = useState({
       username: profile.username,
@@ -23,7 +26,6 @@ const EditProfile = () => {
       avatar: profile.avatar, // For handling avatar file
   });
 
-  const [preview, setPreview] = useState(formData.avatar);
 
 
   const handleChange = (e) => {
@@ -31,11 +33,15 @@ const EditProfile = () => {
       setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const handleFileChange = (e) => {
+  const handleAvatarChange = (e) => {
       setFormData((prevData) => ({ ...prevData, avatar: e.target.files[0] }));
-      console.log(e.target.files[0] );
-      setPreview(e.target.files[0]);
+      setUpload(e.target.files[0].name);
   };
+
+  const handleBannerChange = (e) => {
+    setFormData((prevData) => ({ ...prevData, banner: e.target.files[0] }));
+    setBanner(e.target.files[0].name);
+};
 
   const handleSubmit = (e) => {
       e.preventDefault();
@@ -47,29 +53,48 @@ const EditProfile = () => {
   };
 
   const handleImageClick = () => {
-    document.getElementById('file-input').click(); // Trigger the file input click
-};
+    document.getElementById('file-input1').click(); // Trigger the file input click
+  };
 
+  const handleBannerClick = () => {
+    document.getElementById('file-input2').click(); // Trigger the file input click
+  };
   return (
     <div className="edit-profile-page">
       <div className="edit-profile-container">
       <h2 className="edit-profile-title">Edit Profile</h2>
 
       <div className="profile-picture-edit">
-        <img 
-            src={preview ===""? fallback : preview}
-            alt="Profile" 
-            className="profile-img-current" 
-            onClick={handleImageClick} 
-            style={{ cursor: 'pointer' }} // Add a pointer cursor to indicate the image is clickable
-        />
+        <div className="button_image_change">
+
+          <button type='button' onClick={handleImageClick}>Change Avatar</button>
+
+          <button type='button' onClick={handleBannerClick}>Change Banner</button>
+        </div>
+
+
+        <div className="image_name">
+          <div className="avatar_name">Avatar: {upload}</div>
+          <div className="banner_name">Banner: {banner} </div>
+        </div>
+
         <input 
+            name='avatar'
             type="file" 
-            id="file-input" 
-            onChange={handleFileChange} 
+            id="file-input1" 
+            onChange={handleAvatarChange} 
             style={{ display: 'none' }} // Hide the file input
         />
-        </div>
+
+        <input 
+            name='banner'
+            type="file" 
+            id="file-input2" 
+            onChange={handleBannerChange} 
+            style={{ display: 'none' }} // Hide the file input
+        />
+
+    </div>
 
       <form className="edit-profile-form" onSubmit={handleSubmit}>
         <div className="form-group">
@@ -80,7 +105,7 @@ const EditProfile = () => {
             id="fullname"
             value={formData.fullName}
             onChange={handleChange}
-            name="fullname"
+            name="fullName"
           />
         </div>
         <div className="form-group">
@@ -102,7 +127,7 @@ const EditProfile = () => {
             type="text"
             id="phoneNumber"
             onChange={handleChange}
-            name="phoneNumber"
+            name="phone"
           />
         </div>
 
@@ -130,7 +155,7 @@ const EditProfile = () => {
         </NavLink>
         {status === 'loading' && <p>Updating...</p>}
         {status === 'succeeded' && <p>Profile updated successfully!</p>}
-        {status === 'failed' && <p>Error: {error}</p>}
+        {status === 'failed' && <p>Error: The image must be JPG, JPEG, PNG only</p>}
       </form>
     </div>
     </div>

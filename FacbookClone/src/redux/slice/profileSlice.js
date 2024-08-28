@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { loginUser } from './loginSlice';
+import { updateProfile } from './editProfileSlice';
 
 
 const initialState = {
@@ -21,6 +22,7 @@ const profileSlice = createSlice({
     initialState,
     reducers: {
         setProfile(state, action) {
+            Object.assign(state, action.payload);
             return { ...state, ...action.payload, status: 'succeeded' };
         },
         resetProfile(state) {
@@ -32,6 +34,9 @@ const profileSlice = createSlice({
             .addCase(loginUser.fulfilled, (state, action) => {
                 console.log("Setting profile data");
                 return { ...state, ...action.payload, status: 'succeeded' }; 
+            })
+            .addCase(updateProfile.fulfilled,(state,action)=>{
+                return { ...state, ...action.payload, status: 'succeeded'}
             })
     }
 });

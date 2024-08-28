@@ -1,7 +1,24 @@
 /* src/pages/EditProfile.css */
 
-.edit_profile_page{
+.edit-profile-page{
+  width: 100vw;
+  height: 100vh;
   background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button_image_change{
+  display: flex;
+  flex-direction: row;
+  gap: 100px;
+}
+
+.image_name{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .edit-profile-container {
@@ -15,9 +32,11 @@
     padding: 30px;
     background-color: #f5f6f7;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.1);
   }
-
+  .image_name{
+    margin-top: 10px;
+  }
   .profile-img-current{
     width: 150px;
     height: 150px;
