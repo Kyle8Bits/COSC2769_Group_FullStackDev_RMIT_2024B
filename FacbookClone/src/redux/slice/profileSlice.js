@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { loginUser } from './loginSlice';
 
+
 const initialState = {
     username: '',
     fullName: '',

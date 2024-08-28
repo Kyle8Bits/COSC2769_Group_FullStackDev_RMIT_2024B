@@ -6,7 +6,7 @@ const API_URL = 'http://localhost:1414/posts';
 
 // Async thunk to fetch all posts
 export const fetchPosts = createAsyncThunk('posts/fetchPosts', async () => {
-    const response = await axios.get(API_URL);
+    const response = await axios.get(`http://localhost:1414/posts/getPost`);
     return response.data;
 });
 
@@ -27,15 +27,6 @@ export const deletePost = createAsyncThunk('posts/deletePost', async (id) => {
     await axios.delete(`${API_URL}/${id}`);
     return id;
 });
-
-export const fetchPostsByUserName = createAsyncThunk(
-    'posts/fetchPostByUserName',
-    async (username) => {
-        const response = await axios.get(`${API_URL}/user/${username}`);
-        return response.data;
-    }
-)
-
 
 
 
