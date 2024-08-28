@@ -1,10 +1,17 @@
-import React,{useState} from "react";
+import React,{useState, useEffect} from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { registerUser } from "../redux/slice/registerSlice";
+import { registerUser, resetStatus } from "../redux/slice/registerSlice";
+import {useNavigate} from 'react-router-dom';
 import '../css/basicInfoForm.css'
 
 function BasicInfo(){
     const dispatch = useDispatch();
+    const navigate = useNavigate(); 
+    useEffect(() => {
+        // Reset status when the component mounts
+        dispatch(resetStatus());
+    }, [dispatch]);
+
     const { status, error } = useSelector((state) => state.register);
 
     const [formData, setFormData] = useState({
@@ -26,6 +33,18 @@ function BasicInfo(){
         e.preventDefault();
         dispatch(registerUser(formData));
     };
+
+
+    useEffect(() => {
+        if (status === 'succeeded') {
+            const timer = setTimeout(() => {
+                navigate('/');
+            }, 2000);
+
+            // Cleanup the timeout if the component unmounts
+            return () => clearTimeout(timer);
+        }
+    }, [status, navigate]);
 
     return(
         <div className="basic_info_page">
@@ -87,7 +106,7 @@ function BasicInfo(){
             </form>
 
             {status === 'loading' && <p>Registering...</p>}
-            {status === 'succeeded' && <p>Registration successful!</p>}
+            {status === 'succeeded' && <p>Registration successful! Redirecting...</p>}
             {status === 'failed' && <p>Error: {error}</p>}
 
         </div>

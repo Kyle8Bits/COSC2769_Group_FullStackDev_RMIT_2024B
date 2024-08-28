@@ -82,14 +82,15 @@ const router = createBrowserRouter([
         element: <ProfilePhotos/>,
         errorElement: <NotFound />,
       },
+      {
+        path: "edit",
+        element: <EditProfile/>,
+        errorElement: <NotFound/>,
+      },
     ]
   }, 
 
-  {
-    path: "/:username/edit",
-    element: <EditProfile/>,
-    errorElement: <NotFound/>,
-  },
+
 
   {
     path: "/:username/edit/change_pass",

@@ -1,11 +1,13 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
 import '../../css/profileheader.css'
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch} from 'react-redux';
+import { resetUpdateState } from '../../redux/slice/editProfileSlice';
 
 import fallbackAvatar from '../../image/default-avatar.jpg'
 
 function ProfileHeader() {
+  const dispatch = useDispatch();
   const {  username, fullName, bio, avatar, banner} = useSelector(state => state.profile);
   console.log(avatar)
     return (
@@ -13,7 +15,7 @@ function ProfileHeader() {
 
         <div className="profile_cover">
 
-          <img src={`/src/${banner}`} alt="" />
+          <img src={`http://localhost:1414${banner}`} alt="" />
 
           <div className="profile_info">
             <div className="avatar">
@@ -32,7 +34,7 @@ function ProfileHeader() {
 
             <div className="button">
                 <button className='add'>Add Friend</button>
-                <NavLink to={`/@${username}/edit`}><button className='edit'>Edit Profile</button></NavLink>
+                <NavLink to={`/@${username}/edit`}><button onClick={()=>dispatch(resetUpdateState())} className='edit'>Edit Profile</button></NavLink>
             </div>
           </div>
 

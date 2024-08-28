@@ -1,6 +1,7 @@
 // profileUpdateSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { setProfile } from './profileSlice';
 
 export const updateProfile = createAsyncThunk('editProfile/updateUserProfile', async (profileData, { rejectWithValue }) => {
     try {
@@ -9,7 +10,9 @@ export const updateProfile = createAsyncThunk('editProfile/updateUserProfile', a
                 'Content-Type': 'multipart/form-data'
             }
         });
+        console.log(response.data.user)
         return response.data.user; // Return the updated user data
+        
     } catch (error) {
         return rejectWithValue(error.response.data);
     }
@@ -32,6 +35,7 @@ const profileUpdateSlice = createSlice({
             .addCase(updateProfile.fulfilled, (state, action) => {
                 state.status = 'succeeded';
                 state.updatedUser = action.payload; // Store the updated user data
+                setProfile(action.payload);
             })
             .addCase(updateProfile.rejected, (state, action) => {
                 state.status = 'failed';
