@@ -13,6 +13,11 @@ function Login() {
   const dispatch = useDispatch();
   const { user, status, error } = useSelector((state) => state.auth);
 
+  useEffect(() => {
+    // Clear localStorage when the login page is rendered
+    localStorage.clear();
+    }, []); 
+    
   const handleLogin = (e) => {
       e.preventDefault();
       dispatch(loginUser({ username, password }));
