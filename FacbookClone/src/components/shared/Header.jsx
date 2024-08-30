@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import NotificationList from './NotificationList'
 import FindingDropBar from './FindingDropBar'
-import { clearUsers, fetchUsers } from '../../redux/slice/searchSlice'
+import { clearCard, fetchCards} from '../../redux/slice/searchSlice'
 
 function Header() {
   const dispatch = useDispatch();
@@ -15,7 +15,7 @@ function Header() {
   const [dropbar,setDropBar] = useState(false);
   const [notification,setNotiBar] = useState(false);
 
-  const {card, status} = useSelector(state => state.search);
+  const {user, status} = useSelector(state => state.search);
 
 function toggle(){
   setDropBar(false);
@@ -28,14 +28,14 @@ function toogelNoti(){
 const handleSearchChange = (e) => {
   const searchTerm = e.target.value;
   if (searchTerm === '') {
-      dispatch(clearUsers());
+      dispatch(clearCard());
   } else {
-      dispatch(fetchUsers(searchTerm));
+      dispatch(fetchCards(searchTerm));
   }
 };
 
   return (
-    <div className='header_container' onClick={()=> dispatch(clearUsers())}>
+    <div className='header_container' onClick={()=> dispatch(clearCard())}>
 
         <div className="search_bar">
             <NavLink to={"/home"}><img src={logo} alt="" /></NavLink>
@@ -65,7 +65,7 @@ const handleSearchChange = (e) => {
         {status === 'loading' ? (
                 <p>Loading...</p>
             ) : (
-                <FindingDropBar cards={card} />
+                <FindingDropBar cards={user} />
             )}
         </div>
     </div>
