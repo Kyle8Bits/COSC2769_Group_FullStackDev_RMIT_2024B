@@ -1,7 +1,9 @@
 .card_container{
     width: 100%;
     display: flex;
+    flex-direction: row;
     justify-content: center;
+    align-items: center;
 }
 
 
@@ -58,6 +60,6 @@
 }
 
 .addfriend i:hover {
-    background-color: #242426;
+    background-color: chocolate;
     border-radius: 50px;
 }

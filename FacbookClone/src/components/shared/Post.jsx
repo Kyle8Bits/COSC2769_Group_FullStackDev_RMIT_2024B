@@ -48,7 +48,6 @@ function Post({postId,author_avatar, author_name, photos, caption}) {
 
         <div className="post_react">
             <i class="ri-thumb-up-line"></i>
-            <i class="ri-share-forward-line"></i>
             <i class="ri-chat-3-line" onClick={() => setcmtAction(true)}></i>
         </div>
         

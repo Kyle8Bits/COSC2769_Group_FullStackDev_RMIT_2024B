@@ -14,12 +14,13 @@ function ProfileFriends() {
 
   const friends = useSelector(state => state.friends.friend);
 
+
   const friendList = friends.map((friend, index) => (
     <ObjectCard 
       key={friend._id} 
+      usernameCard={friend.username}
       name={friend.fullName} 
       img={`http://localhost:1414${friend.avatar}` || Unknown}
-      usernameFriend ={friend.username}
     />
 
   ))

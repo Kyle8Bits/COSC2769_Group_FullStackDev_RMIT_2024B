@@ -1,0 +1,10 @@
+.finding_window{
+    position: absolute;
+    background-color:#fff;
+    border-radius: 15px;
+    width: 21.5%;
+    height: fit-content;
+    padding: 5px;
+    top: 60px;
+    left: 10px;
+}

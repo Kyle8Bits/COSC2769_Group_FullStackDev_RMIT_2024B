@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 const initialState = {
-    user: null,
+    user: JSON.parse(localStorage.getItem('user')) || null,
     status: 'idle', // idle, loading, succeeded, failed
     error: null
 };
@@ -34,6 +34,7 @@ const loginSlice = createSlice({
             state.user = null;
             state.status = 'idle';
             state.error = null;
+            localStorage.removeItem('user'); 
         }
     },
     extraReducers: (builder) => {
@@ -44,7 +45,9 @@ const loginSlice = createSlice({
             .addCase(loginUser.fulfilled, (state, action) => {
                 console.log("Got data")
                 state.status = 'succeeded';
-                state.user = action.payload.user;
+                state.user = action.payload;
+                console.log(action.payload)
+                localStorage.setItem('user', JSON.stringify(action.payload));
             })
             .addCase(loginUser.rejected, (state, action) => {
                 state.status = 'failed';
