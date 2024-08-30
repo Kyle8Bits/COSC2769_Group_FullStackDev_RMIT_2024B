@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import '../css/editprofile.css';
+import '../css/EditProfile.css';
 import { NavLink } from 'react-router-dom';
 import { updateProfile } from '../redux/slice/editProfileSlice';
 

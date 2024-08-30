@@ -9,7 +9,7 @@ export const fetchPosts = createAsyncThunk('posts/fetchPosts', async ({currentUs
     const response = await axios.get(`http://localhost:1414/posts/getPost`, {
         headers: currentUser
     });
-
+    // console.log(response.data);
     return response.data;
 });
 

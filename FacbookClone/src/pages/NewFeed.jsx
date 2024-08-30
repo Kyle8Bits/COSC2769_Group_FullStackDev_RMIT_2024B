@@ -21,9 +21,12 @@ function NewFeed() {
   }, [dispatch, currentUser]);
 
 
+
   const postList = posts.map((post) => (
+    // console.log('POST ID:', post.post._id),
     <Post
-      key={post._id}
+      key={post.post._id}
+      postId={post.post._id}
       author_avatar={`http://localhost:1414${post.avatar}`}
       author_name={post.fullname}
       photos={post.post.images} // Pass the array of full image URLs
