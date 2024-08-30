@@ -6,6 +6,7 @@ import friendReducer from './slice/friendSlice'
 import registerReducer from './slice/registerSlice'
 import postReducer from "./slice/postSlice";
 import editProfileReducer from "./slice/editProfileSlice";
+import otheruserReducer from "./slice/otheruserSlice";
 
 export const store = configureStore({
     reducer:{
@@ -15,7 +16,8 @@ export const store = configureStore({
         friends: friendReducer,
         register: registerReducer,
         posts: postReducer,
-        editProfile: editProfileReducer
+        editProfile: editProfileReducer,
+        otherUser: otheruserReducer,
     }
     
 })

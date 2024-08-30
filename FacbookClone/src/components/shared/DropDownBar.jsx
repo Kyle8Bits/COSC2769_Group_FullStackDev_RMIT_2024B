@@ -7,7 +7,7 @@ import {logout} from '../../redux/slice/loginSlice'
 
 
 
-function DropDownBar({toggleDropBar}) {
+function DropDownBar({toggleDropBar, currentUsername}) {
   
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -17,10 +17,11 @@ function DropDownBar({toggleDropBar}) {
     navigate('/'); // Redirect to login page
   };
 
+
   return (
     <div>
         <ul className="dropdown_list dropdownbar">
-            <Link to={`/@${'kyle_mai'}/posts`}><li onClick={toggleDropBar} >Profile</li></Link>
+            <Link to={`/@${currentUsername}/posts`}><li onClick={toggleDropBar} >Profile</li></Link>
             
             <div className='dropdown_line'></div>
             <li onClick={handleLogout}>Sign Out</li>

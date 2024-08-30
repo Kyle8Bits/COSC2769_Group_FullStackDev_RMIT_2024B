@@ -8,7 +8,7 @@ import NotificationList from './NotificationList'
 
 function Header() {
 
-  const { avatar } = useSelector(state => state.profile);
+  const { avatar, username } = useSelector(state => state.profile);
 
   const [dropbar,setDropBar] = useState(false);
   const [notification,setNotiBar] = useState(false);
@@ -44,7 +44,7 @@ function toogelNoti(){
 
         <img src={`http://localhost:1414${avatar}`} alt="" onClick={()=>setDropBar((prev) => !prev)}/>
 
-        {dropbar === true?<div><DropDownBar toggleDropBar={toggle}/>
+        {dropbar === true?<div><DropDownBar toggleDropBar={toggle} currentUsername={username}/>
           </div>:<div></div>}
         {notification===true?<><NotificationList/></>:<></>}
 

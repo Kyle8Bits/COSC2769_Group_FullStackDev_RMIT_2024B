@@ -1,15 +1,36 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom';
+import React, { useEffect } from 'react'
+import { NavLink, useParams } from 'react-router-dom';
 import '../../css/profileheader.css'
 import { useSelector, useDispatch} from 'react-redux';
 import { resetUpdateState } from '../../redux/slice/editProfileSlice';
-
 import fallbackAvatar from '../../image/default-avatar.jpg'
+import { fetchOtherUserData } from '../../redux/slice/otheruserSlice';
 
 function ProfileHeader() {
   const dispatch = useDispatch();
-  const {  username, fullName, bio, avatar, banner} = useSelector(state => state.profile);
-  console.log(avatar)
+
+  const userDisplaying  = useParams();
+
+  const currentUserProfile = useSelector(state => state.profile);
+  const otherUserProfile = useSelector(state => state.otherUser);
+
+
+  const isCurrentUser = currentUserProfile.username === userDisplaying.username.replace('@', '');
+
+
+  const { username, fullName, bio, avatar, banner } = isCurrentUser ? currentUserProfile : otherUserProfile;
+
+
+  useEffect(() => {
+    if (!isCurrentUser) {
+        console.log("Run")
+        console.log(currentUserProfile.username, "-", userDisplaying.username )
+        dispatch(fetchOtherUserData({ username: userDisplaying.username, currentUser: currentUserProfile.username  }));
+    }
+}, [dispatch, userDisplaying]);
+
+
+
     return (
       <div className="header_profile_container">
 
