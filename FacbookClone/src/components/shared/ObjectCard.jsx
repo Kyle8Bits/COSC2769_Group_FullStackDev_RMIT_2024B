@@ -10,14 +10,15 @@ function ObjectCard({name, img, usernameCard}) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  console.log(username, " Card ", usernameCard);
   const handleDeletefriend= ()=>{
-    dispatch(deleteFriendship({requester:{username},recipient: {usernameFriend}}));
+    dispatch(deleteFriendship({requester:{username},recipient: {usernameCard}}));
 
   }
 
   const handleCardClick = () => {
     // This should be called on an event, such as a click
-    navigate(`/${usernameCard}`);
+    navigate(`/@${usernameCard}`);
 };
 
   return (
@@ -25,14 +26,16 @@ function ObjectCard({name, img, usernameCard}) {
       <div className="card">
           <img src={img} />
           <h2 className="object_name">{name}</h2>
-
-
-          <div className="addfriend" onClick={handleDeletefriend}>
-            <i className="ri-user-minus-fill"/>
-          </div>
   
 
       </div>
+
+      {usernameCard===null?<></>:
+      <div className="addfriend" onClick={handleDeletefriend}>
+            <i className="ri-user-minus-fill"/>
+      </div>
+      }
+      
     </div>
   )
 }

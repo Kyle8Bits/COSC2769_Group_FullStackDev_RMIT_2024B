@@ -21,14 +21,17 @@ export const fetchFriend = createAsyncThunk('/friend/getFriends', async (_, { ge
 
 export const deleteFriendship = createAsyncThunk('/friend/deleteFriendship', async ({ requester, recipient }, { rejectWithValue }) => {
     try {
-        console.log("Here", recipient.usernameFriend, "here2", requester.username);
         const response = await axios.delete('http://localhost:1414/friend/friend-delete', {
-            data: { requester: requester.username, recipient:recipient.usernameFriend  }
+            data: { requester: requester.username, recipient:recipient.usernameCard  }
         });
+        
+        console.log(requester, "pass in" ,recipient)
 
-
+        console.log("Success unfriend")
         return recipient; // Return the recipient to remove from the friend list
     } catch (error) {
+        console.log(requester, "pass in" ,recipient)
+        console.error('Error in delete friendShip:', error);
         return rejectWithValue(error.response.data);
     }
 });

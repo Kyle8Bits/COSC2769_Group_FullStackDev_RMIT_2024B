@@ -7,6 +7,7 @@ import registerReducer from './slice/registerSlice'
 import postReducer from "./slice/postSlice";
 import editProfileReducer from "./slice/editProfileSlice";
 import otheruserReducer from "./slice/otheruserSlice";
+import searchReducer from './slice/searchSlice'
 
 export const store = configureStore({
     reducer:{
@@ -18,6 +19,7 @@ export const store = configureStore({
         posts: postReducer,
         editProfile: editProfileReducer,
         otherUser: otheruserReducer,
+        search:searchReducer,
     }
     
 })

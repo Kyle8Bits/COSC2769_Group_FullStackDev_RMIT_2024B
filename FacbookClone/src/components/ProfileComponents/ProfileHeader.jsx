@@ -5,11 +5,15 @@ import { useSelector, useDispatch} from 'react-redux';
 import { resetUpdateState } from '../../redux/slice/editProfileSlice';
 import fallbackAvatar from '../../image/default-avatar.jpg'
 import { fetchOtherUserData } from '../../redux/slice/otheruserSlice';
+import { deleteFriendship } from '../../redux/slice/friendSlice';
 
 function ProfileHeader() {
   const dispatch = useDispatch();
 
   const userDisplaying  = useParams();
+
+
+  console.log("UserDisplaying", userDisplaying.username.replace('@', ''))
 
   const currentUserProfile = useSelector(state => state.profile);
   const otherUserProfile = useSelector(state => state.otherUser);
@@ -17,17 +21,27 @@ function ProfileHeader() {
 
   const isCurrentUser = currentUserProfile.username === userDisplaying.username.replace('@', '');
 
+  console.log("CurrentUser", currentUserProfile.username)
+  
+  const { username, fullName, bio, avatar, banner } = isCurrentUser ? currentUserProfile : otherUserProfile.user;
 
-  const { username, fullName, bio, avatar, banner } = isCurrentUser ? currentUserProfile : otherUserProfile;
+  const isFriend = isCurrentUser ? false : otherUserProfile.isFriend;
 
+  const handleDeletefriend = () => {
+    dispatch(deleteFriendship({
+      requester: {username: currentUserProfile.username},
+      recipient: {usernameCard: otherUserProfile.user?.username}
+    }));
+  }
 
   useEffect(() => {
+    console.log("Run");
+
     if (!isCurrentUser) {
-        console.log("Run")
-        console.log(currentUserProfile.username, "-", userDisplaying.username )
-        dispatch(fetchOtherUserData({ username: userDisplaying.username, currentUser: currentUserProfile.username  }));
+        console.log("Run");
+        dispatch(fetchOtherUserData({ username: userDisplaying.username.replace('@', ''), currentUser: currentUserProfile.username  }));
     }
-}, [dispatch, userDisplaying]);
+}, [userDisplaying]);
 
 
 
@@ -54,8 +68,16 @@ function ProfileHeader() {
             </div>
 
             <div className="button">
-                <button className='add'>Add Friend</button>
-                <NavLink to={`/@${username}/edit`}><button onClick={()=>dispatch(resetUpdateState())} className='edit'>Edit Profile</button></NavLink>
+                {!isCurrentUser ? (
+                  isFriend ? (
+                    <button type="button" className="unfr" onClick={handleDeletefriend}>Unfriend</button>
+                  ) : (
+                    <button className='add'>Add Friend</button>
+                  )
+                ) : (
+                   <NavLink to={`/@${username}/edit`}><button onClick={()=>dispatch(resetUpdateState())} className='edit'>Edit Profile</button></NavLink>
+                )}
+
             </div>
           </div>
 

@@ -3,15 +3,19 @@ import logo from '../../image/logo.png'
 import '../../css/header.css'
 import DropDownBar from './DropDownBar'
 import { NavLink } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import NotificationList from './NotificationList'
+import FindingDropBar from './FindingDropBar'
+import { clearUsers, fetchUsers } from '../../redux/slice/searchSlice'
 
 function Header() {
-
+  const dispatch = useDispatch();
   const { avatar, username } = useSelector(state => state.profile);
 
   const [dropbar,setDropBar] = useState(false);
   const [notification,setNotiBar] = useState(false);
+
+  const {card, status} = useSelector(state => state.search);
 
 function toggle(){
   setDropBar(false);
@@ -21,14 +25,24 @@ function toogelNoti(){
   setNotiBar(true);
 }
 
+const handleSearchChange = (e) => {
+  const searchTerm = e.target.value;
+  if (searchTerm === '') {
+      dispatch(clearUsers());
+  } else {
+      dispatch(fetchUsers(searchTerm));
+  }
+};
+
   return (
-    <div className='header_container'>
+    <div className='header_container' onClick={()=> dispatch(clearUsers())}>
 
         <div className="search_bar">
             <NavLink to={"/home"}><img src={logo} alt="" /></NavLink>
             <div className="input_box">
                 <i class="ri-search-line"></i>
-                <input type="text" placeholder='Search CrabNest' />
+                <input type="text" placeholder='Search CrabNest'
+                onChange={handleSearchChange} />
             </div>
         </div>
 
@@ -48,6 +62,11 @@ function toogelNoti(){
           </div>:<div></div>}
         {notification===true?<><NotificationList/></>:<></>}
 
+        {status === 'loading' ? (
+                <p>Loading...</p>
+            ) : (
+                <FindingDropBar cards={card} />
+            )}
         </div>
     </div>
   )
