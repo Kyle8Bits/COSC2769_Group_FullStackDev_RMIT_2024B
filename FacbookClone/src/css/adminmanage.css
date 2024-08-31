@@ -44,6 +44,11 @@
 .mc_button{
     height: 100%;
     width: 17%;
+}
+
+.ban_unban{
+    height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -55,7 +60,7 @@
     transition: gap 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-.mc_button:hover{
+.ban_unban:hover{
     background-color: chocolate;
     cursor: pointer;
     gap: 10px;

@@ -26,12 +26,12 @@ function ManageUser({username, name, avatar, isban}) {
 
             <div className="mc_button">
                 {isban?
-                    <div  onClick={handleUnban}>
+                    <div className= 'ban_unban' onClick={handleUnban}>
                         <i class="ri-eraser-fill"></i>
                         <div className="action_name">Unban</div>
                     </div>
                     :
-                    <div onClick={handleBan}>
+                    <div className='ban_unban' onClick={handleBan}>
                         <i class="ri-forbid-fill"></i>
                         <div className="action_name">Ban</div>
                     </div>
