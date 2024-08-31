@@ -36,18 +36,17 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 // Define the base URL of your API
-const API_URL = 'http://localhost:1414/comment';
 
 // Async thunk to fetch comments for a specific post
 export const fetchCommentsForPost = createAsyncThunk('comment/fetchCommentsForPost', async (postId) => {
-    const response = await axios.get(`http://localhost:1414/comment/post/${postId}`);
+    const response = await axios.get(`http://localhost:1414/comments/post/${postId}`);
     console.log(response.data);
     return response.data;
 });
 
 // Async thunk to add a new comment to a specific post
 export const addCommentToPost = createAsyncThunk('comment/addCommentToPost', async ({ postId, commentData }) => {
-    const response = await axios.post(`http://localhost:1414/comment/post/${postId}`, commentData);
+    const response = await axios.post(`http://localhost:1414/comments/post/${postId}`, commentData);
     return response.data;
 });
 
