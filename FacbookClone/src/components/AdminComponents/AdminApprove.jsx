@@ -3,7 +3,7 @@ import ObjectCard from '../shared/ObjectCard'
 import { useSelector } from 'react-redux'
 import '../../css/adminnavigate.css'
 
-function ProfileAbout() {
+function AdminApprove() {
 
 
 
@@ -42,4 +42,4 @@ function ProfileAbout() {
   )
 }
 
-export default ProfileAbout
+export default AdminApprove

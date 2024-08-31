@@ -4,15 +4,21 @@ import '../../css/findingdropbar.css'
 import ObjectCard from './ObjectCard'
 
 function FindingDropBar({ cards }) {
+  console.log(cards)
+
+  const displayCard = cards.map(card =>{
+
+    return(
+      <ObjectCard name={card.fullname} img={card.avatar} usernameCard={card.username} isSearchingBar={true}/>
+    )
+  })
   return (
     <div className='finding_window'>
         {cards.length > 0 ? (
             <>
-            <ObjectCard name={cards.username} img={cards.avatar} usernameCard={null}/>
+            {displayCard}
             </>
-      ) : (
-        <p>No users found</p>
-      )}
+      ) : <></>}
     </div>
   )
 }

@@ -20,7 +20,7 @@ function ProfileFriends() {
       key={friend._id} 
       usernameCard={friend.username}
       name={friend.fullName} 
-      img={`http://localhost:1414${friend.avatar}` || Unknown}
+      img= {friend.avatar || Unknown}
     />
 
   ))

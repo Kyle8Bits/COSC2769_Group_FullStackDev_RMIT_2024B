@@ -10,12 +10,13 @@ import { clearCard, fetchCards} from '../../redux/slice/searchSlice'
 
 function Header() {
   const dispatch = useDispatch();
-  const { avatar, username } = useSelector(state => state.profile);
+  const { avatar, username, isAdmin } = useSelector(state => state.profile);
 
   const [dropbar,setDropBar] = useState(false);
   const [notification,setNotiBar] = useState(false);
 
-  const {user, status} = useSelector(state => state.search);
+  const {cards, status} = useSelector(state => state.search);
+
 
 function toggle(){
   setDropBar(false);
@@ -31,18 +32,22 @@ const handleSearchChange = (e) => {
       dispatch(clearCard());
   } else {
       dispatch(fetchCards(searchTerm));
+
   }
 };
 
   return (
-    <div className='header_container' onClick={()=> dispatch(clearCard())}>
+    <div className='header_container'>
 
         <div className="search_bar">
             <NavLink to={"/home"}><img src={logo} alt="" /></NavLink>
             <div className="input_box">
-                <i class="ri-search-line"></i>
+                <i class="ri-arrow-up-circle-fill" onClick={()=>{
+                  dispatch(clearCard());
+                }}></i>
                 <input type="text" placeholder='Search CrabNest'
-                onChange={handleSearchChange} />
+                onChange={handleSearchChange}
+                 />
             </div>
         </div>
 
@@ -50,7 +55,7 @@ const handleSearchChange = (e) => {
         <NavLink to={"/home"}><i class="ri-home-5-fill"></i></NavLink>
         <i class="ri-team-fill"></i>
         <i class="ri-group-2-fill"></i>
-        <i class="ri-tools-fill"></i>
+        {isAdmin?<NavLink to={'/admin'} ><i class="ri-tools-fill"></i></NavLink>:<></>}
         </div>
     
         <div className="noti_action">
@@ -62,11 +67,9 @@ const handleSearchChange = (e) => {
           </div>:<div></div>}
         {notification===true?<><NotificationList/></>:<></>}
 
-        {status === 'loading' ? (
-                <p>Loading...</p>
-            ) : (
-                <FindingDropBar cards={user} />
-            )}
+  
+          <FindingDropBar cards={cards} />
+
         </div>
     </div>
   )

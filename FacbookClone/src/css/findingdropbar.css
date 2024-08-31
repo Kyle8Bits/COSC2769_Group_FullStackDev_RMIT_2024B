@@ -1,10 +1,14 @@
 .finding_window{
     position: absolute;
-    background-color:#fff;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    background-color: rgb(63, 55, 55);
     border-radius: 15px;
-    width: 21.5%;
+    width: fit-content;
     height: fit-content;
     padding: 5px;
     top: 60px;
     left: 10px;
 }
+

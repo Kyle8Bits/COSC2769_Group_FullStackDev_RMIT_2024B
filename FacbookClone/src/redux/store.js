@@ -8,6 +8,8 @@ import postReducer from "./slice/postSlice";
 import editProfileReducer from "./slice/editProfileSlice";
 import otheruserReducer from "./slice/otheruserSlice";
 import searchReducer from './slice/searchSlice'
+import banUserReducer from './slice/banUserSlice'
+import activeUserReducer from './slice/activeUserSlice'
 
 export const store = configureStore({
     reducer:{
@@ -20,6 +22,8 @@ export const store = configureStore({
         editProfile: editProfileReducer,
         otherUser: otheruserReducer,
         search:searchReducer,
+        ban: banUserReducer,
+        active: activeUserReducer,
     }
     
 })

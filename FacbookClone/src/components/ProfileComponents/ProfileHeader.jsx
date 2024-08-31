@@ -21,6 +21,7 @@ function ProfileHeader() {
 
   const isCurrentUser = currentUserProfile.username === userDisplaying.username.replace('@', '');
 
+  console.log("Test", isCurrentUser)
   console.log("CurrentUser", currentUserProfile.username)
   
   const { username, fullName, bio, avatar, banner } = isCurrentUser ? currentUserProfile : otherUserProfile.user;
@@ -36,7 +37,7 @@ function ProfileHeader() {
 
   useEffect(() => {
     console.log("Run");
-
+    const isCurrentUser = currentUserProfile.username === userDisplaying.username.replace('@', '');
     if (!isCurrentUser) {
         console.log("Run");
         dispatch(fetchOtherUserData({ username: userDisplaying.username.replace('@', ''), currentUser: currentUserProfile.username  }));
@@ -68,6 +69,7 @@ function ProfileHeader() {
             </div>
 
             <div className="button">
+                {(currentUserProfile.isAdmin && !isCurrentUser)?<button style={{backgroundColor:'chocolate'}}>Deactivate</button>:<></>}
                 {!isCurrentUser ? (
                   isFriend ? (
                     <button type="button" className="unfr" onClick={handleDeletefriend}>Unfriend</button>

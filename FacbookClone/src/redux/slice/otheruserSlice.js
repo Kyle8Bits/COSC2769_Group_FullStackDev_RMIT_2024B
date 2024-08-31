@@ -21,8 +21,8 @@ export const fetchOtherUserData = createAsyncThunk('otherUser/fetchUserData', as
 
 
 const initialState = {
-    user: JSON.parse(localStorage.getItem('otherUser'))?.user || null,
-    isFriend: JSON.parse(localStorage.getItem('otherUser'))?.isFriend || false,
+    user: JSON.parse(localStorage.getItem('otherUser'))?.user || "Not Found",
+    isFriend: JSON.parse(localStorage.getItem('otherUser'))?.isFriend ||"Not Found",
     loading: 'idle',
     error: null,
   };

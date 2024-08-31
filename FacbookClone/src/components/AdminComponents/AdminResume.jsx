@@ -1,20 +1,36 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import ObjectCard from '../shared/ObjectCard'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import '../../css/adminnavigate.css'
+import { getBannedUsers } from '../../redux/slice/banUserSlice'
 
+import ManageUser from './ManageUser'
 
-function ProfileAbout() {
+function AdminResume() {
 
+  const dispatch = useDispatch()
+
+  useEffect(()=>{
+    dispatch(getBannedUsers())
+  },[])
+
+  const { bannedUsers } = useSelector(state => state.ban)
+
+  console.log(bannedUsers)
+  const displayBanned = bannedUsers.map(u=>{
+    return(
+      <ManageUser username={u.username} name={u.fullName} avatar={u.avatar} isban={u.isSuspended}/>
+    )
+  })
 
   return (
     <div  className='admin_resume_container'>
-            <div className="resume_search_bar">
-                <div className="input_box">
-                    <i class="ri-search-line"></i>
-                    <input type="text" placeholder='Search User' />
-                </div>
+        <div className="resume_search_bar">
+            <div className="input_box">
+                <i class="ri-search-line"></i>
+                <input type="text" placeholder='Search User' />
             </div>
+        </div>
 
 
         <div className='resume_list_container'>
@@ -22,8 +38,12 @@ function ProfileAbout() {
 
             </div>
         </div>
+
+        <div className="display_ban_user">
+          {displayBanned}
+        </div>
     </div>
   )
 }
 
-export default ProfileAbout
+export default AdminResume

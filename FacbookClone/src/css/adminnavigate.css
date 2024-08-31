@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
+    width: 100%;
 }
 
 .resume_search_bar .input_box{
@@ -57,6 +57,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
 
 .suspend_search_bar .input_box{
@@ -199,4 +200,36 @@
 .group .approve:hover, .reject:hover {
     background-color: #47494a;
     cursor: pointer;
+}
+
+.admin_resume_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.admin_suspend_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.display_ban_user{
+    justify-self: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Creates two columns with equal width */
+    gap: 10px; /* Optional: Adds some space between the cards */
+    width: 90%; 
+    padding: 20px;
+}
+
+.display_active_user{
+    justify-self: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Creates two columns with equal width */
+    gap: 10px; /* Optional: Adds some space between the cards */
+    width: 90%; 
+    padding: 20px;
 }

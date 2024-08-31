@@ -2,9 +2,8 @@ import React from 'react'
 import { NavLink } from 'react-router-dom';
 import '../../css/adminheader.css'
 
-import { useSelector } from 'react-redux';
+function AdminHeader() {
 
-function ProfileHeader() {
     return (
       <div className="header_admin_container">
 
@@ -30,4 +29,4 @@ function ProfileHeader() {
     );
   }
 
-export default ProfileHeader
+export default AdminHeader
