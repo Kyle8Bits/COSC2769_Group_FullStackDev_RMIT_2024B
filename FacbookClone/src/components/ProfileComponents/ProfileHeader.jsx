@@ -7,6 +7,7 @@ import fallbackAvatar from '../../image/default-avatar.jpg'
 import { fetchOtherUserData } from '../../redux/slice/otheruserSlice';
 import { deleteFriendship } from '../../redux/slice/friendSlice';
 
+import { banUser } from '../../redux/slice/activeUserSlice';
 function ProfileHeader() {
   const dispatch = useDispatch();
 
@@ -69,7 +70,7 @@ function ProfileHeader() {
             </div>
 
             <div className="button">
-                {(currentUserProfile.isAdmin && !isCurrentUser)?<button style={{backgroundColor:'chocolate'}}>Deactivate</button>:<></>}
+                {(currentUserProfile.isAdmin && !isCurrentUser)?<button style={{backgroundColor:'chocolate'}} onClick={()=> dispatch(banUser({username: {username}}))}>Deactivate</button>:<></>}
                 {!isCurrentUser ? (
                   isFriend ? (
                     <button type="button" className="unfr" onClick={handleDeletefriend}>Unfriend</button>
