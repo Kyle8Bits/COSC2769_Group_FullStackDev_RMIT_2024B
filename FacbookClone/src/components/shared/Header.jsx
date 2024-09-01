@@ -14,7 +14,7 @@ function Header() {
 
   const [dropbar,setDropBar] = useState(false);
   const [notification,setNotiBar] = useState(false);
-
+  const [isBlurred, setIsBlurred] = useState(false);
   const {cards, status} = useSelector(state => state.search);
 
 
@@ -27,6 +27,7 @@ function toogelNoti(){
 }
 
 const handleSearchChange = (e) => {
+  setIsBlurred(false); 
   const searchTerm = e.target.value;
   if (searchTerm === '') {
       dispatch(clearCard());
@@ -36,17 +37,27 @@ const handleSearchChange = (e) => {
   }
 };
 
+const handleBlur = () => {
+  setTimeout(() => {
+    dispatch(clearCard());
+    setIsBlurred(true);
+
+  }, 200);
+};
+
   return (
     <div className='header_container'>
 
         <div className="search_bar">
             <NavLink to={"/home"}><img src={logo} alt="" /></NavLink>
             <div className="input_box">
-                <i class="ri-arrow-up-circle-fill" onClick={()=>{
-                  dispatch(clearCard());
-                }}></i>
-                <input type="text" placeholder='Search CrabNest'
+                <i class="ri-search-line"></i>
+                <input 
+                type="text" 
+                placeholder='Search CrabNest'
                 onChange={handleSearchChange}
+                onBlur={handleBlur}
+                onFocus={() => setIsBlurred(false)}
                  />
             </div>
         </div>

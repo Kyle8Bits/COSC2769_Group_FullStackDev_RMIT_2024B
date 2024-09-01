@@ -14,10 +14,11 @@ export const fetchPosts = createAsyncThunk('posts/fetchPosts', async ({currentUs
 });
 
 // // Async thunk to add a new post
-// export const addPost = createAsyncThunk('posts/addPost', async (postData) => {
-//     const response = await axios.post(API_URL, postData);
-//     return response.data;
-// });
+export const addPost = createAsyncThunk('posts/createPost', async (postData) => {
+
+    const response = await axios.post('http://localhost:1414/posts/createPost', postData);
+    return response.data;
+});
 
 // // Async thunk to update a post
 // export const updatePost = createAsyncThunk('posts/updatePost', async ({ id, postData }) => {
