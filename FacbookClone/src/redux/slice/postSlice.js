@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk, isRejectedWithValue } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 // Define the base URL for your API
@@ -13,24 +13,51 @@ export const fetchPosts = createAsyncThunk('posts/fetchPosts', async ({currentUs
     return response.data;
 });
 
-// Async thunk to add a new post
-export const addPost = createAsyncThunk('posts/addPost', async (postData) => {
-    const response = await axios.post(API_URL, postData);
-    return response.data;
-});
+// // Async thunk to add a new post
+// export const addPost = createAsyncThunk('posts/addPost', async (postData) => {
+//     const response = await axios.post(API_URL, postData);
+//     return response.data;
+// });
 
-// Async thunk to update a post
-export const updatePost = createAsyncThunk('posts/updatePost', async ({ id, postData }) => {
-    const response = await axios.put(`${API_URL}/${id}`, postData);
-    return response.data;
-});
+// // Async thunk to update a post
+// export const updatePost = createAsyncThunk('posts/updatePost', async ({ id, postData }) => {
+//     const response = await axios.put(`${API_URL}/${id}`, postData);
+//     return response.data;
+// });
 
-// Async thunk to delete a post
-export const deletePost = createAsyncThunk('posts/deletePost', async (id) => {
-    await axios.delete(`${API_URL}/${id}`);
-    return id;
-});
+// // Async thunk to delete a post
+// export const deletePost = createAsyncThunk('posts/deletePost', async (id) => {
+//     await axios.delete(`${API_URL}/${id}`);
+//     return id;
+// });
 
+export const givereact = createAsyncThunk('/post/giveReact', async ({id}, {rejectWithValue})=>{
+    try{
+        console.log(id)
+        const response = await axios.post('http://localhost:1414/posts/giveReact', {
+            data: {id : id}
+        });
+
+        return id;
+    }
+    catch(err){
+        return rejectWithValue(err.response.data)
+    }
+})
+
+export const deletereact = createAsyncThunk('/post/giveReact', async ({id}, {rejectWithValue})=>{
+    try{
+        console.log(id)
+        const response = await axios.post('http://localhost:1414/posts/deleteReact', {
+            data: {id : id}
+        });
+
+        return id;
+    }
+    catch(err){
+        return rejectWithValue(err.response.data)
+    }
+})
 
 
 // Define the initial state
@@ -61,26 +88,12 @@ const postSlice = createSlice({
             .addCase(fetchPosts.fulfilled, (state, action) => {
                 state.status = 'succeeded';
                 state.posts = action.payload;
+                console.log(state.posts)
             })
             .addCase(fetchPosts.rejected, (state, action) => {
                 state.status = 'failed';
                 state.error = action.error.message;
             })
-            // Handle addPost
-            .addCase(addPost.fulfilled, (state, action) => {
-                state.posts.push(action.payload);
-            })
-            // Handle updatePost
-            .addCase(updatePost.fulfilled, (state, action) => {
-                const index = state.posts.findIndex(post => post._id === action.payload._id);
-                if (index !== -1) {
-                    state.posts[index] = action.payload;
-                }
-            })
-            // Handle deletePost
-            .addCase(deletePost.fulfilled, (state, action) => {
-                state.posts = state.posts.filter(post => post._id !== action.payload);
-            });
     },
 });
 

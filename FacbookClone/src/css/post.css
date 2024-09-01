@@ -130,9 +130,18 @@
     justify-content: space-around;
 }
 
+.like{
+    color: #fff;
+}
 
-.post_react i:hover{
+.like:hover{
     color: chocolate;
     cursor: pointer;
 }
 
+.unlike{
+    color: chocolate;
+}
+.unlike:hover{
+    cursor: pointer;
+}

@@ -1,6 +1,6 @@
 import React from 'react'
 import '../../css/dropdownbar.css'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import {useDispatch} from 'react-redux'
 import {useNavigate} from 'react-router-dom'
 import {logout} from '../../redux/slice/loginSlice'
@@ -21,7 +21,7 @@ function DropDownBar({toggleDropBar, currentUsername}) {
   return (
     <div>
         <ul className="dropdown_list dropdownbar">
-            <Link to={`/@${currentUsername}/posts`}><li onClick={toggleDropBar} >Profile</li></Link>
+            <NavLink to={`/@${currentUsername}/posts`}><li onClick={toggleDropBar} >Profile</li></NavLink>
             
             <div className='dropdown_line'></div>
             <li onClick={handleLogout}>Sign Out</li>

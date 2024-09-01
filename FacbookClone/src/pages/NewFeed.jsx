@@ -6,7 +6,6 @@ import Post from '../components/shared/Post.jsx'
 
 
 import { fetchPosts} from '../redux/slice/postSlice.js'
-import { fetchFriend } from '../redux/slice/friendSlice.js'
 import { useSelector,useDispatch } from 'react-redux'
 
 function NewFeed() {
@@ -22,17 +21,20 @@ function NewFeed() {
 
 
 
-  const postList = posts.map((post) => (
-    // console.log('POST ID:', post.post._id),
-    <Post
-      key={post.post._id}
-      postId={post.post._id}
-      author_avatar={`http://localhost:1414${post.avatar}`}
-      author_name={post.fullname}
-      photos={post.post.images} // Pass the array of full image URLs
-      caption={post.post.content}
-    />
-  ));
+  const postList = posts.map((post) => {
+    console.log();
+    return(
+      <Post
+        key={post.post._id}
+        postId={post.post.id}
+        author_avatar={`http://localhost:1414${post.avatar}`}
+        author_name={post.fullname}
+        photos={post.post.images} // Pass the array of full image URLs
+        caption={post.post.content}
+        reaction = {post.post.reactions}
+      />
+    )
+    });
 
 
   return (
