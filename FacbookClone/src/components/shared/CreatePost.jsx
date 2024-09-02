@@ -31,7 +31,12 @@ function CreatePost() {
     })
 
     const handleChange = (event) => {
-        setSelectedValue(event.target.value);
+        const value = event.target.value;
+        setSelectedValue(value);
+        setFormData((prevFormData) => ({
+            ...prevFormData,
+            visibility: value,  // Update formData visibility to match selected value
+        }));
     };
 
     const handleInputContent = (e)=>{
@@ -57,8 +62,6 @@ function CreatePost() {
 
     }
 
-
-
     const handleCancel = () =>{
         setNumberPhoto(0);
         setPreview([]);
@@ -82,12 +85,12 @@ function CreatePost() {
 
                     <div className='visibility_option'>
                         <select id="comboBox" value={selectedValue} onChange={handleChange}>
-                        <option value="" disabled>
-                            -- {selectedValue} --
+                        <option value={selectedValue} disabled>
+                            {selectedValue}
                         </option>
-                        <option value="option1">Public</option>
-                        <option value="option2">Friend</option>
-                        <option value="option3">Private</option>
+                        <option value="Public">Public</option>
+                        <option value="Friend">Friend</option>
+                        <option value="Private">Private</option>
                         </select>
                     </div>
                     

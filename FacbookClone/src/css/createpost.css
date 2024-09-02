@@ -36,7 +36,6 @@
 .create_post_container .create_post_frame .frame{
     width: 550px;
     height: fit-content;
-    overflow-y: auto;
     position: absolute;
     background-color: #242426;
     top: 50%;
