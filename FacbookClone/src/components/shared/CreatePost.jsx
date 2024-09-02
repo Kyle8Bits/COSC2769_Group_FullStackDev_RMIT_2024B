@@ -1,12 +1,12 @@
 import React, { useState , useEffect} from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import '../../css/createpost.css'
-import { addPost } from '../../redux/slice/postSlice';
+import { addPost, fetchPosts } from '../../redux/slice/postSlice';
 
 function CreatePost() {
     const dispatch = useDispatch();
 
-    const { username } = useSelector(state => state.profile);
+    const currentUser = useSelector((state) => state.profile)
 
     const [postAction,setPostAction] = useState(false)
 
@@ -24,7 +24,7 @@ function CreatePost() {
     };
 
     const [formData, setFormData] = useState({
-        author: username,
+        author: currentUser.username,
         content: '',
         images: [],
         visibility: selectedValue,
@@ -45,10 +45,10 @@ function CreatePost() {
 
     const handleStoreImage = (e) =>{
         const file = e.target.files[0]; // Get the first (and only) file selected
-
+        console.log(file)
         setFormData((prev) => ({
             ...prev,
-            images: [...prev.images, file.name], // Append only the file name to the images array
+            images: [...prev.images, file], // Append only the file name to the images array
         }));
 
         if (file) {
@@ -72,6 +72,28 @@ function CreatePost() {
         }))
     }
 
+
+    const handlePost = async (e)=>{
+        e.preventDefault();
+        const data = new FormData();
+
+        // Append other form fields
+        data.append('author', formData.author);
+        data.append('content', formData.content);
+        data.append('visibility', formData.visibility);
+    
+        // Append images to the FormData
+        formData.images.forEach((image) => {
+            data.append('post', image); // Match the 'post' field name here
+        });
+    
+        setNumberPhoto(0);
+        setPreview([]);
+        setPostAction(false);
+        await dispatch(addPost(data));
+        dispatch(fetchPosts({currentUser}));
+    }
+
   return (
     <div className='create_post_container'>
         <div className="create_button" onClick={()=>setPostAction(true)}>
@@ -90,7 +112,6 @@ function CreatePost() {
                         </option>
                         <option value="Public">Public</option>
                         <option value="Friend">Friend</option>
-                        <option value="Private">Private</option>
                         </select>
                     </div>
                     
@@ -116,7 +137,7 @@ function CreatePost() {
                     <div className="upload-container">
                         <label className="upload-label" htmlFor="file-upload">
                             <i className="ri-camera-line"></i> Add photo
-                            <input id="file-upload" type="file" className="file-input" accept="image/*" onChange={handleStoreImage}/>
+                            <input id="file-upload" type="file" className="file-input" name="post" accept="image/*" onChange={handleStoreImage}/>
 
                         </label>
                      </div>
@@ -130,7 +151,7 @@ function CreatePost() {
 
                     <div className='post_button'>
                         <button onClick={handleCancel}>Cancel</button>
-                        <button onClick={()=>dispatch(addPost(formData))}>Post</button>
+                        <button onClick={handlePost}>Post</button>
                     </div>
                 </div>
             </div>

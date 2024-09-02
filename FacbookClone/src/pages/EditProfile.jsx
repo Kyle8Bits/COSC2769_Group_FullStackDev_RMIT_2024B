@@ -49,6 +49,7 @@ const EditProfile = () => {
       const data = new FormData();
       for (const key in formData) {
           data.append(key, formData[key]);
+          console.log(formData[key])
       }
       dispatch(updateProfile(data));
   };

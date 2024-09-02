@@ -127,23 +127,52 @@
 
 .post_react {
     padding: 10px;
-    font-size: 2rem;
     display: flex;
     justify-content: space-around;
 }
 
-.like{
+.like{ 
+    font-size: 32px;
     color: #fff;
+    transition: font-size 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .like:hover{
-    color: chocolate;
+    color: #fff;
+    font-size: 35px;
     cursor: pointer;
 }
 
 .unlike{
+    font-size: 32px;
     color: chocolate;
+    transition: font-size 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 .unlike:hover{
+    font-size: 35px;
     cursor: pointer;
+}
+
+.edit_button{
+    margin-left: 94%;
+    margin-top: 10px;
+    font-size: 23px;
+    transition: margin-left 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+}
+
+.edit_button:hover{
+    margin-left: 93.5%;
+    color: chocolate;
+}
+
+.comment{
+    font-size: 32px;
+    transition: font-size 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+}
+
+.comment:hover{
+    font-size: 35px;
+    color: chocolate;
 }

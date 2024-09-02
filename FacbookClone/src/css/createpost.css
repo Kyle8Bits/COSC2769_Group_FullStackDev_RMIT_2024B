@@ -141,11 +141,11 @@
     height: 450px;
     width: 490px;
     background-color: grey;
-    padding: 10px;
     margin-bottom: 10px;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+    border-radius: 10px;
 }
 
 .image_review img{

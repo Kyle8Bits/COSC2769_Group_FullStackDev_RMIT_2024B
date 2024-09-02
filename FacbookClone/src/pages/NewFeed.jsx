@@ -12,29 +12,29 @@ function NewFeed() {
   const dispatch = useDispatch();
   const posts = useSelector((state) => state.posts.posts);
   const currentUser = useSelector((state) => state.profile); // Assuming you're using Redux to store the logged-in user's ID
-
+  const { status } = useSelector(state => state.posts);
   useEffect(() => {
     if (currentUser) {
       dispatch(fetchPosts({currentUser})); // Fetch posts for the logged-in user
     }
-  }, [dispatch, currentUser]);
+  }, [currentUser]);
 
 
 
-  const postList = posts.map((post) => {
-    console.log();
-    return(
+  const postList = posts.slice().reverse().map((post) => {
+    return (
       <Post
         key={post.post._id}
         postId={post.post.id}
         author_avatar={`http://localhost:1414${post.avatar}`}
+        author_username = {post.post.author}
         author_name={post.fullname}
         photos={post.post.images} // Pass the array of full image URLs
         caption={post.post.content}
-        reaction = {post.post.reactions}
+        reaction={post.post.reactions}
       />
-    )
-    });
+    );
+});
 
 
   return (
@@ -42,12 +42,12 @@ function NewFeed() {
          <Header/>
         <CreatePost/>
         <div className="post_list_home">
-          {/* <Post author_avatar={friend3} author_name={"Cristiano Rolnado"} photo={post1} caption={"Check out my brand new Youtube Channel \n Subcribe now"}/>
-          <Post author_avatar={Unknown} author_name={"CrabNest"} photo={post2} caption={"Say hello to our mascot, the crab  \n Sign up now"}/>
-          <Post author_avatar={friend4} author_name={"Lionel Messi"} photo={post3} caption={"Momment \n #worldcup2022"}/>
-          <Post author_avatar={avatar} author_name={"Mai Dang Khoa"} photo={post4} caption={"So they really make you build a Facebook"}/>
-          <Post author_avatar={avatar} author_name={"Mai Dang Khoa"} photo={post5} caption={"Damn, my friends are exhausted from deadlines."}/> */}
+          {status === 'loading'? <h1 style={{color:"white"}}>Loading...</h1>
+          :
+          <>
           {postList}
+          </>
+          }
         </div>
 
     </div>

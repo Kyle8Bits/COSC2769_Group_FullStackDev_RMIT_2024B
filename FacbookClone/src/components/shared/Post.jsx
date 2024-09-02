@@ -4,7 +4,8 @@ import { givereact, deletereact} from '../../redux/slice/postSlice';
 import '../../css/post.css'
 import CommentBox from './CommentBox';
 
-function Post({postId, author_avatar, author_name, photos, caption, reaction}) {
+function Post({postId, author_avatar, author_username, author_name, photos, caption, reaction,}) {
+    const currentUser = useSelector(state => state.profile);
     const dispatch = useDispatch();
     const [cmtAction, setcmtAction] = useState(false)
     const [react, setReact] = useState(reaction);
@@ -35,6 +36,12 @@ function Post({postId, author_avatar, author_name, photos, caption, reaction}) {
     
   return (
     <div className='post_container'>
+
+        {author_username === currentUser.username ? 
+            <i class="ri-edit-2-fill edit_button"></i>
+            :
+            <></>
+        }
         <div className="post_author" onClick={()=> setcmtAction(false)}>
 
             <div class="avatar-wrapper">
@@ -61,8 +68,8 @@ function Post({postId, author_avatar, author_name, photos, caption, reaction}) {
          </div>
         
         <div className="post_count">
-            <h5 className='like'>{react} likes</h5>
-            <h5 className='cmt'> 400 comments</h5>
+            <h5 className='like_count'>{react} likes</h5>
+            <h5 className='cmt_count'> 400 comments</h5>
         </div>
 
         <div className="post_react">
@@ -71,7 +78,7 @@ function Post({postId, author_avatar, author_name, photos, caption, reaction}) {
             :
             <i class="ri-thumb-up-line unlike" onClick={handleDisreact}></i>
             }
-            <i class="ri-chat-3-line" onClick={() => setcmtAction(true)}></i>
+            <i class="ri-chat-3-line comment" onClick={() => setcmtAction(true)}></i>
         </div>
         
         {cmtAction===true?<><CommentBox postId={postId}/>
