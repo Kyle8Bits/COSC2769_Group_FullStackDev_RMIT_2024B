@@ -1,0 +1,63 @@
+.user_card_container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+
+.card{
+    width: 400px;
+    height: 120px;
+    background-color: #242426;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    gap: 50px;
+    transition: border-radius 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.card:hover{
+    cursor: pointer;
+    background-color: chocolate;
+    border-radius: 70px;
+}
+
+.card:hover img{
+    border-radius: 50%;
+}
+
+.card:hover .user_name{
+    margin-bottom: 10px;
+}
+
+.card img{
+    margin-left: 10px;
+    border-radius: 10px;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    transition: border-radius 0.5s cubic-bezier(0.5, 0.8, 0.25, 1);
+}
+
+.card .user_name{
+    color: #fff;
+    margin: 0px;
+    transition: margin-bottom 0.5s cubic-bezier(0.5, 0.8, 0.25, 1);
+}
+
+.suspend_user, .resume_user {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: 30px;
+    height: 40px;
+    align-items: center;
+}
+
+.suspend_user i:hover, .resume_user i:hover {
+    background-color: #242426;
+    border-radius: 50px;
+}

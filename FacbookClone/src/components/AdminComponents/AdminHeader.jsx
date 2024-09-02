@@ -4,7 +4,7 @@ import '../../css/adminheader.css'
 
 import { useSelector } from 'react-redux';
 
-function ProfileHeader() {
+function AdminHeader() {
     return (
       <div className="header_admin_container">
 
@@ -30,4 +30,4 @@ function ProfileHeader() {
     );
   }
 
-export default ProfileHeader
+export default AdminHeader

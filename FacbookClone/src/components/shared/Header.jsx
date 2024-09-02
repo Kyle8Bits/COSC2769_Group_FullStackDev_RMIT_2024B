@@ -8,7 +8,7 @@ import NotificationList from './NotificationList'
 
 function Header() {
 
-  const { avatar } = useSelector(state => state.profile);
+  const { avatar, isAdmin } = useSelector(state => state.profile);
 
   const [dropbar,setDropBar] = useState(false);
   const [notification,setNotiBar] = useState(false);
@@ -33,10 +33,12 @@ function toogelNoti(){
         </div>
 
         <div className="header_nav">
-        <NavLink to={"/home"}><i class="ri-home-5-fill"></i></NavLink>
-        <i class="ri-team-fill"></i>
-        <i class="ri-group-2-fill"></i>
-        <i class="ri-tools-fill"></i>
+          <NavLink to={"/home"}><i class="ri-home-5-fill"></i></NavLink>
+          <i class="ri-team-fill"></i>
+          
+          <NavLink to={"/grouplist"}><i class="ri-group-2-fill"></i></NavLink>
+
+          {isAdmin && <NavLink to={"/admin/resume"}><i class="ri-tools-fill"></i></NavLink>}
         </div>
     
         <div className="noti_action">

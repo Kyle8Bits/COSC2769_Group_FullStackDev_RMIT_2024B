@@ -3,10 +3,15 @@ import { useSelector,useDispatch } from 'react-redux';
 import '../../css/post.css'
 import { fetchPosts,addPost } from '../../redux/slice/postSlice';
 import CommentBox from './CommentBox';
+import { deletePost } from '../../redux/slice/adminSlice';
 
-function Post({author_avatar, author_name, photos, caption}) {
-
+function Post({post, author_avatar, author_name, photos, caption}) {
+    const dispatch = useDispatch();
     const [cmtAction, setcmtAction] = useState(false)
+
+    const handleDeletePost = () => {
+        dispatch(deletePost(post._id));
+    }
 
     const getImageContainerClass = () => {
         if (photos.length === 1) return 'full-width';
@@ -25,6 +30,10 @@ function Post({author_avatar, author_name, photos, caption}) {
                 <h2 className="name">{author_name}</h2>
                 <h3 className="date">19 August 2024</h3>
             </div>
+            {isAdmin && <div className='delete_post_button' onClick={handleDeletePost}>
+                Delete Post
+            </div>}
+            
 
         </div>
         <div className="post_caption">

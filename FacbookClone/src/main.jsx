@@ -9,7 +9,7 @@ import {store} from './redux/store'
 
 import NotFound from './NotFound'
 import Login from './pages/Login'
-import GroupFeed from './pages/GroupFeed'
+import GroupList from './pages/GroupList'
 import Profile from './pages/Profile'
 import ForgotPassword from './pages/ForgotPassword';
 import ChangePassword from './pages/ChangePassword';
@@ -122,8 +122,8 @@ const router = createBrowserRouter([
   },
 
   {
-    path: "/group",
-    element: <GroupFeed/>,
+    path: "/grouplist",
+    element: <GroupList/>,
     errorElement: <NotFound />,
   },  
   

@@ -12,6 +12,7 @@ const initialState = {
     avatar: '',
     banner:'',
     info: [],
+    isSuspend: false,
     isAdmin: false,
     status: 'idle', // idle, loading, succeeded, failed
     error: null
