@@ -39,14 +39,16 @@ import axios from 'axios';
 
 // Async thunk to fetch comments for a specific post
 export const fetchCommentsForPost = createAsyncThunk('comment/fetchCommentsForPost', async (postId) => {
-    const response = await axios.get(`http://localhost:1414/comment/posts/${postId}`);
+    const response = await axios.get(`http://localhost:1414/comment/posts`, {
+        params: {postId}
+    });
     console.log(response.data);
     return response.data;
 });
 
 // Async thunk to add a new comment to a specific post
 export const addCommentToPost = createAsyncThunk('comment/addCommentToPost', async ({ postId, commentData }) => {
-    const response = await axios.post(`http://localhost:1414/comment/posts/${postId}`, commentData);
+    const response = await axios.post(`http://localhost:1414/comment/posts`, commentData);
     return response.data;
 });
 
