@@ -10,6 +10,7 @@ import otheruserReducer from "./slice/otheruserSlice";
 import searchReducer from './slice/searchSlice'
 import banUserReducer from './slice/banUserSlice'
 import activeUserReducer from './slice/activeUserSlice'
+import updatePostReducer from './slice/editPostSlice'
 
 export const store = configureStore({
     reducer:{
@@ -24,6 +25,7 @@ export const store = configureStore({
         search:searchReducer,
         ban: banUserReducer,
         active: activeUserReducer,
+        editPost: updatePostReducer,
     }
     
 })
