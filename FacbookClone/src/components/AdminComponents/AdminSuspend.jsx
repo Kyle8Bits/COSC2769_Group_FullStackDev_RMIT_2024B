@@ -41,9 +41,10 @@ function AdminSuspend() {
                 </div>
             </div>
 
+        
 
         <div className='suspend_list_container'>
-            <div className="userlist">
+            <div className="userlist">               
                 {activeUsersList}
             </div>
         </div>

@@ -18,12 +18,13 @@ function NewFeed() {
     if (currentUser) {
       dispatch(fetchPosts({currentUser})); // Fetch posts for the logged-in user
     }
-  }, [dispatch, currentUser]);
+  }, [dispatch, currentUser, posts]);
 
 
   const postList = posts.map((post) => (
     <Post
-      key={post._id}
+      key={post.post._id}
+      postId={post.post._id}
       author_avatar={`http://localhost:1414${post.avatar}`}
       author_name={post.fullname}
       photos={post.post.images} // Pass the array of full image URLs
@@ -43,6 +44,8 @@ function NewFeed() {
           <Post author_avatar={avatar} author_name={"Mai Dang Khoa"} photo={post4} caption={"So they really make you build a Facebook"}/>
           <Post author_avatar={avatar} author_name={"Mai Dang Khoa"} photo={post5} caption={"Damn, my friends are exhausted from deadlines."}/> */}
           {postList}
+          
+
         </div>
 
     </div>

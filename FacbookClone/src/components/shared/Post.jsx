@@ -5,13 +5,20 @@ import { fetchPosts,addPost } from '../../redux/slice/postSlice';
 import CommentBox from './CommentBox';
 import { deletePost } from '../../redux/slice/adminSlice';
 
-function Post({post, author_avatar, author_name, photos, caption}) {
+function Post({postId, author_avatar, author_name, photos, caption}) {
     const dispatch = useDispatch();
+    const isAdmin = useSelector(state => state.profile.isAdmin);
     const [cmtAction, setcmtAction] = useState(false)
 
     const handleDeletePost = () => {
-        dispatch(deletePost(post._id));
-    }
+        console.log("Received Post ID in handleDeletePost: ", postId); // Check if postId is received
+        if (postId) {
+            dispatch(deletePost(postId));  // Pass the correct post ID
+            console.log("Deleting Post ID: ", postId);
+        } else {
+            console.error("Post ID is undefined");
+        }
+    };
 
     const getImageContainerClass = () => {
         if (photos.length === 1) return 'full-width';
@@ -30,6 +37,7 @@ function Post({post, author_avatar, author_name, photos, caption}) {
                 <h2 className="name">{author_name}</h2>
                 <h3 className="date">19 August 2024</h3>
             </div>
+
             {isAdmin && <div className='delete_post_button' onClick={handleDeletePost}>
                 Delete Post
             </div>}

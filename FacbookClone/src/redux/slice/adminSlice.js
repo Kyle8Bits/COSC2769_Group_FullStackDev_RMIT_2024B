@@ -33,11 +33,14 @@ export const rejectGroupCreation = createAsyncThunk('admin/reject', async (group
 })
 
 export const deletePost = createAsyncThunk('/admin/deletePost', async (postId) => {
+    console.log("Thunk received Post ID: ", postId); // Check if postId reaches the thunk
+    
     const response = await axios.delete(`http://localhost:1414/admin/delete/${postId}`);
     return response.data;
 });
 
 export const deleteComment = createAsyncThunk('admin/deleteComment', async ({postId, commentId}) => {
+    console.log("Thunk received Post ID: ", postId); // Check if postId reaches the thunk
     const response = await axios.delete(`http://localhost:1414/admin/delete/${postId}/${commentId}`);
     return response.data;
 });
@@ -47,6 +50,7 @@ const adminSlice = createSlice({
     initialState: {
         users: [],
         groupRequests: [],
+        posts: [],
         status: 'idle',
         error: null,
     },
@@ -81,7 +85,7 @@ const adminSlice = createSlice({
             })
             .addCase(deletePost.fulfilled, (state, action) => {
                 state.status = 'success';
-                state.posts = state.posts.fitler(post => post._id !== action.payload.postId);
+                state.posts = state.posts.filter(post => post._id !== action.payload.postId);
             })
             .addCase(deleteComment.fulfilled, (state, action) => {
                 state.status = 'success';
