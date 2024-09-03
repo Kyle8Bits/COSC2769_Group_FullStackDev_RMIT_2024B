@@ -129,10 +129,9 @@ import { fetchCommentsForPost, addCommentToPost } from "../../redux/slice/commen
 import Comment from "./Comment"; // Import the Comment component
 import "../../css/commentBox.css";// Import your CSS file
 
-function CommentBox({ postId }) { // Accept postId as a prop
+function CommentBox({ postId, currentUser }) { // Accept postId as a prop
     const comments = useSelector((state) => state.comment.commentList);
     const dispatch = useDispatch();
-    const currentUser = useSelector((state) => state.profile);
     const [inputValue, setInputValue] = useState('');
 
     useEffect(() => {
@@ -165,7 +164,7 @@ function CommentBox({ postId }) { // Accept postId as a prop
                 <h1 className="comment-title">COMMENTS</h1>
                 <div className="comments-container">
                     {comments && comments.map((comment) => (
-                        <Comment key={comment._id} user={comment.author} text={comment.content} />
+                        <Comment key={comment._id} name={comment.author} text={comment.content} />
                     ))}
                 </div>
                 <div className="input-container">

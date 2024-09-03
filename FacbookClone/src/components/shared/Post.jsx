@@ -83,7 +83,7 @@ function Post({postId, author_avatar, author_username, author_name, photos, capt
             <i class="ri-chat-3-line comment" onClick={() => setcmtAction(true)}></i>
         </div>
         
-        {cmtAction===true?<><CommentBox postId={postId}/>
+        {cmtAction===true?<><CommentBox postId={postId} currentUser={currentUser}/>
         </>:<></>}
 
     </div>

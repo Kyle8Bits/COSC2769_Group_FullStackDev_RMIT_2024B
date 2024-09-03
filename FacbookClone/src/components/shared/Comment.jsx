@@ -22,13 +22,13 @@ import React from 'react';
 import PropTypes from 'prop-types'; // Import PropTypes for prop validation
 import '../../css/comment.css'; // Import the CSS file
 
-const Comment = ({ user, text, time }) => {
+const Comment = ({ name, avatar, text, time }) => {
   return (
     <div className="comment-container">
-      <img src={user.avatar} alt="avatar" className="avatar" />
+      <img src={avatar} alt="avatar" className="avatar" />
       <div className="comment-content">
         <div className="comment-header">
-          <span className="username">{user.name}</span>
+          <span className="username">{name}</span>
           <span className="time">{time}</span>
         </div>
         <div className="comment-text">{text}</div>
