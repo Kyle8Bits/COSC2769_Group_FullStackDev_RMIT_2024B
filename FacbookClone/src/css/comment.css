@@ -6,6 +6,7 @@
   border-radius: 10px;
   margin-bottom: 10px;
   width: 100%;
+  height: fit-content;
   max-width: 100%; /* Ensure it fits within the parent container */
   box-sizing: border-box; /* Ensure padding and border are included in the width */
 }
@@ -21,6 +22,7 @@
   display: flex;
   flex-direction: column;
   background-color: #fff;
+ 
   padding: 10px;
   border-radius: 10px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
@@ -47,5 +49,76 @@
 
 .comment-text {
   color: #050505;
-  font-size: 14px;
+  font-size: 15px;
+  word-wrap: break-word
+}
+
+.edit_cmt_div{
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.edit_cmt_div i{
+  font-size: 30px;
+  color: grey;
+}
+
+.edit_cmt_div i:hover{
+  color: chocolate;
+}
+
+.edit_content_ctn{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.edit_content_ctn i{
+  font-size: 30px;
+  color: grey;
+  margin-right: 5px;
+  transition: margin-right 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.edit_content_ctn i:hover{
+  font-size: 30px;
+  color: chocolate;
+  margin-right: 0px;
+}
+
+.new_content {
+  display: block; /* Ensure the element takes the full width */
+  width: 100%; /* Ensure the textarea takes the full width */
+  height: 100px; /* Allow height to adjust automatically */
+  font-size: 20px;
+  white-space: pre-wrap; /* Preserve whitespace and wrap text */
+  word-wrap: break-word;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  resize: none; /* Prevent manual resizing */
+  overflow: hidden; /* Hide overflow */
+}
+
+.edit_decide{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.decide_action_delete i{
+  font-size: 30px;
+}
+.decide_action_delete h1{
+  margin: 0px;
+  padding: 0px;
+  font-size: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
 }

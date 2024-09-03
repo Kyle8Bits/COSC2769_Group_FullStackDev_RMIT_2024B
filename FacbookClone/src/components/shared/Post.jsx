@@ -19,6 +19,7 @@ function Post({postId, author_avatar, author_username, author_name, photos, capt
         return '';
     };
     
+    
     useEffect(() => {
         setReact(reaction);
     }, [reaction]);
@@ -83,7 +84,7 @@ function Post({postId, author_avatar, author_username, author_name, photos, capt
             <i class="ri-chat-3-line comment" onClick={() => setcmtAction(true)}></i>
         </div>
         
-        {cmtAction===true?<><CommentBox postId={postId} currentUser={currentUser}/>
+        {cmtAction===true?<><CommentBox postId={postId} currentUser={currentUser} actionLeft={()=> setcmtAction(false)}/>
         </>:<></>}
 
     </div>

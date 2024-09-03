@@ -1,37 +1,3 @@
-// import { createSlice } from "@reduxjs/toolkit";
-
-
-// const initialState = {
-//     commentList: [    
-//         {
-//             id: 1,
-//             user: { name: 'John Doe', avatar: 'https://via.placeholder.com/40' },
-//             text: 'This is a great post!',
-//             time: '2 hours ago',
-//         },
-//         {
-//             id: 2,
-//             user: { name: 'Jane Smith', avatar: 'https://via.placeholder.com/40' },
-//             text: 'Thanks for sharing!',
-//             time: '1 hour ago',
-//         },
-//     ],
-// }
-     
-  
-// const commentsSlice = createSlice({
-//     name: 'comments',
-//     initialState,
-//     reducers:{
-//         increase(state,action){
-//             state.commentList.push(action.payload);
-//         },
-//     },
-// });
-
-// export const {increase} = commentsSlice.actions;
-// export default commentsSlice.reducer;
-
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
@@ -39,7 +5,7 @@ import axios from 'axios';
 
 // Async thunk to fetch comments for a specific post
 export const fetchCommentsForPost = createAsyncThunk('comment/fetchCommentsForPost', async (postId) => {
-    const response = await axios.get(`http://localhost:1414/comment/posts`, {
+    const response = await axios.get(`http://localhost:1414/comment/getComments`, {
         params: {postId}
     });
     console.log(response.data);
@@ -48,9 +14,45 @@ export const fetchCommentsForPost = createAsyncThunk('comment/fetchCommentsForPo
 
 // Async thunk to add a new comment to a specific post
 export const addCommentToPost = createAsyncThunk('comment/addCommentToPost', async ({ postId, commentData }) => {
-    const response = await axios.post(`http://localhost:1414/comment/posts`, commentData);
+    const response = await axios.post(`http://localhost:1414/comment/addComment`, commentData, {
+        params: {postId}
+    });
     return response.data;
 });
+
+export const deleteComment = createAsyncThunk('comment/deleteComment', async ({ postId, commentId}) => {
+    try{
+    const response = await axios.delete(`http://localhost:1414/comment/deleteComment`, {
+        params: {
+            postId,
+            commentId
+        }
+    });
+
+    return response.data
+    }
+    catch(err){
+        console.log(err);
+    }
+});
+
+
+export const editComment = createAsyncThunk('comment/editComment', async ({ commentId, newContent}) => {
+    try{
+
+        const response = await axios.post(`http://localhost:1414/comment/editComment`, {
+            params: {
+                commentId,
+                newContent
+            }
+        });
+
+        return response.data
+    }
+    catch(err){
+        console.log(err);
+    }
+})
 
 // Define the initial state
 const initialState = {
