@@ -22,6 +22,7 @@ function NewFeed() {
 
 
   const postList = posts.slice().reverse().map((post) => {
+    const hasReacted = post.post.reactBy.includes(currentUser.username);
     return (
       <Post
         key={post.post._id}
@@ -35,6 +36,7 @@ function NewFeed() {
         reaction = {post.post.reactions}
         commentCount={ post.post.comments.length}
         currentUser={currentUser}
+        hasReacted={hasReacted} 
       />
     );
 });

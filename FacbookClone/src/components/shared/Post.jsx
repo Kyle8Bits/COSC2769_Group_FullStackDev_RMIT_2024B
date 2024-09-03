@@ -5,12 +5,12 @@ import '../../css/post.css'
 import { useNavigate } from 'react-router-dom';
 import CommentBox from './CommentBox';
 
-function Post({postId, commentCount ,author_avatar, author_username, author_name, photos, caption, reaction, date}) {
+function Post({postId, commentCount ,author_avatar, author_username, author_name, photos, caption, reaction, date, hasReacted}) {
     const currentUser = useSelector(state => state.profile);
     const dispatch = useDispatch();
     const [cmtAction, setcmtAction] = useState(false)
     const [react, setReact] = useState(reaction);
-    const [isLike, setIsLike] = useState(false);
+    const [isLike, setIsLike] = useState(hasReacted);
 
     const getImageContainerClass = () => {
         if (photos.length === 1) return 'full-width';
@@ -25,13 +25,13 @@ function Post({postId, commentCount ,author_avatar, author_username, author_name
     }, [reaction]);
 
     const handleReact= ()=> {
-        dispatch(givereact({id: {postId}}))
+        dispatch(givereact({id: {postId}, currentUser: currentUser.username}))
         setReact(prev => prev+1);
         setIsLike(true);
     }
 
     const handleDisreact= ()=> {
-        dispatch(deletereact({id: {postId}}))
+        dispatch(deletereact({id: {postId}, currentUser: currentUser.username}))
         setReact(prev => prev-1);
         setIsLike(false);
     }

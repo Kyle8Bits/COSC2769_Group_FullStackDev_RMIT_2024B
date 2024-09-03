@@ -31,11 +31,14 @@ export const addPost = createAsyncThunk('posts/createPost', async (postData, {re
 });
 
 
-export const givereact = createAsyncThunk('/post/giveReact', async ({id}, {rejectWithValue})=>{
+export const givereact = createAsyncThunk('/post/giveReact', async ({id, currentUser}, {rejectWithValue})=>{
     try{
         console.log(id)
         const response = await axios.post('http://localhost:1414/posts/giveReact', {
-            data: {id : id}
+            data: {
+                id : id,
+                currentUser: currentUser
+            },
         });
 
         return id;
@@ -45,11 +48,14 @@ export const givereact = createAsyncThunk('/post/giveReact', async ({id}, {rejec
     }
 })
 
-export const deletereact = createAsyncThunk('/post/giveReact', async ({id}, {rejectWithValue})=>{
+export const deletereact = createAsyncThunk('/post/giveReact', async ({id, currentUser}, {rejectWithValue})=>{
     try{
         console.log(id)
         const response = await axios.post('http://localhost:1414/posts/deleteReact', {
-            data: {id : id}
+            data: {
+                id : id,
+                currentUser: currentUser
+            }
         });
 
         return id;
