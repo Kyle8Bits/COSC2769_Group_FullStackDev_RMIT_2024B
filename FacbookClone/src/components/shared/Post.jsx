@@ -4,7 +4,7 @@ import { givereact, deletereact} from '../../redux/slice/postSlice';
 import '../../css/post.css'
 import CommentBox from './CommentBox';
 
-function Post({postId, author_avatar, author_name, photos, caption, reaction}) {
+function Post({postId, author_avatar, author_name, photos, caption, reaction, currentUser}) {
     const dispatch = useDispatch();
     const [cmtAction, setcmtAction] = useState(false)
     const [react, setReact] = useState(reaction);
@@ -74,7 +74,7 @@ function Post({postId, author_avatar, author_name, photos, caption, reaction}) {
             <i class="ri-chat-3-line" onClick={() => setcmtAction(true)}></i>
         </div>
         
-        {cmtAction===true?<><CommentBox postId={postId}/>
+        {cmtAction===true?<><CommentBox postId={postId} currentUser={currentUser}/>
         </>:<></>}
 
     </div>
