@@ -23,7 +23,6 @@ function Login() {
       dispatch(loginUser({ username, password }));
   };
 
-
   useEffect(() => {
     if (status === 'succeeded' ) {
         navigate('/home'); // or '/' depending on your routes

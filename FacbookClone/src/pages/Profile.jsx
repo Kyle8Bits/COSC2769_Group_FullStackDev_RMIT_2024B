@@ -7,6 +7,7 @@ function Profile() {
     <div>
       <Header/>
       <ProfileHeader/>
+
       <Outlet/>
     </div>
   )
