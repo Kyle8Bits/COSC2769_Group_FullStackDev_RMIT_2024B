@@ -12,6 +12,8 @@ function CreatePost() {
 
   const [selectedValue, setSelectedValue] = useState("Public");
 
+  const [content, setContent] = useState("");
+
   const [preview, setPreview] = useState([]);
 
   const [numberPhoto, setNumberPhoto] = useState(0);
@@ -40,7 +42,8 @@ function CreatePost() {
   };
 
   const handleInputContent = (e) => {
-    setFormData((prev) => ({ ...prev, content: e.target.value }));
+    setContent(e.target.value);
+    setFormData((prev) => ({ ...prev, content: content }));
   };
 
   const handleStoreImage = (e) => {
@@ -88,6 +91,7 @@ function CreatePost() {
     setNumberPhoto(0);
     setPreview([]);
     setPostAction(false);
+    setContent("");
     await dispatch(addPost(data));
     dispatch(fetchPosts({ currentUser }));
   };
@@ -120,7 +124,7 @@ function CreatePost() {
               <textarea
                 className="caption_input"
                 placeholder="Whats on your mind..."
-                value={formData.content}
+                value={content}
                 onChange={handleInputContent}
               />
 

@@ -4,7 +4,7 @@ import "../../css/createpost.css";
 import { useNavigate } from "react-router-dom";
 import { addPost, fetchPosts } from "../../redux/slice/postSlice";
 import { useParams } from "react-router-dom";
-import { getCurrentPost } from "../../redux/slice/editPostSlice";
+import { editCurrentPost, getCurrentPost, deleteCurrentPost } from "../../redux/slice/editPostSlice";
 
 function UpdatePost() {
     const postCurrent = useParams();
@@ -13,17 +13,18 @@ function UpdatePost() {
     const currentUser = useSelector((state) => state.profile);
     const {post} = useSelector((state) => state.editPost)
     const [postAction, setPostAction] = useState(false);
-
     const [selectedValue, setSelectedValue] = useState("Public");
-
+    const [previewName, setPreviewName] = useState([]);
     const [preview, setPreview] = useState([]);
+
+    const [deleteConfirm, setConfirm] = useState(false);
 
     const [numberPhoto, setNumberPhoto] = useState(0);
 
     useEffect(()=>{
         const fetchPost = async () => {
             const resultAction = await dispatch(getCurrentPost(postCurrent));
-            
+            setSelectedValue(resultAction.payload.visibility);
         
             if (getCurrentPost.fulfilled.match(resultAction)) { 
                 setFormData(prev => ({ ...prev, content: resultAction.payload.content, images:[...resultAction.payload.images] }));
@@ -57,6 +58,7 @@ function UpdatePost() {
       ...prevFormData,
       visibility: value, // Update formData visibility to match selected value
     }));
+
   };
 
   const handleInputContent = (e) => {
@@ -65,12 +67,7 @@ function UpdatePost() {
 
   const handleStoreImage = (e) => {
     const file = e.target.files[0]; // Get the first (and only) file selected
-    console.log(file);
-    // setFormData((prev) => ({
-    //   ...prev,
-    //   images: [...prev.images, file], // Append only the file name to the images array
-    // }));
-
+    setPreviewName((prev) => [...prev, file]);
     if (file) {
       const reader = new FileReader();
       reader.onload = (event) => {
@@ -81,42 +78,74 @@ function UpdatePost() {
     }
   };
 
-  const handleCancel = () => {
-    setNumberPhoto(0);
-    setPreview([]);
-    setPostAction(false);
-    setFormData((prevFormData) => ({
-      ...prevFormData, // Spread the previous state to keep other properties unchanged
-      images: [], // Set the images array back to an empty array
-    }));
-  };
 
-  const handlePost = async (e) => {
+  const handleUpdate = async (e) => {
     e.preventDefault();
+    
+    // Combine preview images with existing images
+    const allImages = [...formData.images, ...previewName];
+  
+    // Create a new FormData instance
     const data = new FormData();
-
+  
     // Append other form fields
     data.append("author", formData.author);
     data.append("content", formData.content);
     data.append("visibility", formData.visibility);
-
-    // Append images to the FormData
-    formData.images.forEach((image) => {
-      data.append("post", image); // Match the 'post' field name here
+  
+    // Append images to FormData
+    allImages.forEach((image, index) => {
+      data.append(`post`, image); // Ensure your backend can handle this field naming
     });
-
+    
+    console.log(allImages)
+    console.log(previewName)
     setNumberPhoto(0);
     setPreview([]);
-    setPostAction(false);
-    await dispatch(addPost(data));
+    navigate('/home');
+
+
+    dispatch(editCurrentPost({postId: postCurrent, data: data}));
     dispatch(fetchPosts({ currentUser }));
+  }  
+
+
+  const handleRemoveImagePrevious = (indexToRemove) => {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      images: prevFormData.images.filter((_, index) => index !== indexToRemove),
+    }));
+
+    setNumberPhoto(prev => prev -1);
   };
+
+  const handleRemovePreviewImage= (indexToRemove) => {
+    setPreview((prevPreview) => prevPreview.filter((_, index) => index !== indexToRemove));
+    setNumberPhoto(prev => prev -1);
+  };
+
+  const handleConfirmDelete = () => {
+    dispatch(deleteCurrentPost(postCurrent));
+    dispatch(fetchPosts({ currentUser }));
+    navigate('/home');
+  }
+
+
 
   return (
     <div className="create_post_container">
       <div className="create_post_frame">
         <div className="frame">
           <div className="visibility_option">
+
+            {
+            deleteConfirm ? 
+                <h1 className="confirm_state">Are you sure you want to delete this post? <i onClick={handleConfirmDelete} class="ri-checkbox-circle-fill"></i><i onClick={()=> setConfirm(false)} class="ri-close-circle-fill"></i></h1>
+                :
+                <button className="delete_post" onClick={()=> setConfirm(true)}>Delete Post</button>
+            }
+
+
             <select id="comboBox" value={selectedValue} onChange={handleChange}>
               <option value={selectedValue} disabled>
                 {selectedValue}
@@ -137,17 +166,22 @@ function UpdatePost() {
           {numberPhoto !== 0 ? (
             <div className={`image_review ${getImageContainerClass()}`}>
               {preview.map((src, index) => (
-                <img className="post-image" key={index} src={src} />
+                
+                <img className="post-image"
+                key={index} 
+                src={src} 
+                alt={`Preview image ${index}`}
+                onClick={() => handleRemovePreviewImage(index)} // Add onClick handler
+                />
               ))}
 
           
             {formData.images.map((image, index) => (
                 <img 
-                    
+                    onClick={() => handleRemoveImagePrevious(index)}
                     className="post-image"
                     key={index} 
                     src={`http://localhost:1414${image}`} 
-                    alt={`Post image ${index}`} 
                 />
             ))}
             
@@ -182,7 +216,7 @@ function UpdatePost() {
 
           <div className="post_button">
             <button onClick={()=>navigate('/home')}>Cancel</button>
-            <button >Update</button>
+            <button onClick={handleUpdate}>Update</button>
           </div>
         </div>
       </div>
