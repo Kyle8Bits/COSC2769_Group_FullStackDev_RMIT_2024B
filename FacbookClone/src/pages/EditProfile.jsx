@@ -36,6 +36,7 @@ const EditProfile = () => {
   const handleAvatarChange = (e) => {
       setFormData((prevData) => ({ ...prevData, avatar: e.target.files[0] }));
       setUpload(e.target.files[0].name);
+      console.log(e.target.files[0]);
   };
 
   const handleBannerChange = (e) => {
@@ -48,6 +49,7 @@ const EditProfile = () => {
       const data = new FormData();
       for (const key in formData) {
           data.append(key, formData[key]);
+          console.log(formData[key])
       }
       dispatch(updateProfile(data));
   };

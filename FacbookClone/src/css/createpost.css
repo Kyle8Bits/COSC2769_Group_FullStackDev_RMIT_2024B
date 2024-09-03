@@ -34,9 +34,8 @@
 }
 
 .create_post_container .create_post_frame .frame{
-    width: 500px;
-    height: 600px;
-    overflow-y: auto;
+    width: 550px;
+    height: fit-content;
     position: absolute;
     background-color: #242426;
     top: 50%;
@@ -49,10 +48,14 @@
 }
 
 .create_post_frame .frame .caption_input{
+    flex-grow: 1;
     width: 90%;
     color: #fff;
-    margin: 10px 10px 10px 10px;
+    overflow-y: auto;
+    box-sizing: border-box;
+    margin: 10px 10px 15px 10px;
     height: 20%;
+    max-height: 20%;
     background-color: #242426;
     outline: none;
     border: none;
@@ -71,7 +74,7 @@
     position: relative;
     display: inline-block;
     width: 90%;
-    height: 60%;
+    height: fit-content;
 }
 
 .upload-label {
@@ -87,7 +90,7 @@
     font-weight: 600;
     height: 100%;
     width: 100%;
-    border-radius: 20px;
+    border-radius: 15px;
 }
 
 .upload-label i {
@@ -107,10 +110,12 @@
 }
 
 .post_button{
-    margin-top: 5%;
-    width: 90%;
     display: flex;
-    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
+    width: 90%;
+    padding: 15px;
+    height: 5%;
     gap: 10px;
 }
 
@@ -130,4 +135,80 @@
 .post_button button:hover{
     background-color: chocolate;
     cursor: pointer;
+}
+
+.image_review{
+    height: 450px;
+    width: 490px;
+    background-color: grey;
+    margin-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    border-radius: 10px;
+}
+
+.image_review img{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.visibility_option{
+    width: 100%;
+    height: 8%;
+    display: flex;
+    justify-content: end;
+    padding-right: 10px;
+    padding-top: 10px;
+}
+.visibility_option select{
+    height: 100%;
+    border-radius: 30px;
+    padding: 10px;
+    font-size: 15px;
+    background-color: #323436;
+    color: #fff;
+}
+
+.visibility_option select:hover{
+    background-color: chocolate;
+}
+
+
+
+.full-width .post-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.half-width .post-image {
+    width: 48%; /* Two images, each taking half the width with some space between */
+    height: 100%;
+    object-fit: cover;
+}
+
+.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 10px;
+}
+
+.grid-layout .post-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.maximum_trigger{
+    padding: 10px;
+    text-align: center;
+    color: #fff;
+    width: 80%;
+}
+
+.maximum_trigger h1{
+    margin: 0px;
 }

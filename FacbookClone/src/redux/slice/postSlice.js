@@ -14,22 +14,22 @@ export const fetchPosts = createAsyncThunk('posts/fetchPosts', async ({currentUs
 });
 
 // // Async thunk to add a new post
-// export const addPost = createAsyncThunk('posts/addPost', async (postData) => {
-//     const response = await axios.post(API_URL, postData);
-//     return response.data;
-// });
+export const addPost = createAsyncThunk('posts/createPost', async (postData, {rejectWithValue}) => {
 
-// // Async thunk to update a post
-// export const updatePost = createAsyncThunk('posts/updatePost', async ({ id, postData }) => {
-//     const response = await axios.put(`${API_URL}/${id}`, postData);
-//     return response.data;
-// });
+    try{
+        const response = await axios.post('http://localhost:1414/posts/createPost', postData, {
+            headers:{
+                'Content-Type': 'multipart/form-data'
+            }
+        });
 
-// // Async thunk to delete a post
-// export const deletePost = createAsyncThunk('posts/deletePost', async (id) => {
-//     await axios.delete(`${API_URL}/${id}`);
-//     return id;
-// });
+        return response.data.post;
+    }
+    catch{err}{
+        return rejectWithValue(err.response.data)
+    }
+});
+
 
 export const givereact = createAsyncThunk('/post/giveReact', async ({id}, {rejectWithValue})=>{
     try{
