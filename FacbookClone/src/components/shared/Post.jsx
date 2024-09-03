@@ -5,7 +5,7 @@ import '../../css/post.css'
 import { useNavigate } from 'react-router-dom';
 import CommentBox from './CommentBox';
 
-function Post({postId, author_avatar, author_username, author_name, photos, caption, reaction, date}) {
+function Post({postId, commentCount ,author_avatar, author_username, author_name, photos, caption, reaction, date}) {
     const currentUser = useSelector(state => state.profile);
     const dispatch = useDispatch();
     const [cmtAction, setcmtAction] = useState(false)
@@ -72,7 +72,7 @@ function Post({postId, author_avatar, author_username, author_name, photos, capt
         
         <div className="post_count">
             <h5 className='like_count'>{react} likes</h5>
-            <h5 className='cmt_count'> 400 comments</h5>
+            <h5 className='cmt_count'> {commentCount} comments</h5>
         </div>
 
         <div className="post_react">

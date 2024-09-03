@@ -33,6 +33,7 @@ function NewFeed() {
         photos={post.post.images} // Pass the array of full image URLs
         caption={post.post.content}
         reaction = {post.post.reactions}
+        commentCount={ post.post.comments.length}
         currentUser={currentUser}
       />
     );
