@@ -25,7 +25,8 @@ function NewFeed() {
     return (
       <Post
         key={post.post._id}
-        postId={post.post._id}
+        date = {post.post.createdAt}
+        postId={post.post.id}
         author_avatar={`http://localhost:1414${post.avatar}`}
         author_username = {post.post.author}
         author_name={post.fullname}

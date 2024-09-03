@@ -24,6 +24,7 @@ import AdminApprove from './components/AdminComponents/AdminApprove';
 import AdminResume from './components/AdminComponents/AdminResume';
 import EditProfile from './pages/EditProfile';
 import BasicInfo from './pages/BasicInfo';
+import UpdatePost from './components/shared/UpdatePost';
 
 
 const router = createBrowserRouter([
@@ -56,6 +57,13 @@ const router = createBrowserRouter([
     element: <NewFeed/>,
     errorElement: <NotFound/>
   },
+
+  {
+    path: "/edit/:postId",
+    element:<UpdatePost/>,
+    errorElement: <NotFound/>
+  },
+
 
   {
     path: "/:username",

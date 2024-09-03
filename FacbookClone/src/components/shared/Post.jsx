@@ -2,9 +2,10 @@ import React, { useState,useEffect } from 'react';
 import { useSelector,useDispatch } from 'react-redux';
 import { givereact, deletereact} from '../../redux/slice/postSlice';
 import '../../css/post.css'
+import { useNavigate } from 'react-router-dom';
 import CommentBox from './CommentBox';
 
-function Post({postId, author_avatar, author_username, author_name, photos, caption, reaction,}) {
+function Post({postId, author_avatar, author_username, author_name, photos, caption, reaction, date}) {
     const currentUser = useSelector(state => state.profile);
     const dispatch = useDispatch();
     const [cmtAction, setcmtAction] = useState(false)
@@ -34,11 +35,12 @@ function Post({postId, author_avatar, author_username, author_name, photos, capt
         setIsLike(false);
     }
     
+    const navigate = useNavigate();
   return (
     <div className='post_container'>
 
         {author_username === currentUser.username ? 
-            <i class="ri-edit-2-fill edit_button"></i>
+            <i onClick={() => navigate(`/edit/${postId}`)} class="ri-edit-2-fill edit_button"></i>
             :
             <></>
         }
@@ -49,7 +51,7 @@ function Post({postId, author_avatar, author_username, author_name, photos, capt
             </div>
             <div className='text_container'>
                 <h2 className="name">{author_name}</h2>
-                <h3 className="date">19 August 2024</h3>
+                <h3 className="date">{date}</h3>
             </div>
 
         </div>
