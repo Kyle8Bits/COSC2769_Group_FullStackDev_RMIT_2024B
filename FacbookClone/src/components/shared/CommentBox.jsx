@@ -14,7 +14,7 @@ function CommentBox({ postId, currentUser, actionLeft }) { // Accept postId as a
         if (postId) {
             dispatch(fetchCommentsForPost(postId)); // Fetch comments when the component mounts
         }
-    }, [dispatch, postId]);
+    }, [dispatch, postId, comments]);
 
 
 
