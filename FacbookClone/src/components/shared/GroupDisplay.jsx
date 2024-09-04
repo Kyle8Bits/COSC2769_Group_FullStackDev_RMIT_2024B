@@ -1,8 +1,10 @@
 import React from 'react'
 import '../../css/groupDisplay.css'
 import ManageGroup from '../AdminComponents/ManageGroup'
+import { useNavigate } from 'react-router-dom'
 
 function GroupDisplay({group_list}) {
+  const navigate = useNavigate();
   return (
     <div className='group_display_container'>
         <div className="the_hover_button">
@@ -11,7 +13,7 @@ function GroupDisplay({group_list}) {
         </div>
 
         <div className="group_list_display">
-          <button className='create_group_req'>Create Group</button>
+          <button onClick={()=> navigate('/group/create_group')} className='create_group_req'>Create Group</button>
           <ManageGroup/>
           <ManageGroup/>
           <ManageGroup/>

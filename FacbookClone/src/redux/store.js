@@ -11,6 +11,8 @@ import searchReducer from './slice/searchSlice'
 import banUserReducer from './slice/banUserSlice'
 import activeUserReducer from './slice/activeUserSlice'
 import updatePostReducer from './slice/editPostSlice'
+import groupReducer from './slice/groupSlice';
+import approveGroupReducer from "./slice/approveGroupSlice";
 
 export const store = configureStore({
     reducer:{
@@ -26,6 +28,8 @@ export const store = configureStore({
         ban: banUserReducer,
         active: activeUserReducer,
         editPost: updatePostReducer,
+        group: groupReducer,
+        groupRequests: approveGroupReducer
     }
     
 })

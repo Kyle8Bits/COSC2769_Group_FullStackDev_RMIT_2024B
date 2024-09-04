@@ -1,13 +1,29 @@
-import React from 'react'
-import ObjectCard from '../shared/ObjectCard'
-import { useSelector } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import '../../css/adminnavigate.css'
 import ManageGroup from './ManageGroup'
+import { getGroupRequest } from '../../redux/slice/approveGroupSlice'
 
 function AdminApprove() {
+  const dispatch = useDispatch();
+  const { groupRequests } = useSelector(state => state.groupRequests);
 
+  useEffect(() => {
+    dispatch(getGroupRequest());
+  },[])
 
-
+  const pendingGroups = groupRequests.map((group) => {
+    return (
+    <ManageGroup 
+      key={group.id} 
+      groupID={group.id}
+      groupName={group.name} 
+      banner={group.banner} 
+      description={group.description} 
+      status={group.status === 'Pending' ? true : false}
+      />
+    )
+  });
   return (
     <div  className='admin_approve_container'>
       <div className="approve_search_bar">
@@ -18,11 +34,7 @@ function AdminApprove() {
       </div>
 
     <div className="group_list">
-      <ManageGroup/>
-      <ManageGroup/>
-      <ManageGroup/>
-      <ManageGroup/>
-      <ManageGroup/>
+      {pendingGroups}
     </div>
 
     </div>
