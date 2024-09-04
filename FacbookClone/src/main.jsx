@@ -24,6 +24,7 @@ import AdminApprove from './components/AdminComponents/AdminApprove';
 import AdminResume from './components/AdminComponents/AdminResume';
 import EditProfile from './pages/EditProfile';
 import BasicInfo from './pages/BasicInfo';
+import GroupCreate from './pages/GroupCreate';
 import UpdatePost from './components/shared/UpdatePost';
 
 
@@ -130,11 +131,16 @@ const router = createBrowserRouter([
   },
 
   {
-    path: "/group",
+  path: "/groups/:groupId",
     element: <GroupFeed/>,
     errorElement: <NotFound />,
   },  
   
+  {
+    path: '/group/create_group',
+    element: <GroupCreate/>,
+    errorElement: <NotFound/>
+  },
 ]);
 
 

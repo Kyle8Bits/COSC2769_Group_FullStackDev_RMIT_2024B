@@ -7,6 +7,7 @@ import Post from '../components/shared/Post.jsx'
 
 import { fetchPosts} from '../redux/slice/postSlice.js'
 import { useSelector,useDispatch } from 'react-redux'
+import GroupDisplay from '../components/shared/GroupDisplay.jsx'
 
 function NewFeed() {
   const dispatch = useDispatch();
@@ -46,6 +47,7 @@ function NewFeed() {
     <div className='home_new_feed'>
          <Header/>
         <CreatePost/>
+        <GroupDisplay/>
         <div className="post_list_home">
           {status === 'loading'? <h1 style={{color:"white"}}>Loading...</h1>
           :

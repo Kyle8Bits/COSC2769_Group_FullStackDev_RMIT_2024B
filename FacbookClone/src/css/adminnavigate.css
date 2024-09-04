@@ -104,12 +104,30 @@
 
 
 /* approve */
+.admin_approve_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;    
+}
+
 .approve_search_bar {
     margin-top: 10px;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    width: 100%;
+}
+
+.group_list{
+    justify-self: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Creates two columns with equal width */
+    gap: 10px; /* Optional: Adds some space between the groups */
+    width: 90%; 
+    padding: 20px;
+    justify-content: center;
 }
 
 .approve_search_bar .input_box{
@@ -138,69 +156,7 @@
     font-size: 25px;
 }
 
-.group_container{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
 
-.group {
-    width: 500px;   
-    background-color: #242426;
-    border-radius: 20px;
-    margin-top: 15px;;
-    
-}
-.group_content{ 
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: start;
-    gap: 50px;
-    margin-bottom: 10px;
-}
-
-.group img{
-    margin-left: 10px;
-    border-radius: 10px;
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    transition: border-radius 0.5s cubic-bezier(0.5, 0.8, 0.25, 1);
-}
-
-.group .object_name{
-    color: #fff;
-    margin: 0px;
-    transition: margin-bottom 0.5s cubic-bezier(0.5, 0.8, 0.25, 1);
-}
-
-.group .approve_dicision {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 20px;
-    gap: 20px;
-}
-
-.group .approve, .reject {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 200px;
-    height: 30px;
-    background-color: #242426;
-    color: #fff;
-    font-size: 25px;
-    font-weight: 700;
-    border-radius: 10px;
-    margin: 10px;
-}
-
-.group .approve:hover, .reject:hover {
-    background-color: #47494a;
-    cursor: pointer;
-}
 
 .admin_resume_container{
     display: flex;
