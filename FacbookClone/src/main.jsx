@@ -26,6 +26,9 @@ import EditProfile from './pages/EditProfile';
 import BasicInfo from './pages/BasicInfo';
 import GroupCreate from './pages/GroupCreate';
 import UpdatePost from './components/shared/UpdatePost';
+import GroupAdminApprove from './components/GroupAdminComponents/GroupAdminApprove';
+import GroupAdmin from './pages/GroupAdmin';
+import GroupAdminEdit from './components/GroupAdminComponents/GroupAdminEdit';
 
 
 const router = createBrowserRouter([
@@ -141,6 +144,23 @@ const router = createBrowserRouter([
     element: <GroupCreate/>,
     errorElement: <NotFound/>
   },
+  {
+    path: '/groups/:groupId/admin',
+    element: <GroupAdmin/>,
+    errorElement :<NotFound/>,
+    children:[
+      {
+        path: "waitlist",
+        element: <GroupAdminApprove/>,
+        errorElement: <NotFound />,
+      },
+      {
+        path: "groupInfo",
+        element: <GroupAdminEdit/>,
+        errorElement: <NotFound />,
+      },
+    ]
+  }
 ]);
 
 

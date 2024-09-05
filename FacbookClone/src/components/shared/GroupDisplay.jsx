@@ -36,7 +36,7 @@ function GroupDisplay() {
         </div>
 
         <div className="group_list_display">
-          <button onClick={()=> navigate('/group/create_group')} className='create_group_req'>Create Group</button>
+          <button onClick={()=> navigate('/group/create_group')} id='create_group_req'>Create Group</button>
           {yourGroup}
 
         </div>

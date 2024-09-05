@@ -78,8 +78,8 @@
     background-color: #f0efef;
 }
 
-.create_group_form div textarea{
-    height: 100px;
+.create_group_form div #groupDescription{
+    height: 120px;
 }
 
 .privacy_setting{
