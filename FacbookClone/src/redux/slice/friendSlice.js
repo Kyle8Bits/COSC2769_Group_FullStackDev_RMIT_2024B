@@ -36,6 +36,39 @@ export const deleteFriendship = createAsyncThunk('/friend/deleteFriendship', asy
     }
 });
 
+// Thunk to fetch friend requests
+export const fetchFriendRequest = createAsyncThunk(
+    'friend/fetchFriendRequest',
+    async (currentUser, { rejectWithValue }) => {
+      try {
+        const response = await axios.get('http://localhost:1414/friend/getRequest', {
+            params: {recipient: currentUser}
+        });
+        return response.data;
+      } catch (error) {
+        return rejectWithValue(error.response.data);
+      }
+    }
+  );
+  
+  // Thunk to send a friend request
+  export const sendFriendRequest = createAsyncThunk('friend/sendFriendRequest', async ({ requester, recipient }, { rejectWithValue }) => {
+      try {
+        console.log("Current User:", requester)
+        console.log("Friend request send to:", recipient);
+        const response = await axios.post('http://localhost:1414/friend/sendRequest', {
+          data: { requester, recipient }
+        });
+       
+
+        return response.data;
+      } catch (error) {
+        return rejectWithValue(error.response.data);
+      }
+    }
+  );
+
+
 const friendSlice = createSlice({
     name: 'friend',
     initialState,

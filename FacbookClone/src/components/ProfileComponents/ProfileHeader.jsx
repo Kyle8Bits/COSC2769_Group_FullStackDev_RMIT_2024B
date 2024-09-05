@@ -5,7 +5,7 @@ import { useSelector, useDispatch} from 'react-redux';
 import { resetUpdateState } from '../../redux/slice/editProfileSlice';
 import fallbackAvatar from '../../image/default-avatar.jpg'
 import { fetchOtherUserData } from '../../redux/slice/otheruserSlice';
-import { deleteFriendship } from '../../redux/slice/friendSlice';
+import { deleteFriendship, sendFriendRequest } from '../../redux/slice/friendSlice';
 
 import { banUser } from '../../redux/slice/activeUserSlice';
 function ProfileHeader() {
@@ -45,7 +45,12 @@ function ProfileHeader() {
     }
 }, [userDisplaying]);
 
-
+const handleRequestFriend = () => {
+  dispatch(sendFriendRequest({
+    requester: currentUserProfile.username,
+    recipient: userDisplaying.username.replace('@', ''),
+  }));
+}
 
     return (
       <div className="header_profile_container">
@@ -75,7 +80,7 @@ function ProfileHeader() {
                   isFriend ? (
                     <button type="button" className="unfr" onClick={handleDeletefriend}>Unfriend</button>
                   ) : (
-                    <button className='add'>Add Friend</button>
+                    <button className='add' onClick={handleRequestFriend}>Add Friend</button>
                   )
                 ) : (
                    <NavLink to={`/@${username}/edit`}><button onClick={()=>dispatch(resetUpdateState())} className='edit'>Edit Profile</button></NavLink>
