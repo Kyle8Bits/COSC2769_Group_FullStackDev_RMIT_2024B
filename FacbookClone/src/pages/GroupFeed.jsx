@@ -2,16 +2,21 @@ import React from 'react'
 import Post from '../components/shared/Post'
 import '../css/group.css'
 import Header from '../components/shared/Header'
+import CreatePost from '../components/shared/CreatePost'
+import { useParams } from 'react-router-dom'
+
 function GroupFeed() {
+  const {groupId} = useParams()
+  console.log(groupId)
   return (
     <>
     <Header/>
-    <div className='group_container'>
-      <div className="group_banner">
+    <div className='group_container_feed'>
+      <div className="group_banner_feed">
         <img alt="" />
       </div>
 
-      <div className="group_info">
+      <div className="group_info_feed">
 
         <div>
           <h1 className="name">Software Engineering Community</h1>
@@ -21,6 +26,7 @@ function GroupFeed() {
           </div>
         </div>
 
+
         <div className='button'>
           <button className="join">  <i class="ri-login-box-line"></i> Join </button>
           <button className="invite"> <i class="ri-add-box-line"></i> Invite</button>
@@ -28,12 +34,12 @@ function GroupFeed() {
         </div>
 
       </div>
+      <CreatePost where={"group"}/>
       <div className="group_feed">
         <ul className="post">
-         
         </ul>
 
-        <div className="group_statistic">
+        <div className="group_statistic_feed">
           <div className="description">
             <h4>About</h4>
             <p>Connecting all the Software Enginerring all over the world, building and construction software</p>

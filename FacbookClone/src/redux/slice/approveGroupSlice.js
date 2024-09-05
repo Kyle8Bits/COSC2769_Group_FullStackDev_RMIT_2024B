@@ -14,9 +14,11 @@ export const getGroupRequest = createAsyncThunk('admin/getGroupRequest', async (
 export const decideGroupRequest = createAsyncThunk('admin/decideGroupRequest', async ({id, decision}, { rejectWithValue }) => {
     try {
 
-        console.log(id, decision);
-        // const response = await axios.post('http://localhost:1414/admin/decide', data);
-        // return response.data;
+        // console.log(id, decision);
+        const response = await axios.post('http://localhost:1414/admin/decide', {
+            data: { id, decision }
+        });
+        return response.data;
     } catch (err) {
         console.log(err);
         return rejectWithValue(err.message);
@@ -46,9 +48,9 @@ const approveGroupSlice = createSlice({
                 state.status = 'failed';
                 state.error = action.payload;
             })
-            .addCase(decideGroupRequest.fulfilled, (state) => {
-                state.groupRequests = state.groupRequests.filter(group => group.id !== action.payload.id);
-            })
+            // .addCase(decideGroupRequest.fulfilled, (state) => {
+            //     state.groupRequests = state.groupRequests.filter(group => group.id !== action.payload.id);
+            // })
     }
 });
 

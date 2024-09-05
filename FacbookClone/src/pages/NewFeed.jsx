@@ -46,7 +46,7 @@ function NewFeed() {
   return (
     <div className='home_new_feed'>
          <Header/>
-        <CreatePost/>
+        <CreatePost where={"home"}/>
         <GroupDisplay/>
         <div className="post_list_home">
           {status === 'loading'? <h1 style={{color:"white"}}>Loading...</h1>

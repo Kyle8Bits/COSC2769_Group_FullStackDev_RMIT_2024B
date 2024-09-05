@@ -6,7 +6,7 @@ import { getGroupRequest } from '../../redux/slice/approveGroupSlice'
 
 function AdminApprove() {
   const dispatch = useDispatch();
-  const { groupRequests } = useSelector(state => state.groupRequests);
+  const { groupRequests, status} = useSelector(state => state.groupRequests);
 
   useEffect(() => {
     dispatch(getGroupRequest());
@@ -32,6 +32,7 @@ function AdminApprove() {
                 <input type="text" placeholder='Search Group' />
             </div>
       </div>
+      {status === 'loading' ? <h1 style={{color:'white'}} >Loading...</h1> :<></>}
 
     <div className="group_list">
       {pendingGroups}

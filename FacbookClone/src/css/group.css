@@ -1,11 +1,11 @@
-.group_container{
+.group_container_feed{
     font-family: Arial, Helvetica, sans-serif;
     color: aliceblue;
     width: 100vw;
     height: fit-content;
 }
 
-.group_banner{
+.group_banner_feed{
     display: flex;
     justify-content: center;
     background-color: grey;
@@ -13,14 +13,14 @@
     height: 30vh;
     border-radius: 10px;
 }
-.group_banner img{
+.group_banner_feed img{
     width: 100%;
     height: 30vh;
     object-fit: cover;
     overflow: hidden;
 }
 
-.group_info{
+.group_info_feed{
     padding-left: 20px;
     padding-bottom: 50px;
     font-size: 20px;
@@ -28,15 +28,15 @@
     justify-content: space-around;
 }
 
-.group_info .name{
+.group_info_feed .name{
     margin-bottom: 0px;
 }
 
-.group_info h5{
+.group_info_feed h5{
     margin: 0px;
 }
 
-.group_info .button {
+.group_info_feed .button {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -44,7 +44,7 @@
     gap:10px;
 }
 
-.group_info .button button{
+.group_info_feed .button button{
     color: #000000;
     display: flex;
     flex-direction: row;
@@ -61,7 +61,7 @@
     box-shadow: 2px 5px 8px rgb(0, 0, 0);
 }
 
-.group_info .button button:hover{
+.group_info_feed .button button:hover{
     background-color: chocolate;
     color: #4a1f00;
     cursor: pointer;
@@ -79,7 +79,8 @@
     margin: 0px
 }
 
-.group_statistic{
+.group_statistic_feed{
+    margin-top: 20px;
     position: sticky;
     height: fit-content;
     width: 20%;
@@ -87,13 +88,13 @@
     top: 70px;
 }
 
-.group_statistic .description{
+.group_statistic_feed .description{
     border: 1px solid silver;
     border-radius: 10px;
     padding: 20px;
     justify-content: start;
 }
-.group_statistic .description h4{
+.group_statistic_feed .description h4{
     margin: 0px;
 }
 
