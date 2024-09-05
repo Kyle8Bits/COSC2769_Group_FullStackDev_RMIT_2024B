@@ -64,8 +64,8 @@ const handleBlur = () => {
 
         <div className="header_nav">
         <NavLink to={"/home"}><i class="ri-home-5-fill"></i></NavLink>
-        <i class="ri-team-fill"></i>
-        <i class="ri-group-2-fill"></i>
+
+        <NavLink to= {"/community"}><i class="ri-group-2-fill"></i> </NavLink>
         {isAdmin?<NavLink to={'/admin'} ><i class="ri-tools-fill"></i></NavLink>:<></>}
         </div>
     

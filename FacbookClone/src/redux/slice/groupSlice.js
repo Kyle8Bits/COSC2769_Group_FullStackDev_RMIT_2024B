@@ -27,6 +27,7 @@ export const fetchGroupsForUser = createAsyncThunk('group/fetchGroups', async({u
     }
 })
 
+
 export const fetchGroupById = createAsyncThunk('group/fetchGroupById', async({groupId}, {rejectWithValue})=>{
     try{
         const response = await axios.get(`http://localhost:1414/group/getGroupById`,{
@@ -51,6 +52,27 @@ export const getAdmins = createAsyncThunk('group/getAdmins', async({groupId}, {r
     }
 })
 
+export const addAdmin = createAsyncThunk('group/addAdmin', async({groupId, username}, {rejectWithValue})=>{
+    try{
+
+        const response = await axios.post(`http://localhost:1414/group/addAdmin`, {groupId, username});
+        return response.data;
+    }
+    catch(err){
+        return rejectWithValue(err.response.data);
+    }
+})
+
+export const removeAdmin = createAsyncThunk('group/removeAdmin', async({groupId, username}, {rejectWithValue})=>{
+    try{
+        const response = await axios.post(`http://localhost:1414/group/removeAdmin`, {groupId, username});
+        return response.data;
+    }
+    catch(err){
+        return rejectWithValue(err.response.data);
+    }
+})
+
 export const editBanner = createAsyncThunk('group/editBanner', async({groupId, banner}, {rejectWithValue})=>{
     try{
         console.log(groupId, banner);
@@ -65,6 +87,38 @@ export const editBanner = createAsyncThunk('group/editBanner', async({groupId, b
         return rejectWithValue(err.response.data);
     }
 })
+
+
+export const joinGroup = createAsyncThunk('group/joinGroup', async({groupId, username}, {rejectWithValue})=>{
+    try{
+        const response = await axios.post(`http://localhost:1414/group/joinGroup`, {groupId, username});
+        return response.data;
+    }
+    catch(err){
+        return rejectWithValue(err.response.data);
+    }
+})
+
+export const leaverGroup = createAsyncThunk('group/leaveGroup', async({groupId, username}, {rejectWithValue})=>{
+    try{
+        const response = await axios.post(`http://localhost:1414/group/leaveGroup`, {groupId, username});
+        return response.data;
+    }
+    catch(err){
+        return rejectWithValue(err.response.data);
+    }
+})
+
+export const cancelJoin = createAsyncThunk('group/cancelJoin', async({groupId, username}, {rejectWithValue})=>{
+    try{
+        const response = await axios.post(`http://localhost:1414/group/cancelJoin`, {groupId, username});
+        return response.data;
+    }
+    catch(err){
+        return rejectWithValue(err.response.data);
+    }
+})
+
 
 const groupSlice = createSlice({
     name: "group",

@@ -1,31 +1,30 @@
 import React, { useEffect, useState } from 'react'
 import '../../css/adminGroupNav.css'
-import { getAdmins, fetchGroupById } from '../../redux/slice/groupSlice';
+import { getAdmins, fetchGroupById, editBanner, removeAdmin, addAdmin } from '../../redux/slice/groupSlice';
 import ObjectCard from '../shared/ObjectCard';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux'
-import { editBanner } from '../../redux/slice/groupSlice';
+import { useParams } from 'react-router-dom';
+import e from 'cors';
 
 function GroupAdminEdit() {
+  const {groupId} = useParams();
+
   const dispatch = useDispatch();
   const {currentGroup, admins} = useSelector(state=>state.group);
 
-  const [remove_admin, setRemoveAdmin] = useState("Edit Group Admins");
+  const [removeadmin, setRemoveAdmin] = useState("Edit Group Admins");
 
-
-  useEffect(()=>{
-    dispatch(getAdmins({groupId: currentGroup.id}))
-  },[])
 
   const currentAdmins = admins.map(admin=>{
     return (
       <div id="admin_action_delete">
 
-        {remove_admin==="Edit Group Admins"?
+        {removeadmin==="Edit Group Admins"?
         <></>
         :
         <>
-          <button id="remove_admin">Remove</button>
+          <button type='button' id="remove_admin" onClick={()=>deleteAdmin(admin.username)}>Remove</button>
         </>}
 
         <ObjectCard
@@ -41,10 +40,10 @@ function GroupAdminEdit() {
   })
 
   const handleRemoveAdmin = ()=>{
-    if(remove_admin==="Edit Group Admins"){
+    if(removeadmin==="Edit Group Admins"){
       setRemoveAdmin("Done");
     }
-    else if(remove_admin==="Done"){
+    else if(removeadmin==="Done"){
       setRemoveAdmin("Edit Group Admins");
     }
   }
@@ -55,7 +54,27 @@ function GroupAdminEdit() {
 
   const handleBannerChange = async (e) => {
     await dispatch(editBanner({groupId: currentGroup.id, banner: e.target.files[0]}))
-    dispatch(fetchGroupById({groupId: currentGroup.id}))
+    dispatch(fetchGroupById({groupId: groupId}))
+  }
+
+  const handleAddAdmin = async () => {
+    const username = document.getElementById('search_admin').value;
+    if(username===""){
+      alert("Please input username");
+    }
+    else {  
+      await dispatch(addAdmin({ groupId: currentGroup.id, username: username }));
+      dispatch(getAdmins({ groupId: groupId }));
+      document.getElementById('search_admin').value = "";
+      alert("Successfully add new admin");
+
+    }
+
+  }
+
+  const deleteAdmin = async (username) =>{
+    await dispatch(removeAdmin({groupId: currentGroup.id, username: username}))
+    dispatch(getAdmins({groupId: groupId}))
   }
 
   return (
@@ -73,10 +92,22 @@ function GroupAdminEdit() {
       <img src={`http://localhost:1414${currentGroup.banner}`} alt="" id='preview_group_banner'/>
       
       
-      <button onClick={handleRemoveAdmin}>{remove_admin}</button>
+      <button onClick={handleRemoveAdmin}>{removeadmin}</button>
+      {removeadmin==="Done"?
+      <>
+      <button type='button' id="add_admin" onClick={()=>handleAddAdmin()}>Add Admin</button>
+      <input type="text" placeholder="Input username" id="search_admin"/>
+      </>
+      :
+      <>
+      </>}
+
+
+
       <div id="list_of_admin">
           {currentAdmins}
       </div>
+
 
   </div>
   )

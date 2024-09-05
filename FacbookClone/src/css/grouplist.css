@@ -1,0 +1,60 @@
+#community_page{
+  width: 100vw;
+  height: 100vh;
+  background-color: #18191a;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items:center
+}
+
+#input_com_search{
+    margin-top: 20px;
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: grey;
+    gap: 20px;
+    font-size: 40px;
+}
+
+#input_com_search i:hover{
+    color: chocolate;
+    cursor: pointer;
+}
+
+#input_com_search input{
+    width: 60%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#community_page h1{
+    color: white;
+    font-size: 30px;
+    margin-top: 20px;
+}
+
+#my_group, #explore_group{
+    width: 80%;
+    justify-self: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Creates two columns with equal width */
+    gap: 10px; /* Optional: Adds some space between the groups */
+    padding: 20px;
+}
+
+#search_group{
+    width: 80%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Creates two columns with equal width */
+    gap: 10px; /* Optional: Adds some space between the groups */
+    padding: 20px;
+    height: fit-content;
+}
+

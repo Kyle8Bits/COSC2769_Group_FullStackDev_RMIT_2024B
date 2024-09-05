@@ -13,6 +13,7 @@ import activeUserReducer from './slice/activeUserSlice'
 import updatePostReducer from './slice/editPostSlice'
 import groupReducer from './slice/groupSlice';
 import approveGroupReducer from "./slice/approveGroupSlice";
+import communityReducer from "./slice/communitySlice";
 
 export const store = configureStore({
     reducer:{
@@ -29,7 +30,8 @@ export const store = configureStore({
         active: activeUserReducer,
         editPost: updatePostReducer,
         group: groupReducer,
-        groupRequests: approveGroupReducer
+        groupRequests: approveGroupReducer,
+        community: communityReducer
     }
     
 })

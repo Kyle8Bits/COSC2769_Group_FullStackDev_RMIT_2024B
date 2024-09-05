@@ -1,30 +1,32 @@
-.group_container{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin: 10px 0 10px 0;
-}
 
 .group {
     width: 500px;   
+    height: 180px;
     background-color: #242426;
+    display: flex;
+    flex-direction: row;
     border-radius: 20px;
-    
+    font-size: 15px;
 }
+
+.group:hover{
+    cursor: pointer;
+    background-color: chocolate;
+}
+
 .group_content{ 
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: start;
     gap: 50px;
-    margin-bottom: 10px;
 }
 
 .group img{
     margin-left: 10px;
     border-radius: 10px;
-    width: 100px;
-    height: 100px;
+    width: 30%;
+    height: 80%;
     object-fit: cover;
     transition: border-radius 0.5s cubic-bezier(0.5, 0.8, 0.25, 1);
 }

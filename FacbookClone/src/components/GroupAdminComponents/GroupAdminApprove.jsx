@@ -1,10 +1,20 @@
 import React from 'react'
+import '../../css/adminGroupNav.css'
+import {useSelector} from 'react-redux'
+
 
 function GroupAdminApprove() {
-  return (
-    <div  className='admin_suspend_container'>
+  const { currentGroup } = useSelector(state => state.group);
 
-            <div className="suspend_search_bar">
+  const waitList = currentGroup.waitlist.map(w => {
+    return(
+      <h1>{w}</h1>
+    )
+  })
+  return (
+    <div  id='admin_group_approve'>
+
+            <div id="waitlist_search_bar">
                 <div className="input_box">
                     <i class="ri-search-line"></i>
                     <input type="text" placeholder='Search User' />
@@ -12,14 +22,15 @@ function GroupAdminApprove() {
             </div>
 
 
-        <div className='suspend_list_container'>
-            <div className="userlist">
+        <div id="search_waitlist_result">
 
+        </div>
+        
+        <div id='wait_list_container'>
+            <div id="waitlist">
+              {waitList}
             </div>
         </div>
-    <div className="display_active_user">
-    </div>
-
 
     </div>
   )

@@ -29,6 +29,7 @@ import UpdatePost from './components/shared/UpdatePost';
 import GroupAdminApprove from './components/GroupAdminComponents/GroupAdminApprove';
 import GroupAdmin from './pages/GroupAdmin';
 import GroupAdminEdit from './components/GroupAdminComponents/GroupAdminEdit';
+import GroupList from './pages/GroupList';
 
 
 const router = createBrowserRouter([
@@ -68,6 +69,12 @@ const router = createBrowserRouter([
     errorElement: <NotFound/>
   },
 
+  {
+    path: "/community",
+    element: <GroupList/>,
+    errorElement: <NotFound/>
+
+  },
 
   {
     path: "/:username",

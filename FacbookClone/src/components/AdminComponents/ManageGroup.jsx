@@ -47,17 +47,18 @@ const handleNavigate = () => {
 
   return (
     <div>
-         <div className='group_container' onClick={handleNavigate}> 
-        <div className="group">
+        <div className="group" onClick={handleNavigate}>
+
           <div className="group_content">
-          <img  src={`http://localhost:1414${banner}`} />
-          
-          <div className="group_brief">
-            <h2 className="group_name_manage">{groupName}</h2>
-            <p className="group_intro_manage">Purposes: {description}</p>
-            {/* maybe update the card object of the user want to create group here */}
+            <img  src={`http://localhost:1414${banner}`} />
+            
+            <div className="group_brief">
+              <h2 className="group_name_manage">{groupName}</h2>
+              <p className="group_intro_manage">Purposes: {description}</p>
+              {/* maybe update the card object of the user want to create group here */}
+            </div>
           </div>
-          </div>
+
 
           {status? (
             confirm.state ?
@@ -83,7 +84,6 @@ const handleNavigate = () => {
 
         </div>
       </div>
-    </div>
   )
 }
 

@@ -16,6 +16,7 @@
     width: 50%;
     height: fit-content;
     object-fit: cover;
+    border-radius: 20px;
 }
 
 #list_of_admin{
@@ -43,3 +44,48 @@
     height: 25px;
 }
 
+#admin_group_approve{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#waitlist_search_bar{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+#waitlist_search_bar .input_box{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    font-size: 30px;
+    color: #ffff;
+}
+
+
+#waitlist_search_bar .input_box input{
+    width: 50%;
+    height: 50px;
+    border-radius: 20px;
+    padding: 0 10px 0 10px;
+    font-size: 20px;
+    background-color: #ffff;
+}
+
+#wait_list_container #waitlist{
+    justify-self: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Creates two columns with equal width */
+    gap: 10px; /* Optional: Adds some space between the groups */
+    width: 90%; 
+    padding: 20px;
+}
