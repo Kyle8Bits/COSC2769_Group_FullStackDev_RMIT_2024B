@@ -2,14 +2,12 @@
     position: fixed;
     width: 500px;
     height: fit-content;
-
     max-height: 500px;
 
 
     top: 250px;
     right: -450px;
-
-
+    
     border-radius: 10px;
     border: 1px solid #ffffff;
     transition: right 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -25,11 +23,13 @@
     height: fit-content;
     max-height: 500px;
     overflow-y: auto;
-    margin-left: 10px;
+    width: 100%;
     background-color: transparent;
 }
 
-.create_group_req{
+
+
+#create_group_req{
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
     border-top-right-radius: 10px;
@@ -39,11 +39,19 @@
     color: #ffffff;
     background-color:#18191a; ;
 
+    width: 100%;
+
     font-size: 20px;
     margin-bottom: 10px;
 
     position: sticky;
     top: 0px;
+    background-color: grey;
+}
+
+#create_group_req:hover{
+    background-color: chocolate;
+    cursor: pointer;
 }
 
 .group_display_container:hover {

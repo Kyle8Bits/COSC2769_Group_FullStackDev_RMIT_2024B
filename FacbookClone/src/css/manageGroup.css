@@ -29,6 +29,10 @@
     transition: border-radius 0.5s cubic-bezier(0.5, 0.8, 0.25, 1);
 }
 
+.group_name_manage, .group_intro_manage{
+    color: #fff;
+}
+
 .group .object_name{
     color: #fff;
     margin: 0px;

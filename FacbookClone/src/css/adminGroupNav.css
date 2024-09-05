@@ -1,0 +1,45 @@
+#edit_group_information{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#edit_group_information button{
+    width: 400px;
+    height: 50px;;
+}
+
+#edit_group_information #preview_group_banner{
+    width: 50%;
+    height: fit-content;
+    object-fit: cover;
+}
+
+#list_of_admin{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#admin_action_delete{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+}
+
+#admin_action_delete #remove_admin{
+    width: fit-content;
+    display: flex;  
+    justify-content: center;
+    align-items: center;
+    height: 25px;
+}
+

@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../css/createGroup.css'
 import logo from '../image/logo.png'
-import { createGroup } from '../redux/slice/groupSlice';
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
+import { createGroup, resetCreateGroupStatus } from '../redux/slice/groupSlice';
+import { useDispatch,useSelector } from 'react-redux';
+import {useNavigate} from 'react-router-dom';
 
 function GroupCreate() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const {username} = useSelector(state => state.profile);
+  const { createGroupStatus } = useSelector(state => state.group);
   const [groupName, setGroupName] = useState('');
   const [groupDescription, setGroupDescription] = useState('');
   const [groupPrivacy, setGroupPrivacy] = useState('public');
@@ -16,14 +18,24 @@ function GroupCreate() {
     e.preventDefault();
     // Handle form submission logic here
 
+
     dispatch(createGroup({ groupName, groupDescription, groupPrivacy, username }));
 
-    console.log({
-      groupName,
-      groupDescription,
-      groupPrivacy,
-    });
   };
+
+  useEffect(() => {
+    dispatch(resetCreateGroupStatus());
+  },[dispatch])
+
+  useEffect(() => {
+    if (createGroupStatus === 'success') {
+      const timer = setTimeout(() => {
+        navigate('/home');
+      }, 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [createGroupStatus, navigate]);
+
 
   return (
     <div className="create_group_page">
@@ -71,6 +83,7 @@ function GroupCreate() {
         </div>
         <button type="submit">Create Group</button>
       </form>
+      {createGroupStatus === 'success' && <p>Create group successful! Redirecting...</p>}
     </div>
     </div>
     

@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import "../../css/createpost.css";
 import { addPost, fetchPosts } from "../../redux/slice/postSlice";
 
-function CreatePost() {
+function CreatePost({where}) {
   const dispatch = useDispatch();
 
   const currentUser = useSelector((state) => state.profile);
@@ -93,7 +93,9 @@ function CreatePost() {
     setPostAction(false);
     setContent("");
     await dispatch(addPost(data));
-    dispatch(fetchPosts({ currentUser }));
+    if(where==='home'){
+      dispatch(fetchPosts({ currentUser }));
+    }
   };
 
   return (
