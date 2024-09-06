@@ -1,0 +1,9 @@
+
+.friend-req-list {
+    width: 360px;
+    margin: 20px auto;
+    background-color: #f0f2f5;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}

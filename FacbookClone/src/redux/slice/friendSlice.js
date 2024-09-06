@@ -39,10 +39,10 @@ export const deleteFriendship = createAsyncThunk('/friend/deleteFriendship', asy
 // Thunk to fetch friend requests
 export const fetchFriendRequest = createAsyncThunk(
     'friend/fetchFriendRequest',
-    async (currentUser, { rejectWithValue }) => {
+    async (curentUser, { rejectWithValue }) => {
       try {
         const response = await axios.get('http://localhost:1414/friend/getRequest', {
-            params: {recipient: currentUser}
+            data: {recipient: curentUser.username}
         });
         return response.data;
       } catch (error) {
@@ -95,8 +95,21 @@ const friendSlice = createSlice({
             })
             .addCase(deleteFriendship.fulfilled, (state, action) => {
                 state.friend = state.friend.filter(friend => friend.username !== action.payload.usernameFriend);
-            });
-            
+            })
+            .addCase(fetchFriendRequest.pending, (state) => {
+                state.status = 'loading';
+                state.friend = [];
+                state.error = null;
+            })
+            .addCase(fetchFriendRequest.fulfilled, (state, action) => {
+                state.status = 'succeeded';
+                state.friend = action.payload; // Set the array with the fetched data
+            })
+            .addCase(fetchFriendRequest.rejected, (state, action) => {
+                state.status = 'failed';
+                state.error = action.error.message;
+                state.friend = []; // Clear the array or handle the error state appropriately
+            })
     }
 })
 
