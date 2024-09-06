@@ -119,12 +119,45 @@ export const cancelJoin = createAsyncThunk('group/cancelJoin', async({groupId, u
     }
 })
 
+export const getPendingMembers = createAsyncThunk('group/getPendingMembers', async({groupId}, {rejectWithValue})=>{
+    try{
+        const response = await axios.get(`http://localhost:1414/group/getWaitlist`, {
+            params: {groupId}
+        });
+        return response.data;
+    }
+    catch(err){
+        return rejectWithValue(err.response.data);
+    }
+})
+
+export const acceptJoiningRequest = createAsyncThunk('group/acceptJoiningRequest', async({groupId, username}, {rejectWithValue})=>{
+    try{
+        const response = await axios.post(`http://localhost:1414/group/acceptJoiningRequest`, {groupId, username});
+        return response.data;
+    }
+    catch(err){
+        return rejectWithValue(err.response.data);
+    }
+})
+
+export const rejectJoiningRequest = createAsyncThunk('group/rejectJoiningRequest', async({groupId, username}, {rejectWithValue})=>{
+    try{
+        const response = await axios.post(`http://localhost:1414/group/rejectJoiningRequest`, {groupId, username});
+        return response.data;
+    }
+    catch(err){
+        return rejectWithValue(err.response.data);
+    }
+})
 
 const groupSlice = createSlice({
     name: "group",
     initialState: {
         groups: [],
-        currentGroup: {},
+        currentGroup: {
+            pendingMembers:['']
+        },
         admins: [],
         status: 'idle',
         createGroupStatus:'idle'
@@ -165,6 +198,9 @@ const groupSlice = createSlice({
             })
             .addCase(getAdmins.fulfilled, (state, action)=>{
                 state.admins = action.payload;
+            })
+            .addCase(getPendingMembers.fulfilled, (state, action)=>{
+                state.currentGroup.pendingMembers = action.payload;
             })
     }
 

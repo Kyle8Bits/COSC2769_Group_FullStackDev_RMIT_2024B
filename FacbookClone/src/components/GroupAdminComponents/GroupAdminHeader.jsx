@@ -4,7 +4,7 @@ import '../../css/admingroup.css'
 import { useSelector , useDispatch} from 'react-redux';
 import { useEffect } from 'react';
 
-import { fetchGroupById, getAdmins } from '../../redux/slice/groupSlice';
+import { fetchGroupById, getAdmins,getPendingMembers } from '../../redux/slice/groupSlice';
 
 function GroupAdminHeader() {
     const dispatch = useDispatch();
@@ -16,6 +16,7 @@ function GroupAdminHeader() {
         if (groupId) {
           await dispatch(fetchGroupById({ groupId: groupId }));
           dispatch(getAdmins({ groupId: groupId }));
+          dispatch(getPendingMembers({groupId: groupId}));
         }
       };
     

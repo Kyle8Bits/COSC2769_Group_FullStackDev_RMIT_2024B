@@ -127,7 +127,7 @@ function GroupFeed() {
         </div>
 
       </div>
-      <CreatePost where={"group"}/>
+      {isMemer && <CreatePost where={"group"}/>}
       <div className="group_feed">
         <ul className="post">
         </ul>

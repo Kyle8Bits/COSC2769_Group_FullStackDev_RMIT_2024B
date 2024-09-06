@@ -41,11 +41,16 @@
 }
 
 #my_group, #explore_group{
-    width: 80%;
-    justify-self: center;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#mygroup_list, #my_explore{
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Creates two columns with equal width */
-    gap: 10px; /* Optional: Adds some space between the groups */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 10px; 
     padding: 20px;
 }
 
@@ -57,4 +62,3 @@
     padding: 20px;
     height: fit-content;
 }
-
