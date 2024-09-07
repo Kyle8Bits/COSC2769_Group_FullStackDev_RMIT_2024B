@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "../../css/createpost.css";
-import { addPost, fetchPosts } from "../../redux/slice/postSlice";
+import { getPostForGroup } from "../../redux/slice/groupSlice";
+import { addPost, fetchPosts, createPostInGroup } from "../../redux/slice/postSlice";
 
 function CreatePost({where}) {
   const dispatch = useDispatch();
@@ -48,7 +49,6 @@ function CreatePost({where}) {
 
   const handleStoreImage = (e) => {
     const file = e.target.files[0]; // Get the first (and only) file selected
-    console.log(file);
     setFormData((prev) => ({
       ...prev,
       images: [...prev.images, file], // Append only the file name to the images array
@@ -83,18 +83,30 @@ function CreatePost({where}) {
     data.append("content", formData.content);
     data.append("visibility", formData.visibility);
 
-    // Append images to the FormData
-    formData.images.forEach((image) => {
-      data.append("post", image); // Match the 'post' field name here
-    });
+    if(where==='home'){
+      formData.images.forEach((image) => {
+        data.append("post", image); // Match the 'post' field name here
+      });
+    }
+    else{
+      formData.images.forEach((image) => {
+        data.append("group", image); // Match the 'post' field name here
+      });
+    }
+
 
     setNumberPhoto(0);
     setPreview([]);
     setPostAction(false);
     setContent("");
-    await dispatch(addPost(data));
     if(where==='home'){
+      await dispatch(addPost(data));
       dispatch(fetchPosts({ currentUser }));
+    }
+    else{
+      await dispatch(createPostInGroup({groupId: where, postData: data}));
+      dispatch(getPostForGroup({groupId: where}));
+
     }
   };
 

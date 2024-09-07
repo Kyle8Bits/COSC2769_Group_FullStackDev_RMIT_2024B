@@ -29,7 +29,7 @@ function NewFeed() {
         key={post.post._id}
         date = {post.post.createdAt}
         postId={post.post.id}
-        author_avatar={`http://localhost:1414${post.avatar}`}
+        author_avatar={post.avatar}
         author_username = {post.post.author}
         author_name={post.fullname}
         photos={post.post.images} // Pass the array of full image URLs
@@ -38,6 +38,8 @@ function NewFeed() {
         commentCount={ post.post.comments.length}
         currentUser={currentUser}
         hasReacted={hasReacted} 
+        isEdited={post.post.edited}
+        showingHistory={false}
       />
     );
 });

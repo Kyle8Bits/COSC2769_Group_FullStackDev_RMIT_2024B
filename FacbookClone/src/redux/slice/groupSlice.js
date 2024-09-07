@@ -151,6 +151,19 @@ export const rejectJoiningRequest = createAsyncThunk('group/rejectJoiningRequest
     }
 })
 
+
+export const getPostForGroup = createAsyncThunk('group/getPostForGroup', async({groupId}, {rejectWithValue})=>{
+    try{
+        const response = await axios.get(`http://localhost:1414/group/getPostForGroup`, {
+            params: {groupId}
+        });
+        return response.data;
+    }
+    catch(err){
+        return rejectWithValue(err.response.data);
+    }
+})
+
 const groupSlice = createSlice({
     name: "group",
     initialState: {
@@ -158,6 +171,7 @@ const groupSlice = createSlice({
         currentGroup: {
             pendingMembers:['']
         },
+        posts: [],
         admins: [],
         status: 'idle',
         createGroupStatus:'idle'
@@ -201,6 +215,9 @@ const groupSlice = createSlice({
             })
             .addCase(getPendingMembers.fulfilled, (state, action)=>{
                 state.currentGroup.pendingMembers = action.payload;
+            })
+            .addCase(getPostForGroup.fulfilled, (state, action)=>{
+                state.posts = action.payload;
             })
     }
 
