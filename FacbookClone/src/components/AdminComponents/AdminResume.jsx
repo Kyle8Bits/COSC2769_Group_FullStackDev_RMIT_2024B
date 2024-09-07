@@ -25,12 +25,7 @@ function AdminResume() {
 
   return (
     <div  className='admin_resume_container'>
-        <div className="resume_search_bar">
-            <div className="input_box">
-                <i class="ri-search-line"></i>
-                <input type="text" placeholder='Search User' />
-            </div>
-        </div>
+
 
 
         <div className='resume_list_container'>

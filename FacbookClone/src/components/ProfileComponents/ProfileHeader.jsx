@@ -58,6 +58,15 @@ const handleRequestFriend = async () => {
   alert('Friend request sent');
 }
 
+const friendButton = () => {
+  if (isFriend === "None") {
+    return <button className='add' onClick={handleRequestFriend}>Add Friend</button>
+  }
+  else if (isFriend === "Pending" || isFriend === "Accepted") {
+    return <button className='unfr' onClick={handleDeletefriend}>Unfriend</button>
+  }
+};
+
     return (
       <div className="header_profile_container">
 
@@ -83,11 +92,10 @@ const handleRequestFriend = async () => {
             <div className="button">
                 {(currentUserProfile.isAdmin && !isCurrentUser)?<button style={{backgroundColor:'chocolate'}} onClick={()=> dispatch(banUser({username: {username}}))}>Deactivate</button>:<></>}
                 {!isCurrentUser ? (
-                  isFriend ? (
-                    <button type="button" className="unfr" onClick={handleDeletefriend}>Unfriend</button>
-                  ) : (
-                    <button className='add' onClick={handleRequestFriend}>Add Friend</button>
-                  )
+                  <>
+                  {friendButton()}
+                  
+                  </>
                 ) : (
                    <NavLink to={`/@${username}/edit`}><button onClick={()=>dispatch(resetUpdateState())} className='edit'>Edit Profile</button></NavLink>
                 )}

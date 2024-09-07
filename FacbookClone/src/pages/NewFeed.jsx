@@ -4,7 +4,6 @@ import Header from '../components/shared/Header'
 import '../css/newfeed.css'
 import Post from '../components/shared/Post.jsx'
 
-import { fetchFriendRequest } from "../redux/slice/friendSlice"; // Ensure correct path to slice
 
 import { fetchPosts} from '../redux/slice/postSlice.js'
 import { useSelector,useDispatch } from 'react-redux'
@@ -15,12 +14,9 @@ function NewFeed() {
   const posts = useSelector((state) => state.posts.posts);
   const currentUser = useSelector((state) => state.profile); // Assuming you're using Redux to store the logged-in user's ID
   const { status } = useSelector(state => state.posts);
-  const friendRequests = useSelector((state) => state.friends.friendRequest);
-
   useEffect(() => {
     if (currentUser) {
       dispatch(fetchPosts({currentUser})); // Fetch posts for the logged-in user
-      dispatch(fetchFriendRequest(currentUser));
     }
   }, [currentUser]);
 
@@ -51,7 +47,7 @@ function NewFeed() {
 
   return (
     <div className='home_new_feed'>
-        <Header numberRequest ={friendRequests.length} />
+        <Header/>
         <CreatePost where={"home"}/>
         <GroupDisplay/>
         <div className="post_list_home">

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import logo from '../../image/logo.png'
 import '../../css/header.css'
 import DropDownBar from './DropDownBar'
@@ -7,11 +7,13 @@ import { useSelector, useDispatch } from 'react-redux'
 import NotificationList from './NotificationList'
 import FindingDropBar from './FindingDropBar'
 import { clearCard, fetchCards} from '../../redux/slice/searchSlice'
+import { fetchFriendRequest } from "../../redux/slice/friendSlice"; // Ensure correct path to slice
 
-function Header(props) {
+function Header() {
   const dispatch = useDispatch();
+  const currentUser = useSelector(state => state.profile);
   const { avatar, username, isAdmin } = useSelector(state => state.profile);
-
+  const friendRequests = useSelector((state) => state.friends.friendRequest);
   const [dropbar,setDropBar] = useState(false);
   const [notification,setNotiBar] = useState(false);
   const [isBlurred, setIsBlurred] = useState(false);
@@ -45,6 +47,11 @@ const handleBlur = () => {
   }, 200);
 };
 
+
+useEffect(() => {
+  dispatch(fetchFriendRequest(currentUser));
+},[])
+
   return (
     <div className='header_container'>
 
@@ -64,7 +71,7 @@ const handleBlur = () => {
 
         <div className="header_nav">
         <NavLink to={"/home"}><i class="ri-home-5-fill"></i></NavLink>
-        <NavLink to={"/friendRequest"}><i class="ri-user-3-fill"> {props.numberRequest}</i></NavLink>
+        <NavLink to={"/friendRequest"}><i class="ri-user-3-fill"> {friendRequests.length} </i></NavLink>
         <NavLink to= {"/community"}><i class="ri-group-2-fill"></i> </NavLink>
         {isAdmin?<NavLink to={'/admin'} ><i class="ri-tools-fill"></i></NavLink>:<></>}
         </div>

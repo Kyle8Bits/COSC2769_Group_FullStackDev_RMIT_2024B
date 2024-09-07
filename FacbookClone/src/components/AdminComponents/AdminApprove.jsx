@@ -14,6 +14,7 @@ function AdminApprove() {
 
   const pendingGroups = groupRequests.map((group) => {
     return (
+    <div className='_group'>
     <ManageGroup 
       key={group.id} 
       groupID={group.id}
@@ -22,16 +23,13 @@ function AdminApprove() {
       description={group.description} 
       status={group.status === 'Pending' ? true : false}
       />
+    
+    </div>
     )
   });
   return (
     <div  className='admin_approve_container'>
-      <div className="approve_search_bar">
-            <div className="input_box">
-                <i class="ri-search-line"></i>
-                <input type="text" placeholder='Search Group' />
-            </div>
-      </div>
+   
       {status === 'loading' ? <h1 style={{color:'white'}} >Loading...</h1> :<></>}
 
     <div className="group_list">

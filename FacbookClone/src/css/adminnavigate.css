@@ -120,6 +120,13 @@
     width: 100%;
 }
 
+._group{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .group_list{
     justify-self: center;
     display: grid;

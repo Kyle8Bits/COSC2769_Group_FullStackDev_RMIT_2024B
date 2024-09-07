@@ -18,10 +18,10 @@ function NotificationList() {
   },[dispatch,currentUser])
   return (
     <div className="notification-list">
-      {notifications.map((notification) => (
+      {notifications.slice().reverse().map((notification) => (
         <Notification
           key={notification._id}
-          avatar={notification.user.avatar}  // Assuming user has an avatar field
+          avatar={notification.avatar}  // Assuming user has an avatar field
           message={notification.message}
           time={new Date(notification.createdAt).toLocaleTimeString()}
         />

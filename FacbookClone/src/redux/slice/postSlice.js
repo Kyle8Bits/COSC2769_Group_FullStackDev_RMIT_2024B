@@ -51,7 +51,6 @@ export const createPostInGroup = createAsyncThunk('posts/createPostInGroup', asy
 
 export const givereact = createAsyncThunk('/post/giveReact', async ({id, currentUser}, {rejectWithValue})=>{
     try{
-        console.log(id)
         const response = await axios.post('http://localhost:1414/posts/giveReact', {
             data: {
                 id : id,
@@ -68,7 +67,6 @@ export const givereact = createAsyncThunk('/post/giveReact', async ({id, current
 
 export const deletereact = createAsyncThunk('/post/giveReact', async ({id, currentUser}, {rejectWithValue})=>{
     try{
-        console.log(id)
         const response = await axios.post('http://localhost:1414/posts/deleteReact', {
             data: {
                 id : id,

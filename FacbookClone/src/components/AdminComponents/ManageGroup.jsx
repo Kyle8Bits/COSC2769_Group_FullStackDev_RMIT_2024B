@@ -3,6 +3,7 @@ import {useDispatch} from 'react-redux'
 import '../../css/manageGroup.css'
 import { decideGroupRequest } from '../../redux/slice/approveGroupSlice';
 import { useNavigate } from 'react-router-dom';
+import { getGroupRequest } from '../../redux/slice/approveGroupSlice'
 
 function ManageGroup({ groupID ,groupName, banner, description, status}) {
 
@@ -36,6 +37,7 @@ const handleReturn =()=>{
 
 const handleConfirm = () => {
   dispatch(decideGroupRequest({id: groupID, decision: confirm.message}));
+  dispatch(getGroupRequest());
 }
 
 const handleNavigate = () => {
