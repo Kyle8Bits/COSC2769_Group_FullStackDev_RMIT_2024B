@@ -30,7 +30,7 @@ import GroupAdminApprove from './components/GroupAdminComponents/GroupAdminAppro
 import GroupAdmin from './pages/GroupAdmin';
 import GroupAdminEdit from './components/GroupAdminComponents/GroupAdminEdit';
 import GroupList from './pages/GroupList';
-
+import FriendRequestList from './pages/FriendRequestList';
 
 const router = createBrowserRouter([
   {
@@ -167,6 +167,12 @@ const router = createBrowserRouter([
         errorElement: <NotFound />,
       },
     ]
+  },
+
+  {
+    path: '/friendRequest',
+    element: <FriendRequestList/>,
+    errorElement: <NotFound/>
   }
 ]);
 
