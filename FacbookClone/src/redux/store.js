@@ -14,7 +14,7 @@ import updatePostReducer from './slice/editPostSlice'
 import groupReducer from './slice/groupSlice';
 import approveGroupReducer from "./slice/approveGroupSlice";
 import communityReducer from "./slice/communitySlice";
-
+import notificationReducer from "./slice/notificationSlice";
 export const store = configureStore({
     reducer:{
         comment: commentReducer,
@@ -31,7 +31,8 @@ export const store = configureStore({
         editPost: updatePostReducer,
         group: groupReducer,
         groupRequests: approveGroupReducer,
-        community: communityReducer
+        community: communityReducer,
+        notification: notificationReducer,
     }
     
 })

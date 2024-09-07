@@ -1,31 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector,useDispatch } from 'react-redux';
+import { fetchNotifications } from '../../redux/slice/notificationSlice';
 import Notification from './Notification';
 import '../../css/notificationList.css';
 
 function NotificationList() {
-  const [notifications, setNotifications] = useState([
-    {
-      id: 1,
-      avatar: 'https://via.placeholder.com/40',
-      message: 'John Doe liked your post.',
-      time: '2 hours ago',
-    },
-    {
-      id: 2,
-      avatar: 'https://via.placeholder.com/40',
-      message: 'Jane Smith commented on your photo.',
-      time: '1 hour ago',
-    },
-  ]);
 
+  const notifications = useSelector((state) => state.notification.notifications);
+  const currentUser = useSelector((state) => state.profile);
+  const dispatch = useDispatch();
+
+  console.log(currentUser);
+  useEffect(() => {
+    if (currentUser) {
+      dispatch(fetchNotifications(currentUser))
+    }
+  },[dispatch,currentUser])
   return (
     <div className="notification-list">
       {notifications.map((notification) => (
         <Notification
-          key={notification.id}
-          avatar={notification.avatar}
+          key={notification._id}
+          avatar={notification.user.avatar}  // Assuming user has an avatar field
           message={notification.message}
-          time={notification.time}
+          time={new Date(notification.createdAt).toLocaleTimeString()}
         />
       ))}
     </div>
