@@ -31,6 +31,8 @@ import GroupAdmin from './pages/GroupAdmin';
 import GroupAdminEdit from './components/GroupAdminComponents/GroupAdminEdit';
 import GroupList from './pages/GroupList';
 import FriendRequestList from './pages/FriendRequestList';
+import EditHistory from './pages/EditHistory';
+
 
 const router = createBrowserRouter([
   {
@@ -68,7 +70,11 @@ const router = createBrowserRouter([
     element:<UpdatePost/>,
     errorElement: <NotFound/>
   },
-
+  {
+    path: "/history/:postId",
+    element: <EditHistory/>,
+    errorElement: <NotFound/>
+  },
   {
     path: "/community",
     element: <GroupList/>,

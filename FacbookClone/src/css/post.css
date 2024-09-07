@@ -153,18 +153,6 @@
     cursor: pointer;
 }
 
-.edit_button{
-    margin-left: 94%;
-    margin-top: 10px;
-    font-size: 23px;
-    transition: margin-left 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
-
-}
-
-.edit_button:hover{
-    margin-left: 93.5%;
-    color: chocolate;
-}
 
 .comment{
     font-size: 32px;
@@ -174,5 +162,22 @@
 
 .comment:hover{
     font-size: 35px;
+    color: chocolate;
+}
+
+.edit_history{
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+    gap: 20px;
+}
+
+.edit_history i{
+    font-size: 25px;
+}
+
+.edit_history i:hover{
     color: chocolate;
 }

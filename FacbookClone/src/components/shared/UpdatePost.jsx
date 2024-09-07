@@ -11,8 +11,6 @@ function UpdatePost() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const currentUser = useSelector((state) => state.profile);
-    const {post} = useSelector((state) => state.editPost)
-    const [postAction, setPostAction] = useState(false);
     const [selectedValue, setSelectedValue] = useState("Public");
     const [previewName, setPreviewName] = useState([]);
     const [preview, setPreview] = useState([]);

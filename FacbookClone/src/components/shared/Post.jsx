@@ -5,7 +5,7 @@ import '../../css/post.css'
 import { useNavigate } from 'react-router-dom';
 import CommentBox from './CommentBox';
 
-function Post({postId, commentCount ,author_avatar, author_username, author_name, photos, caption, reaction, date, hasReacted}) {
+function Post({postId, commentCount ,author_avatar, author_username, author_name, photos, caption, reaction, date, hasReacted, isEdited, showingHistory}) { 
     const currentUser = useSelector(state => state.profile);
     const dispatch = useDispatch();
     const [cmtAction, setcmtAction] = useState(false)
@@ -36,19 +36,25 @@ function Post({postId, commentCount ,author_avatar, author_username, author_name
         setIsLike(false);
     }
     
+
+    
     const navigate = useNavigate();
   return (
     <div className='post_container'>
 
         {author_username === currentUser.username ? 
-            <i onClick={() => navigate(`/edit/${postId}`)} class="ri-edit-2-fill edit_button"></i>
+            <div className="edit_history">
+                 {isEdited && <i onClick={()=> navigate(`/history/${postId}`)} class="ri-time-fill"></i>}
+                 <i onClick={() => navigate(`/edit/${postId}`)} class="ri-edit-2-fill"></i>
+            </div>
+
             :
             <></>
         }
         <div className="post_author" onClick={()=> setcmtAction(false)}>
 
             <div class="avatar-wrapper">
-                <img src={author_avatar} alt="" className="avatar" />
+                <img src={`http://localhost:1414${author_avatar}`} alt="" className="avatar" />
             </div>
             <div className='text_container'>
                 <h2 className="name">{author_name}</h2>
@@ -70,19 +76,21 @@ function Post({postId, commentCount ,author_avatar, author_username, author_name
                 )}
          </div>
         
-        <div className="post_count">
-            <h5 className='like_count'>{react} likes</h5>
-            <h5 className='cmt_count'> {commentCount} comments</h5>
-        </div>
+        {!showingHistory && <> 
+            <div className="post_count">
+                <h5 className='like_count'>{react} likes</h5>
+                <h5 className='cmt_count'> {commentCount} comments</h5>
+            </div>
 
-        <div className="post_react">
-            {!isLike? 
-            <i class="ri-thumb-up-line like" onClick={handleReact}></i>
-            :
-            <i class="ri-thumb-up-line unlike" onClick={handleDisreact}></i>
-            }
-            <i class="ri-chat-3-line comment" onClick={() => setcmtAction(true)}></i>
-        </div>
+            <div className="post_react">
+                {!isLike? 
+                <i class="ri-thumb-up-line like" onClick={handleReact}></i>
+                :
+                <i class="ri-thumb-up-line unlike" onClick={handleDisreact}></i>
+                }
+                <i class="ri-chat-3-line comment" onClick={() => setcmtAction(true)}></i>
+            </div>
+        </>}
         
         {cmtAction===true?<><CommentBox postId={postId} currentUser={currentUser} actionLeft={()=> setcmtAction(false)}/>
         </>:<></>}

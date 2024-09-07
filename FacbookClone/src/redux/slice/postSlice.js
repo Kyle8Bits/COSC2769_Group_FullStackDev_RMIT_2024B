@@ -15,7 +15,6 @@ export const fetchPosts = createAsyncThunk('posts/fetchPosts', async ({currentUs
 
 // // Async thunk to add a new post
 export const addPost = createAsyncThunk('posts/createPost', async (postData, {rejectWithValue}) => {
-
     try{
         const response = await axios.post('http://localhost:1414/posts/createPost', postData, {
             headers:{
@@ -29,6 +28,25 @@ export const addPost = createAsyncThunk('posts/createPost', async (postData, {re
         return rejectWithValue(err.response.data)
     }
 });
+
+export const createPostInGroup = createAsyncThunk('posts/createPostInGroup', async ({groupId, postData}, {rejectWithValue}) => {
+    try{
+        const response = await axios.post('http://localhost:1414/posts/createPostInGroup', postData, {
+            params:{
+                groupId: groupId
+            }
+            ,
+            headers:{
+                'Content-Type': 'multipart/form-data'
+            }
+        });
+
+        return response.data.post;
+    }
+    catch(err){
+        return rejectWithValue(err.response.data)
+    }   
+})
 
 
 export const givereact = createAsyncThunk('/post/giveReact', async ({id, currentUser}, {rejectWithValue})=>{
@@ -94,7 +112,6 @@ const postSlice = createSlice({
             .addCase(fetchPosts.fulfilled, (state, action) => {
                 state.status = 'succeeded';
                 state.posts = action.payload;
-                console.log(state.posts)
             })
             .addCase(fetchPosts.rejected, (state, action) => {
                 state.status = 'failed';
