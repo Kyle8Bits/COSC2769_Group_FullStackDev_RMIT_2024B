@@ -32,7 +32,6 @@ function GroupDisplay() {
     <div className='group_display_container'>
         <div className="the_hover_button">
          YOUR GROUP 
-          <i class="ri-arrow-left-s-fill"></i>
         </div>
 
         <div className="group_list_display">

@@ -52,14 +52,6 @@ function GroupList() {
     
         <Header/>
         <div id='community_page'>
-            <div id="input_com_search">
-                <i class="ri-search-2-line"></i>
-                <input type="text" />
-            </div>
-
-            <div id="search_group">
-
-            </div>
 
             <h1>My Groups</h1>
             <div id="my_group">
