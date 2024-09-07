@@ -109,6 +109,8 @@ function CreatePost({where}) {
         <>
           <div className="create_post_frame">
             <div className="frame">
+
+              {where==='home' ?
               <div className="visibility_option">
                 <select
                   id="comboBox"
@@ -122,6 +124,8 @@ function CreatePost({where}) {
                   <option value="Friend">Friend</option>
                 </select>
               </div>
+
+               :<></>}
 
               <textarea
                 className="caption_input"
