@@ -6,8 +6,6 @@ function FriendRequest({requester, recipient}){
 
     const dispatch = useDispatch();
 
-  
-
     const handleAccept = async () => {
         await dispatch(acceptFriendRequest({requester,recipient}));
         dispatch(fetchFriendRequest(recipient));   
