@@ -8,14 +8,7 @@ import Header from "../components/shared/Header";
 function FriendRequestList() {
     const friendRequests = useSelector((state) => state.friends.friendRequest);
     const status = useSelector((state) => state.friends.status);
-    const dispatch = useDispatch();
     const currentUser = useSelector((state) => state.profile);
-
-    useEffect(() => {
-        if (currentUser) {
-            dispatch(fetchFriendRequest(currentUser));
-        }
-    }, [dispatch, currentUser]);
 
     return (
         <>

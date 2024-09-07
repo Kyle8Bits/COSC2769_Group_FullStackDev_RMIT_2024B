@@ -8,7 +8,7 @@ import NotificationList from './NotificationList'
 import FindingDropBar from './FindingDropBar'
 import { clearCard, fetchCards} from '../../redux/slice/searchSlice'
 
-function Header() {
+function Header(props) {
   const dispatch = useDispatch();
   const { avatar, username, isAdmin } = useSelector(state => state.profile);
 
@@ -64,7 +64,7 @@ const handleBlur = () => {
 
         <div className="header_nav">
         <NavLink to={"/home"}><i class="ri-home-5-fill"></i></NavLink>
-
+        <NavLink to={"/friendRequest"}><i class="ri-user-3-fill"> {props.numberRequest}</i></NavLink>
         <NavLink to= {"/community"}><i class="ri-group-2-fill"></i> </NavLink>
         {isAdmin?<NavLink to={'/admin'} ><i class="ri-tools-fill"></i></NavLink>:<></>}
         </div>

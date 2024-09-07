@@ -4,7 +4,9 @@ import axios from 'axios';
 const initialState = {
     user: JSON.parse(localStorage.getItem('user')) || null,
     status: 'idle', // idle, loading, succeeded, failed
-    error: null
+    error: null,
+    changePasswordStatus: 'idle',
+    changePasswordError: null
 };
 
 
@@ -26,10 +28,29 @@ export const loginUser = createAsyncThunk('auth/loginUser', async (credentials, 
     }
 });
 
+
+export const changePassword = createAsyncThunk('auth/changePassword', async (credentials, { rejectWithValue }) => { 
+    try { 
+        console.log(credentials)
+        const response = await axios.post('http://localhost:1414/change_password', credentials);
+        return response.data; // Return success message
+    } catch (error) {
+        if (error.response && error.response.data) {
+            return rejectWithValue(error.response.data.message); // Pass the error message from backend
+        } else {
+            return rejectWithValue(error.message);
+        }
+    }
+});
+
 const loginSlice = createSlice({
     name: 'login',
     initialState,
     reducers: {
+        resetStatus: (state) => {
+            state.changePasswordStatus = null;
+            state.changePasswordError = null;
+        },
         logout(state) {
             state.user = null;
             state.status = 'idle';
@@ -52,10 +73,21 @@ const loginSlice = createSlice({
             .addCase(loginUser.rejected, (state, action) => {
                 state.status = 'failed';
                 state.error = action.payload;
+            })
+            .addCase(changePassword.pending, (state) => {
+                state.changePasswordStatus = 'loading';
+            })
+            .addCase(changePassword.fulfilled, (state) => {
+                state.changePasswordStatus = 'succeeded';
+            })
+            .addCase(changePassword.rejected, (state, action) => {
+                state.changePasswordStatus = 'failed';
+                state.changePasswordError = action.payload;
             });
+
     }
 });
 
-export const { logout } = loginSlice.actions;
+export const { logout, resetStatus } = loginSlice.actions;
 
 export default loginSlice.reducer;

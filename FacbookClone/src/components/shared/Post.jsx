@@ -42,7 +42,7 @@ function Post({postId, commentCount ,author_avatar, author_username, author_name
   return (
     <div className='post_container'>
 
-        {author_username === currentUser.username ? 
+        {author_username === currentUser.username || currentUser.isAdmin ? 
             <div className="edit_history">
                  {isEdited && <i onClick={()=> navigate(`/history/${postId}`)} class="ri-time-fill"></i>}
                  <i onClick={() => navigate(`/edit/${postId}`)} class="ri-edit-2-fill"></i>

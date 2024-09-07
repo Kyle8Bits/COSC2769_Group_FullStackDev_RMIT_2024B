@@ -57,8 +57,6 @@ export const fetchFriendRequest = createAsyncThunk(
   // Thunk to send a friend request
 export const sendFriendRequest = createAsyncThunk('friend/sendFriendRequest', async ({ requester, recipient }, { rejectWithValue }) => {
       try {
-        console.log("Current User:", requester)
-        console.log("Friend request send to:", recipient);
         const response = await axios.post('http://localhost:1414/friend/sendRequest', {
           data: { requester, recipient }
         });

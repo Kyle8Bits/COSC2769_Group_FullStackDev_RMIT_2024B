@@ -46,7 +46,6 @@ const Comment = ({ commentId, postId ,username ,name, text, time }) => {
 
   return (
     <div className="comment-container">
-      {/* <img src= 'https://via.placeholder.com/40' alt="avatar" className="avatar" /> */}
       <div className="comment-content">
         <div className="comment-header">
           <span className="username">{name}</span>
@@ -54,36 +53,50 @@ const Comment = ({ commentId, postId ,username ,name, text, time }) => {
         </div>
         <div className="comment-text">{text}</div>
 
-        {(currentUser.username === username && !editState)?
+
+
+
+        {(currentUser.username === username || currentUser.isAdmin)?
           <div className="edit_cmt_div">
 
-            {!decideDelete? 
-            <i onClick={handeDeleteAction} class="ri-chat-delete-fill"></i>
-            : 
-            <div className="decide_action_delete">
-              <h1>Sure want to delete this comment 
-                <i onClick={handleDeleteComment} class="ri-checkbox-circle-fill"></i>
-                <i onClick={()=> setDecideDelete(false)} class="ri-close-circle-fill"></i></h1>
 
-            </div>
+            {!editState ?
+            <>
+               {!decideDelete? 
+                <i onClick={handeDeleteAction} class="ri-chat-delete-fill"></i>
+                : 
+                <div className="decide_action_delete">
+                  <h1>Sure want to delete this comment 
+                    <i onClick={handleDeleteComment} class="ri-checkbox-circle-fill"></i>
+                    <i onClick={()=> setDecideDelete(false)} class="ri-close-circle-fill"></i></h1>
+    
+                </div>
+                }
+                {!currentUser.isAdmin && (<i onClick={()=> setEditState(true)} class="ri-edit-2-fill"></i>)}
+              </> 
+             :
+              <div className="edit_content_ctn">
+                <textarea  
+                type="text" 
+                className="new_content"
+                value={newContent.newContent}
+                onChange={handleNewContentAdd}/>
+
+                <div className="edit_decide">
+                  <i onClick={handleEdit} class="ri-chat-forward-fill"></i>
+                  <i onClick={handleCancleEdit} class="ri-reply-fill"></i>
+                </div>
+
+             </div>
             }
-            <i onClick={()=> setEditState(true)} class="ri-edit-2-fill"></i>
           </div>
           :
-          <div className="edit_content_ctn">
-             <textarea  
-             type="text" 
-             className="new_content"
-             value={newContent.newContent}
-             onChange={handleNewContentAdd}/>
-
-             <div className="edit_decide">
-               <i onClick={handleEdit} class="ri-chat-forward-fill"></i>
-               <i onClick={handleCancleEdit} class="ri-reply-fill"></i>
-             </div>
-
-          </div>
+          <></>
         }
+
+
+
+
 
       </div>
     </div>

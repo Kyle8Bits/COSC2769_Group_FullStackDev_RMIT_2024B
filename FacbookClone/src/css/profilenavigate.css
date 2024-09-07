@@ -71,3 +71,27 @@
     width: 90%; 
     padding: 20px;
 }
+
+/* photo */
+
+.an_image_profile{
+    width: 500px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.images_profile_ctn{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 10px;
+}
+
+.img_profile_ctn{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    padding-bottom: 20px;
+}

@@ -8,10 +8,12 @@ import { fetchOtherUserData } from '../../redux/slice/otheruserSlice';
 import { deleteFriendship, sendFriendRequest } from '../../redux/slice/friendSlice';
 
 import { banUser } from '../../redux/slice/activeUserSlice';
+import { addListener } from '@reduxjs/toolkit';
 function ProfileHeader() {
   const dispatch = useDispatch();
 
   const userDisplaying  = useParams();
+
 
 
   console.log("UserDisplaying", userDisplaying.username.replace('@', ''))
@@ -29,11 +31,13 @@ function ProfileHeader() {
 
   const isFriend = isCurrentUser ? false : otherUserProfile.isFriend;
 
-  const handleDeletefriend = () => {
-    dispatch(deleteFriendship({
+  const handleDeletefriend = async () => {
+    await dispatch(deleteFriendship({
       requester: {username: currentUserProfile.username},
       recipient: {usernameCard: otherUserProfile.user?.username}
     }));
+    dispatch(fetchOtherUserData({ username: userDisplaying.username.replace('@', ''), currentUser: currentUserProfile.username  }));
+    
   }
 
   useEffect(() => {
@@ -45,11 +49,13 @@ function ProfileHeader() {
     }
 }, [userDisplaying]);
 
-const handleRequestFriend = () => {
-  dispatch(sendFriendRequest({
+const handleRequestFriend = async () => {
+  await dispatch(sendFriendRequest({
     requester: currentUserProfile.username,
     recipient: userDisplaying.username.replace('@', ''),
   }));
+  dispatch(fetchOtherUserData({ username: userDisplaying.username.replace('@', ''), currentUser: currentUserProfile.username  }));
+  alert('Friend request sent');
 }
 
     return (
@@ -93,8 +99,7 @@ const handleRequestFriend = () => {
         
 
         <div className="fame_count">
-            <h4 className="friend"> 240  <span>friends</span></h4>
-            <h4 className='follower'> 1.6k  <span>followers</span></h4>
+       
         </div>
 
         <div className="profile_nav">
