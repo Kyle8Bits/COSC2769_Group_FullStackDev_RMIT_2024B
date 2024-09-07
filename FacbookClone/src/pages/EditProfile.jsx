@@ -1,11 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import '../css/editprofile.css';
 import { NavLink } from 'react-router-dom';
 import { updateProfile } from '../redux/slice/editProfileSlice';
-
-import fallback from '../image/default-avatar.jpg'
 
 const EditProfile = () => {
 
@@ -16,6 +14,9 @@ const EditProfile = () => {
   const [upload,setUpload] = useState("");
   const [banner,setBanner] = useState("");
 
+  const [departmentFields, setDepartmentFields] = useState([
+    { department: '', input: '' }
+  ]);
   
   const [formData, setFormData] = useState({
       username: profile.username,
@@ -26,7 +27,27 @@ const EditProfile = () => {
       avatar: profile.avatar, // For handling avatar file
   });
 
+  useEffect(() => {
+    if (profile.info && profile.info.length > 0) {
+      setDepartmentFields(profile.info.map(info => ({ department: info.role, input: info.place })));
+    }
+  }, [profile]);
 
+  const handleDepartmentChange = (index, field, value) => {
+    const updatedFields = [...departmentFields];
+    updatedFields[index][field] = value;
+    setDepartmentFields(updatedFields);
+  };
+
+  const addNewDepartmentField = () => {
+    setDepartmentFields([...departmentFields, { department: '', input: '' }]);
+  };
+
+  const removeDepartmentField = (index) => {
+    const updatedFields = [...departmentFields];
+    updatedFields.splice(index, 1); // Remove the item at the specified index
+    setDepartmentFields(updatedFields);
+  };
 
   const handleChange = (e) => {
       const { name, value } = e.target;
@@ -51,6 +72,14 @@ const EditProfile = () => {
           data.append(key, formData[key]);
           console.log(formData[key])
       }
+
+      departmentFields.forEach((field, index) => {
+        if (field.department && field.input) { // Only append if both fields are filled
+          data.append(`departments[${index}][roles]`, field.department);
+          data.append(`departments[${index}][place]`, field.input);
+        }
+      });
+      
       dispatch(updateProfile(data));
   };
 
@@ -144,7 +173,56 @@ const EditProfile = () => {
             name="bio"
           />
         </div>
+
+
+        {/* Combo box and input field */}
+          {departmentFields.map((field, index) => (
+            <div className="department-input-group" key={index} style={{ display: 'flex', 
+              width: '100%',
+            }}>
+              <select
+                value={field.department}
+                onChange={(e) => handleDepartmentChange(index, 'department', e.target.value)}
+                className="department-select"
+              >
+                <option value="">Roles</option>
+                <option value="Work at">Work at</option>
+                <option value="Study at">Study at</option>
+              </select>
+
+              <input
+                type="text"
+                placeholder="Location of your role here"
+                value={field.input}
+                onChange={(e) => handleDepartmentChange(index, 'input', e.target.value)}
+                className="text-input"
+                style={{ marginLeft: '10px', width: '100%' }}
+              />
+
+                {/* "-" button to remove a department field */}
+              <button
+                type="button"
+                onClick={() => removeDepartmentField(index)}
+                className="remove-department-button"
+                style={{ marginLeft: '10px', width: '100px' }}
+              >
+                Remove
+              </button>
+            </div>
+
+
+          ))}
+
+          <button
+            type="button"
+            onClick={addNewDepartmentField}
+            className="add-department-button"
+          >
+            Add Another Department
+          </button>
         
+
+
         <button type="submit" className="submit-button">
           Save Changes
         </button>

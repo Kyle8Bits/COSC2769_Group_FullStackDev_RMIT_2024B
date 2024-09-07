@@ -10,7 +10,7 @@ function ProfileAbout() {
   const job = info.map((item, index) => (
     <h3 key={index}>
         <i className={item.role === 'work' ? 'ri-briefcase-4-fill' : 'ri-graduation-cap-fill'}></i>
-        {item.role === 'work' ? ` Work at ${item.place}` : ` Study at ${item.place}`}
+        {item.role === 'Work at' ? ` Work at ${item.place}` : ` Study at ${item.place}`}
     </h3>
   ) )
 

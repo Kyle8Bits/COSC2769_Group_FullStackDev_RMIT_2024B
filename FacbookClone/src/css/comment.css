@@ -76,6 +76,7 @@
   flex-direction: row;
   gap: 10px;
   margin-top: 10px;
+  width: 100%;
 }
 
 .edit_content_ctn i{

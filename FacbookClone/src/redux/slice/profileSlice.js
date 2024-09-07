@@ -1,6 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { loginUser } from './loginSlice';
 import { updateProfile } from './editProfileSlice';
+import axios from 'axios';
 
 
 const initialState = {
@@ -14,8 +15,24 @@ const initialState = {
     info: JSON.parse(localStorage.getItem('info')) || [],
     isAdmin: JSON.parse(localStorage.getItem('isAdmin')) || false,
     status: 'idle', // idle, loading, succeeded, failed
-    error: null
+    error: null,
+
+    posts:[]
 };
+
+export const fetchPostOfUser = createAsyncThunk('profile/fetchProfilePosts', async ({username}) => {
+    try{
+        const response = await axios.get('http://localhost:1414/posts/getPostOfUser', {
+            params: {username}
+        });
+
+        return response.data;
+    }
+    catch(error){
+        console.error('Error in fetchProfile:', error);
+        return rejectWithValue(error.response.data);
+    }
+})
 
 const profileSlice = createSlice({
     name: 'profile',
@@ -82,6 +99,9 @@ const profileSlice = createSlice({
     
                 return newState;
             })
+            .addCase(fetchPostOfUser.fulfilled, (state, action) => {
+                state.posts = action.payload;
+            });
     }
 });
 
