@@ -1,29 +1,41 @@
 import React, { useEffect } from "react";
-import { useDispatch,useSelector } from "react-redux";
-import { fetchFriendRequest } from "../redux/slice/friendSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchFriendRequest } from "../redux/slice/friendSlice"; // Ensure correct path to slice
 import FriendRequest from "./FriendRequest";
 import '../css/friendRequestList.css';
+import Header from "../components/shared/Header";
 
-function FriendRequestList(){
-    const {friendRequests,status} = useSelector((state) => state.friends.friend);
+function FriendRequestList() {
+    const friendRequests = useSelector((state) => state.friends.friendRequest);
+    const status = useSelector((state) => state.friends.status);
     const dispatch = useDispatch();
     const currentUser = useSelector((state) => state.profile);
+
     useEffect(() => {
-        if(currentUser){
+        if (currentUser) {
             dispatch(fetchFriendRequest(currentUser));
         }
-    },[dispatch,currentUser]);
-    
+    }, [dispatch, currentUser]);
+
     return (
-        <div className="friend-req-list">
-            {status === 'loading' && <p>Loading friend requests...</p>}
-            {status === 'succeeded' && friendRequests.length === 0 && <p>No friend requests.</p>}
-            {status === 'succeeded' && friendRequests.map((request) => (
-                <FriendRequest key={request._id} requester={request.requester} />
-            ))}
-            {status === 'failed' && <p>Error loading friend requests.</p>}
-        </div>
+        <>
+            <Header />
+            <div className="friend-req-list">
+                {status === 'loading' && <p>Loading friend requests...</p>}
+                {status === 'succeeded' && (!friendRequests || friendRequests.length === 0) && (
+                    <p>No friend requests.</p>
+                )}
+                {status === 'succeeded' && friendRequests?.length > 0 && friendRequests.map((request) => (
+                    <FriendRequest 
+                        key={request._id} 
+                        requester={request} 
+                        recipient={currentUser} 
+                    />
+                ))}
+                {status === 'failed' && <p>Error loading friend requests.</p>}
+            </div>
+        </>
     );
 }
 
-export default FriendRequestList
+export default FriendRequestList;

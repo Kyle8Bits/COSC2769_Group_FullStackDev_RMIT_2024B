@@ -5,9 +5,13 @@ import { useDispatch } from 'react-redux';
 
 const initialState = {
     friend: [],
+    friendRequest:[],
     status: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
     error: null
 };
+
+//const {friendRquest} = uSLT(state=> state.friends)
+
 
 
 
@@ -36,23 +40,22 @@ export const deleteFriendship = createAsyncThunk('/friend/deleteFriendship', asy
     }
 });
 
-// Thunk to fetch friend requests
 export const fetchFriendRequest = createAsyncThunk(
-    'friend/fetchFriendRequest',
-    async (curentUser, { rejectWithValue }) => {
-      try {
-        const response = await axios.get('http://localhost:1414/friend/getRequest', {
-            data: {recipient: curentUser.username}
-        });
-        return response.data;
-      } catch (error) {
-        return rejectWithValue(error.response.data);
-      }
+  'friend/fetchFriendRequest',
+  async (currentUser, { rejectWithValue }) => {
+    try {
+      const response = await axios.get('http://localhost:1414/friend/getRequest', {
+        params: { recipient: currentUser.username },
+      });
+      return response.data; // This should now return requester and recipient details
+    } catch (error) {
+      return rejectWithValue(error.response.data);
     }
-  );
-  
+  }
+);
+
   // Thunk to send a friend request
-  export const sendFriendRequest = createAsyncThunk('friend/sendFriendRequest', async ({ requester, recipient }, { rejectWithValue }) => {
+export const sendFriendRequest = createAsyncThunk('friend/sendFriendRequest', async ({ requester, recipient }, { rejectWithValue }) => {
       try {
         console.log("Current User:", requester)
         console.log("Friend request send to:", recipient);
@@ -66,9 +69,37 @@ export const fetchFriendRequest = createAsyncThunk(
         return rejectWithValue(error.response.data);
       }
     }
-  );
+);
 
+export const acceptFriendRequest = createAsyncThunk(
+  '/friend/acceptFriendRequest',
+  async ({ requester, recipient }, { rejectWithValue }) => {
+    try {
+      const response = await axios.post('http://localhost:1414/friend/accept', {
+        data: {requester,recipient}
+      });
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
 
+// Decline a friend request
+export const declineFriendRequest = createAsyncThunk(
+    '/friend/declineFriendRequest',
+    async ({ requester, recipient }, { rejectWithValue }) => {
+      try {
+        const response = await axios.post('http://localhost:1414/friend/decline', {
+            data:{requester,recipient}
+        });
+        return response.data;
+      } catch (error) {
+        return rejectWithValue(error.response.data);
+      }
+    }
+);
+  
 const friendSlice = createSlice({
     name: 'friend',
     initialState,
@@ -98,18 +129,19 @@ const friendSlice = createSlice({
             })
             .addCase(fetchFriendRequest.pending, (state) => {
                 state.status = 'loading';
-                state.friend = [];
+                state.friendRequest = [];
                 state.error = null;
             })
             .addCase(fetchFriendRequest.fulfilled, (state, action) => {
                 state.status = 'succeeded';
-                state.friend = action.payload; // Set the array with the fetched data
+                state.friendRequest = action.payload; // Set the array with the fetched data
             })
             .addCase(fetchFriendRequest.rejected, (state, action) => {
                 state.status = 'failed';
                 state.error = action.error.message;
-                state.friend = []; // Clear the array or handle the error state appropriately
+                state.friendRequest = []; // Clear the array or handle the error state appropriately
             })
+
     }
 })
 
