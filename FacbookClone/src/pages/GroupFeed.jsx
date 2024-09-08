@@ -96,6 +96,7 @@ function GroupFeed() {
         hasReacted={hasReacted} 
         isEdited={post.post.edited}
         showingHistory={false}
+        isGroupAdmin={currentGroup.admins && currentGroup.admins.includes(currentUser.username)}
       />
     );
 });

@@ -5,7 +5,7 @@ import '../../css/post.css'
 import { useNavigate } from 'react-router-dom';
 import CommentBox from './CommentBox';
 
-function Post({postId, commentCount ,author_avatar, author_username, author_name, photos, caption, reaction, date, hasReacted, isEdited, showingHistory}) { 
+function Post({postId, commentCount ,author_avatar, author_username, author_name, photos, caption, reaction, date, hasReacted, isEdited, showingHistory, isGroupAdmin}) { 
     const currentUser = useSelector(state => state.profile);
     const dispatch = useDispatch();
     const [cmtAction, setcmtAction] = useState(false)
@@ -42,7 +42,7 @@ function Post({postId, commentCount ,author_avatar, author_username, author_name
   return (
     <div className='post_container'>
 
-        {author_username === currentUser.username || currentUser.isAdmin ? 
+        {author_username === currentUser.username || currentUser.isAdmin || isGroupAdmin ? 
             <div className="edit_history">
                  {isEdited && <i onClick={()=> navigate(`/history/${postId}`)} class="ri-time-fill"></i>}
                  <i onClick={() => navigate(`/edit/${postId}`)} class="ri-edit-2-fill"></i>
