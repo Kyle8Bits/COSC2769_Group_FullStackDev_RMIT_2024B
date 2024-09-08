@@ -11,7 +11,6 @@ import NotFound from './NotFound'
 import Login from './pages/Login'
 import GroupFeed from './pages/GroupFeed'
 import Profile from './pages/Profile'
-import ForgotPassword from './pages/ForgotPassword';
 import ChangePassword from './pages/ChangePassword';
 import ProfileAbout from './components/ProfileComponents/ProfileAbout';
 import ProfilePosts from './components/ProfileComponents/ProfilePosts';
@@ -46,13 +45,6 @@ const router = createBrowserRouter([
     element: <BasicInfo/>,
     errorElement: <NotFound/>
   },
-  
-  {
-    path: "/password_recovery",
-    element: <ForgotPassword/>,
-    errorElement: <NotFound />,
-  }, 
-
   {
     path: "/change_password",
     element: <ChangePassword/>,

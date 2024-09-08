@@ -67,8 +67,6 @@ function Login() {
         </div>
           
         <div className="login_status">{error}</div>
-
-        <div className="forgot-password">Forgot password <Link className='span' to={'/password_recovery'} >Click here</Link></div>
         <div className="login_buttons">
 
           <NavLink to={'/register'}><button type='button' className='signup'>Sign Up</button></NavLink>
