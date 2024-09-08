@@ -55,12 +55,7 @@ function GroupAdminApprove() {
   return (
     <div  id='admin_group_approve'>
 
-            <div id="waitlist_search_bar">
-                <div className="input_box">
-                    <i class="ri-search-line"></i>
-                    <input type="text" placeholder='Search User' />
-                </div>
-            </div>
+          
 
 
         <div id="search_waitlist_result">

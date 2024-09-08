@@ -10,6 +10,8 @@ function CommentBox({ postId, currentUser, actionLeft }) { // Accept postId as a
     const dispatch = useDispatch();
     const [inputValue, setInputValue] = useState('');
 
+    const {username} = useSelector(state => state.profile);
+
     useEffect(() => {
         if (postId) {
             dispatch(fetchCommentsForPost(postId)); // Fetch comments when the component mounts
@@ -29,7 +31,7 @@ function CommentBox({ postId, currentUser, actionLeft }) { // Accept postId as a
                 authorUsername: currentUser.username,
                 content: inputValue,
             };
-            dispatch(addCommentToPost({ postId, commentData: newComment })); // Add comment to the specific post
+            dispatch(addCommentToPost({ postId, commentData: newComment, username })); // Add comment to the specific post
             setInputValue('');
         }
     };

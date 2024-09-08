@@ -34,6 +34,9 @@ function GroupAdminHeader() {
         <NavLink className={({ isActive }) => isActive ? 'tab active_nav' : 'tab'} to={`/groups/${currentGroup.id}/admin/waitlist`}>
           <div>Wait List</div>
         </NavLink>
+        <NavLink className={({ isActive }) => isActive ? 'tab active_nav' : 'tab'} to={`/groups/${currentGroup.id}/admin/userlist`}>
+          <div>User List</div>
+        </NavLink>
         <NavLink className={({ isActive }) => isActive ? 'tab active_nav' : 'tab'} to={`/groups/${currentGroup.id}/admin/groupInfo`}>
           <div>Edit Group</div>
         </NavLink>

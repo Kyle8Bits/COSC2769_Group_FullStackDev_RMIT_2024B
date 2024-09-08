@@ -115,3 +115,31 @@
 #approve_btn .ri-close-line:hover{
     color: rgb(255, 0, 0);
 }
+
+.member_group_list{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.display_group_member{
+    justify-self: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Creates two columns with equal width */
+    gap: 10px; /* Optional: Adds some space between the cards */
+    width: 90%; 
+    padding: 20px;
+}
+
+.aMember{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    color: gray;
+}
+
+.aMember i:hover{
+    color:chocolate
+}

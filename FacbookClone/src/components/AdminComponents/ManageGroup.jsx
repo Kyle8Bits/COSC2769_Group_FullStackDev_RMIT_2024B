@@ -35,8 +35,8 @@ const handleReturn =()=>{
   });
 }
 
-const handleConfirm = () => {
-  dispatch(decideGroupRequest({id: groupID, decision: confirm.message}));
+const handleConfirm = async () => {
+  await dispatch(decideGroupRequest({id: groupID, decision: confirm.message}));
   dispatch(getGroupRequest());
 }
 

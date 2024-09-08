@@ -32,7 +32,7 @@ import GroupAdminEdit from './components/GroupAdminComponents/GroupAdminEdit';
 import GroupList from './pages/GroupList';
 import FriendRequestList from './pages/FriendRequestList';
 import EditHistory from './pages/EditHistory';
-
+import GroupAdminUser from './components/GroupAdminComponents/GroupAdminUser';
 
 const router = createBrowserRouter([
   {
@@ -170,6 +170,11 @@ const router = createBrowserRouter([
       {
         path: "groupInfo",
         element: <GroupAdminEdit/>,
+        errorElement: <NotFound />,
+      },
+      {
+        path: "userlist",
+        element: <GroupAdminUser/>,
         errorElement: <NotFound />,
       },
     ]

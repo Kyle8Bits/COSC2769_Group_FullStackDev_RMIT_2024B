@@ -13,9 +13,12 @@ export const fetchCommentsForPost = createAsyncThunk('comment/fetchCommentsForPo
 });
 
 // Async thunk to add a new comment to a specific post
-export const addCommentToPost = createAsyncThunk('comment/addCommentToPost', async ({ postId, commentData }) => {
+export const addCommentToPost = createAsyncThunk('comment/addCommentToPost', async ({ postId, commentData, username}) => {
     const response = await axios.post(`http://localhost:1414/comment/addComment`, commentData, {
-        params: {postId}
+        params: {
+            postId,
+            username
+        }
     });
     return response.data;
 });

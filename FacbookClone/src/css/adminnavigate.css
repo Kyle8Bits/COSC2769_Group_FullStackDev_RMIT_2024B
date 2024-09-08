@@ -51,40 +51,6 @@
 
 
 /* suspend */
-.suspend_search_bar {
-    margin-top: 10px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
-
-.suspend_search_bar .input_box{
-    background-color: rgb(255, 255, 255);
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    width: 50%;
-    height: 75%;
-    border-radius: 50px;
-    padding: 0 10px 0 10px;
-    gap: 10px;
-    transition: width 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
-}
-
-.suspend_search_bar .input_box input{
-    width: 90%;
-    height: 80%;
-    background-color: transparent;
-    border: transparent;
-    outline: none;
-    font-size: 20px;
-}
-
-.suspend_search_bar i{
-    font-size: 25px;
-}
 
 .suspend_list_container{
     width: 100%;

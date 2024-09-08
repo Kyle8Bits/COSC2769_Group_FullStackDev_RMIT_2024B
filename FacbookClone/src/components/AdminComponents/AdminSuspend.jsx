@@ -22,13 +22,6 @@ function AdminSuspend() {
 
   return (
     <div  className='admin_suspend_container'>
-
-
-        <div className='suspend_list_container'>
-            <div className="userlist">
-
-            </div>
-        </div>
     <div className="display_active_user">
       {displayActive}
     </div>
